@@ -7,6 +7,8 @@ import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
+
+
 public class TraitBovineBane extends AbstractTrait {
 	
 	
@@ -18,7 +20,7 @@ public class TraitBovineBane extends AbstractTrait {
 	private static float bonusDamage = 10f;
 	
 	//I think this is for formatting
-	public TraitBovineBane(String identifier, int color) {
+	public TraitBovineBane() {
 		super("bovinebane", TextFormatting.GRAY);
 		// TODO Auto-generated constructor stub
 	}

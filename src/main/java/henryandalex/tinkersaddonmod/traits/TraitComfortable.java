@@ -12,7 +12,7 @@ public class TraitComfortable extends AbstractTrait {
 	
 	//This trait is for leather handles/extra, it increases base stats by 130%
 
-	public TraitComfortable(String identifier, TextFormatting color) {
+	public TraitComfortable() {
 		super("comfortable", TextFormatting.GRAY);
 		// TODO Auto-generated constructor stub
 	}
