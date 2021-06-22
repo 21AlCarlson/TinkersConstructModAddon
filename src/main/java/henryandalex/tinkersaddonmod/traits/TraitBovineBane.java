@@ -37,5 +37,4 @@ public class TraitBovineBane extends AbstractTrait {
 
 	    return super.damage(tool, player, target, damage, newDamage, isCritical); //return stuff because its needed i guess
 	  }
-	
 }
