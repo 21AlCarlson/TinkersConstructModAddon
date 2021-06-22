@@ -81,7 +81,10 @@ public enum NetworkRegistry
     {
         channels.put(Side.CLIENT, Maps.<String,FMLEmbeddedChannel>newConcurrentMap());
         channels.put(Side.SERVER, Maps.<String,FMLEmbeddedChannel>newConcurrentMap());
-        channels.put(Side.BUKKIT, Maps.<String,FMLEmbeddedChannel>newConcurrentMap());
+        // Forge apparently includes net.minecraftforge:mergetool in some instances of forge.
+        // This messes with the network registry and adds a BUKKIT value in the emun class Side.
+        // To fix this, the following line below is added.
+        // channels.put(Side.BUKKIT, Maps.<String,FMLEmbeddedChannel>newConcurrentMap());
     }
 
     /**
