@@ -1,6 +1,6 @@
 package henryandalex.tinkersaddonmod.items;
 
-import henryandalex.tinkersaddonmod.TinkersModAddon;
+import henryandalex.tinkersaddonmod.TCAddonMod;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.utils.IHasModel;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,6 +17,6 @@ public class ItemBase extends Item implements IHasModel {
 
 	@Override
 	public void registerModels() {
-		TinkersModAddon.proxy.registerItemRenderer(this, 0, "inventory");
+		TCAddonMod.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 }

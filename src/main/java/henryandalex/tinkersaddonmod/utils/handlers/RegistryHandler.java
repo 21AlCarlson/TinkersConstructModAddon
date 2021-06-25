@@ -15,11 +15,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @EventBusSubscriber
 public class RegistryHandler {
 	
-	@SubscribeEvent
-	public static void onItemRegister(RegistryEvent.Register<Item> event) {
-		event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));
-	}
-	
 	/**
 	 * Registers all the blocks and item oredicts.
 	 * Note that it's using the item registry event, since it's called after blocks.
@@ -27,9 +22,16 @@ public class RegistryHandler {
 	 * See TinerOredict for initial usage.
 	 */
 	@SubscribeEvent
-	public void registerItems(RegistryEvent.Register<Item> event) {
+	public static void registerItemsToTinkers(RegistryEvent.Register<Item> event) {
 		registerCommon();
 	}
+	
+	
+	@SubscribeEvent
+	public static void onItemRegister(RegistryEvent.Register<Item> event) {
+		event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));
+	}
+	
 
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event) {
@@ -41,7 +43,7 @@ public class RegistryHandler {
 	}
 	
 	
-	private void registerCommon() {
+	private static void registerCommon() {
 		TinkerOredict.oredict(Items.LEATHER, "leather");
 	}
 }

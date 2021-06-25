@@ -1,1 +1,7 @@
-Register leather in oredict
+1) Correct the name of leather in Tinkers book.
+2) Set up more complex items to Tinkers.
+3) Figure out how to use TinkersPulse/MantlePulse so that I can properly set up the tinkers items. 
+4) Create a guide to register materials in the github wiki.
+5) Clean up the unneccessary comments (dead code).
+6) Add more comments to explain how the code works and its tinkers construct counterpart.
+
