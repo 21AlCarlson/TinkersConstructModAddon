@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import slimeknights.tconstruct.TConstruct;
 
 import org.apache.logging.log4j.Logger;
 
@@ -25,11 +26,16 @@ public class TCAddonMod {
 	public static CommonProxy proxy;
 	
     private static Logger logger;
+    
+    static {
+    	TConstruct.pulseManager.registerPulse(new TCAddonIntegration());
+    	TConstruct.pulseManager.registerPulse(new TCAddonMaterials());
+    }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-    	TCAddonIntegration.preInit(event);
-    	TCAddonMaterials.preInit(event);
+    	//TCAddonIntegration.preInit(event);
+    	//TCAddonMaterials.preInit(event);
         logger = event.getModLog();
     }
 
@@ -37,7 +43,7 @@ public class TCAddonMod {
     public void init(FMLInitializationEvent event) {
         // some example code
         logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-        TCAddonMaterials.init(event);
+        //TCAddonMaterials.init(event);
     }
     
     @EventHandler
