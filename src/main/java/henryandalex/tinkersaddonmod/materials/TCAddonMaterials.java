@@ -42,10 +42,6 @@ public final class TCAddonMaterials {
 		registerToolMaterialStatsAdded();
 	}
 	
-	public static void preInit(FMLPreInitializationEvent event) {
-		setupMaterialStats(event);
-	}
-	
 	
 	//TinkerMaterials class
 	@Subscribe
@@ -55,10 +51,6 @@ public final class TCAddonMaterials {
 	    leather.setRepresentativeItem(new ItemStack(Items.LEATHER));
 	    leather.addTrait(bovinebane, HEAD);
 	    leather.addTrait(comfortable);
-	}
-	
-	public static void init(FMLInitializationEvent event) {
-		setupMaterials(event);
 	}
 	
 	public static void registerToolMaterialStatsAdded() {
