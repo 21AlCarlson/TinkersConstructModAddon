@@ -19,10 +19,9 @@ import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
 import static henryandalex.tinkersaddonmod.traits.TraitsAdded.bovinebane;
 import static henryandalex.tinkersaddonmod.traits.TraitsAdded.comfortable;
 
-public final class Materials {
+public final class TCAddonMaterials {
 	
-	
-	
+	// items added to Tinkers tools
 	public static final Material leather = mat("leather", 0x8e661b);
 	
 	
@@ -30,21 +29,22 @@ public final class Materials {
 	
 	private static Material mat(String name, int color) {
 	    // make materials hidden by default, integration will make them visible if integrated
-	    Material mat = new Material(name, color, true);
+	    Material mat = new Material(name, color, false);
 	    materialsAdded.add(mat);
 	    return mat;
-	  }
+	}
 	
-	@Subscribe
-	  public void setupMaterialStats(FMLPreInitializationEvent event) {
-	    // stats need to be present before model loading/texture generation so we don't generate unneeded parts
-	    registerToolMaterialStatsAdded();
-
-	  }
 	
 	
 	@Subscribe
-	public void setupMaterialsAdded(FMLInitializationEvent event) {
+	public void setupMaterialStats(FMLPreInitializationEvent event) {
+		// stats need to be present before model loading/texture generation so we don't generate unneeded parts
+		registerToolMaterialStatsAdded();
+	}
+	
+	
+	@Subscribe
+	public void setupMaterials(FMLInitializationEvent event) {
 		leather.setCraftable(true);
 	    leather.addItem("leather", 1, Material.VALUE_Ingot);
 	    leather.setRepresentativeItem(new ItemStack(Items.LEATHER));
@@ -55,10 +55,8 @@ public final class Materials {
 	
 	public void registerToolMaterialStatsAdded() {
 		TinkerRegistry.addMaterialStats(leather,
-                new HeadMaterialStats(35, 1.50f, 2.50f, STONE),
-                new HandleMaterialStats(1.30f, 300),
+				new HeadMaterialStats(35, 1.50f, 2.50f, STONE),
+				new HandleMaterialStats(1.30f, 300),
                 new ExtraMaterialStats(150));
 	}
-	
-
 }
