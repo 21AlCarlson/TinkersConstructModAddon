@@ -13,15 +13,15 @@ import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.tools.TinkerTools;
 
 import static slimeknights.tconstruct.library.utils.HarvestLevels.STONE;
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
-import static slimeknights.tconstruct.tools.TinkerTools.PulseId;
 
 import static henryandalex.tinkersaddonmod.traits.TraitsAdded.comfortable;
 import static henryandalex.tinkersaddonmod.traits.TraitsAdded.bovinebane;
 
-@Pulse(id = TCAddonMaterials.ThisPulseId, description = "All the tool materials added by TCAddonMod", pulsesRequired = PulseId, forced = true)
+@Pulse(id = TCAddonMaterials.ThisPulseId, description = "All the tool materials added by TCAddonMod", pulsesRequired = TinkerTools.PulseId, forced = true)
 public final class TCAddonMaterials {
 	
 	static final String ThisPulseId = "TCAddonMaterials";
