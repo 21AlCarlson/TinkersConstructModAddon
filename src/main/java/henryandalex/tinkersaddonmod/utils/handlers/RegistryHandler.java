@@ -1,10 +1,11 @@
 package henryandalex.tinkersaddonmod.utils.handlers;
 
+import henryandalex.tinkersaddonmod.init.BlockInit;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.utils.IHasModel;
 
 import slimeknights.tconstruct.common.TinkerOredict;
-
+import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -32,12 +33,23 @@ public class RegistryHandler {
 		event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));
 	}
 	
+	
+	@SubscribeEvent
+	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
+		event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0]));
+	}
 
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event) {
 		for(Item item : ItemInit.ITEMS) {
 			if (item instanceof IHasModel) {
 				((IHasModel) item).registerModels();
+			}
+		}
+		
+		for (Block block : BlockInit.BLOCKS) {
+			if (block instanceof IHasModel) {
+				((IHasModel)block).registerModels();
 			}
 		}
 	}
