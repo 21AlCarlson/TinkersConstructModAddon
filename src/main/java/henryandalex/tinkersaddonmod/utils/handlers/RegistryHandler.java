@@ -57,5 +57,6 @@ public class RegistryHandler {
 	
 	private static void registerCommon() {
 		TinkerOredict.oredict(Items.LEATHER, "leather");
+		TinkerOredict.oredict(ItemInit.TUNGSTEN_INGOT, "tungsten");
 	}
 }

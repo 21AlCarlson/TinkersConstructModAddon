@@ -2,3 +2,9 @@ item.ingot_tungsten.name=Tungsten Ingot
 
 tile.ore_overworld_tungsten.name=Tungsten Ore 
 tile.block_tungsten.name=Tungsten Block
+material.leather.name=Leather
+material.tungsten.name=Tungsten
+modifier.bovinebane.name=Bovinebane
+modifier.comfortable.name=Comfortable
+modifier.antiarmor.name=Anti-Armor
+modifier.antigravity.name=Anti-Gravity
