@@ -1,8 +1,7 @@
-1) Correct the name of leather in Tinkers book.
-2) Set up more complex items to Tinkers.
-3) Add Sanic Trait (Entity.addVelocity)
-4) Create a guide to register materials in the github wiki.
-5) Clean up the unneccessary comments (dead code).
-6) Add more comments to explain how the code works and its tinkers construct counterpart.
+1) Set up more complex items to Tinkers.
+2) Add Sanic Trait (Entity.addVelocity)
+3) Create a guide to register materials in the github wiki.
+4) Clean up the unneccessary comments (dead code).
+5) Add more comments to explain how the code works and its tinkers construct counterpart.
 
 

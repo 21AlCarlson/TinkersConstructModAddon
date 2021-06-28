@@ -4,7 +4,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.common.eventbus.Subscribe;
 
-import static henryandalex.tinkersaddonmod.materials.TCAddonMaterials.leather;
+import henryandalex.tinkersaddonmod.materials.TCAddonMaterials;
 
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -28,9 +28,11 @@ public class TCAddonIntegration extends TinkerPulse {
 	@Subscribe
     public static void preInit(FMLPreInitializationEvent event) {
     	// test item
-    	integrate(leather);
+    	integrate(TCAddonMaterials.leather);
+    	integrate(TCAddonMaterials.tungsten);
     	
-    	TinkerRegistry.addMaterial(leather);
+    	TinkerRegistry.addMaterial(TCAddonMaterials.leather);
+    	TinkerRegistry.addMaterial(TCAddonMaterials.tungsten);
     }
   
     private static MaterialIntegration integrate(Material material) {
