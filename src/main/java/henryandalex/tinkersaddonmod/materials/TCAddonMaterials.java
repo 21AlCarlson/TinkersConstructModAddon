@@ -2,6 +2,7 @@ package henryandalex.tinkersaddonmod.materials;
 
 import com.google.common.eventbus.Subscribe;
 
+import henryandalex.tinkersaddonmod.init.ItemInit;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -16,10 +17,15 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.tools.TinkerTools;
 
 import static slimeknights.tconstruct.library.utils.HarvestLevels.STONE;
+
+import org.lwjgl.util.Color;
+
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
 
 import static henryandalex.tinkersaddonmod.traits.TraitsAdded.comfortable;
 import static henryandalex.tinkersaddonmod.traits.TraitsAdded.bovinebane;
+import static henryandalex.tinkersaddonmod.traits.TraitsAdded.antiArmor;
+import static henryandalex.tinkersaddonmod.traits.TraitsAdded.antiGravity;;
 
 @Pulse(id = TCAddonMaterials.ThisPulseId, description = "All the tool materials added by TCAddonMod", pulsesRequired = TinkerTools.PulseId, forced = true)
 public final class TCAddonMaterials {
@@ -28,6 +34,8 @@ public final class TCAddonMaterials {
 	
 	// items added to Tinkers tools
 	public static final Material leather = mat("leather", 0x8e661b);
+	
+	public static final Material tungsten = mat("tungsten", 0xe8db49);
 	
 	private static Material mat(String name, int color) {
 	    // make materials hidden by default, integration will make them visible if integrated
@@ -51,6 +59,12 @@ public final class TCAddonMaterials {
 	    leather.setRepresentativeItem(new ItemStack(Items.LEATHER));
 	    leather.addTrait(bovinebane, HEAD);
 	    leather.addTrait(comfortable);
+	    
+	    tungsten.setCraftable(true);
+	    tungsten.addItem("tungsten", 1, Material.VALUE_Ingot);
+	    tungsten.setRepresentativeItem(new ItemStack(ItemInit.TUNGSTEN_INGOT));
+	    tungsten.addTrait(antiArmor, HEAD);
+	    tungsten.addTrait(antiGravity);
 	}
 	
 	public static void registerToolMaterialStatsAdded() {
