@@ -11,4 +11,5 @@ modifier.antiarmor.name=Anti-Armor
 modifier.antigravity.name=Anti-Gravity
 modifier.hearty.name=Hearty
 modifier.healthy.name=Healthy
-
+modifier.fragileii.name=Fragile II
+modifier.fragile.name=Fragile
