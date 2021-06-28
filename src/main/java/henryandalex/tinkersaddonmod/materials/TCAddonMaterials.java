@@ -31,6 +31,7 @@ public final class TCAddonMaterials {
 	// items added to Tinkers tools
 	public static final Material leather = mat("leather", 0x8e661b);
 	public static final Material tungsten = mat("tungsten", 0xb35900);
+	public static final Material bread = mat("bread", 0xb35900);
 	
 	private static Material mat(String name, int color) {
 	    // make materials hidden by default, integration will make them visible if integrated
@@ -60,6 +61,12 @@ public final class TCAddonMaterials {
 	    tungsten.setRepresentativeItem(new ItemStack(ItemInit.TUNGSTEN_INGOT));
 	    tungsten.addTrait(TraitsAdded.antiArmor);
 	    tungsten.addTrait(TraitsAdded.antiGravity);
+	    
+	    bread.setCraftable(true);
+	    bread.addItem("bread", 1, Material.VALUE_Ingot);
+	    bread.setRepresentativeItem(new ItemStack(Items.BREAD));
+	    bread.addTrait(TraitsAdded.hearty, HEAD);
+	    bread.addTrait(TraitsAdded.healthy);
 	}
 	
 	public static void registerToolMaterialStatsAdded() {
@@ -72,6 +79,11 @@ public final class TCAddonMaterials {
 			new HeadMaterialStats(1000, .50f, 2.50f, HarvestLevels.IRON),
 			new HandleMaterialStats(1.30f, 500),
 			new ExtraMaterialStats(300)
+		);
+		TinkerRegistry.addMaterialStats(bread, 
+			new HeadMaterialStats(10, 1.0f, 1.0f, HarvestLevels.STONE),
+			new HandleMaterialStats(0.95f, 10),
+			new ExtraMaterialStats(10)
 		);
 	}
 }

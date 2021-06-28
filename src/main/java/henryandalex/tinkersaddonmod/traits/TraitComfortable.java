@@ -1,6 +1,7 @@
 package henryandalex.tinkersaddonmod.traits;
 
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.events.TinkerEvent;
 import slimeknights.tconstruct.library.tools.ToolNBT;
@@ -14,7 +15,7 @@ public class TraitComfortable extends AbstractTrait {
 
 	public TraitComfortable() {
 		super("comfortable", TextFormatting.GRAY);
-		// TODO Auto-generated constructor stub
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@SubscribeEvent

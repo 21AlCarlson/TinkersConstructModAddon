@@ -30,9 +30,11 @@ public class TCAddonIntegration extends TinkerPulse {
     	// test item
     	integrate(TCAddonMaterials.leather);
     	integrate(TCAddonMaterials.tungsten);
+    	integrate(TCAddonMaterials.bread);
     	
     	TinkerRegistry.addMaterial(TCAddonMaterials.leather);
     	TinkerRegistry.addMaterial(TCAddonMaterials.tungsten);
+    	TinkerRegistry.addMaterial(TCAddonMaterials.bread);
     }
   
     private static MaterialIntegration integrate(Material material) {
