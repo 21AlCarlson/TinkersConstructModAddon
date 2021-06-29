@@ -9,12 +9,10 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 
-public class TraitComfortable extends AbstractTrait {
-	
-	//This trait is for leather handles/extra, it increases base stats by 130%
+public class TraitFragileII extends AbstractTrait {
 
-	public TraitComfortable() {
-		super("comfortable", TextFormatting.GRAY);
+	public TraitFragileII() {
+		super("fragileII", TextFormatting.GRAY);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
@@ -22,12 +20,11 @@ public class TraitComfortable extends AbstractTrait {
 	  public void onToolBuilding(TinkerEvent.OnItemBuilding event) {
 	    if(TinkerUtil.hasTrait(event.tag, this.getIdentifier())) {
 	      ToolNBT data = TagUtil.getToolStats(event.tag);
-	      // increase durability, speed, and attack by 30%
-	      data.durability = Math.max(1, (data.durability * 130) / 100);
-	      data.attack = Math.max(1, (data.attack * 130) / 100);
-	      data.speed = Math.max(1, (data.speed * 130) / 100);
+	      // durability is 1, but damage is x5
+	      data.durability = 1;
+	      data.attack = Math.max(1, data.attack * 5);
 	      TagUtil.setToolTag(event.tag, data.get());
 	    }
 	  }
-
+	
 }
