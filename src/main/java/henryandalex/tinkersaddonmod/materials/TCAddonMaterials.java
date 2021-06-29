@@ -74,6 +74,7 @@ public final class TCAddonMaterials {
 	    glass.setRepresentativeItem(new ItemStack(Blocks.GLASS));
 	    glass.addTrait(TraitsAdded.fragileII, HEAD);
 	    glass.addTrait(TraitsAdded.fragile);
+	    glass.addTrait(TraitsAdded.shatter, HEAD);
 	}
 	
 	public static void registerToolMaterialStatsAdded() {

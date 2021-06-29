@@ -27,4 +27,6 @@ public class TraitFragileII extends AbstractTrait {
 	    }
 	  }
 	
+	
+	
 }
