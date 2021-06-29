@@ -13,7 +13,7 @@ public class TraitHearty extends AbstractTrait {
 
 	@Override
 	public void onHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, boolean isCritical) {
-		// drops all the armor of the person hit. (I made it 5% chance)
+		// heals the player (5% chance)
 		double chance = Math.random();
 		if (chance < 0.05) {
 			player.heal(1);

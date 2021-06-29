@@ -3,6 +3,8 @@ package henryandalex.tinkersaddonmod.traits;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -20,26 +22,28 @@ public class TraitAntiArmor extends AbstractTrait {
 		//double chance = Math.random();
 		//if (chance < 0.05) {
 		//	target.getArmorInventoryList().forEach(armor -> target.entityDropItem(armor, 0));
+		//  target.getArmorInventoryList().forEach(armor -> target.replaceItemInInventory(armor, null)
 		//}
-		dropEquipment((EntityLiving)target);
-	}
-	
-	// Originally in EntityLiving class. Moved here for modification
-	private void dropEquipment(EntityLiving target) {
 		
-        for (EntityEquipmentSlot entityequipmentslot : EntityEquipmentSlot.values()) {
-        	
-            ItemStack itemstack = target.getItemStackFromSlot(entityequipmentslot);
-
-            if (!itemstack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemstack))
-            {
-                if (itemstack.isItemStackDamageable())
-                {
-                    itemstack.setItemDamage(itemstack.getMaxDamage() - target.getRNG().nextInt(1 + target.getRNG().nextInt(Math.max(itemstack.getMaxDamage() - 3, 1))));
-                }
-
-                target.entityDropItem(itemstack, 0.0F);
-            }
-        }
-    }
+		if (!player.getEntityWorld().isRemote) {
+			// Originally in EntityLiving class as method: dropEquipment. Moved here for modification
+			for (EntityEquipmentSlot entityequipmentslot : EntityEquipmentSlot.values()) {
+	        	if (entityequipmentslot.getSlotType().equals(EntityEquipmentSlot.Type.ARMOR)) {
+	        		
+		            ItemStack itemstack = target.getItemStackFromSlot(entityequipmentslot);
+		
+		            if (!itemstack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemstack)) {
+		                if (itemstack.isItemStackDamageable()) {
+		                    itemstack.setItemDamage(itemstack.getMaxDamage() - target.getRNG().nextInt(1 + target.getRNG().nextInt(Math.max(itemstack.getMaxDamage() - 3, 1))));
+		                }
+		                
+		                target.entityDropItem(itemstack, 0.0F);
+		            }
+		            //end of modified dropEquipment method.
+		            
+		            target.setItemStackToSlot(entityequipmentslot, ItemStack.EMPTY);
+	        	}
+			}
+		}
+	}
 }

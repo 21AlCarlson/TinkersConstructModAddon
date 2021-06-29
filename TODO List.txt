@@ -3,5 +3,7 @@
 3) Create a guide to register materials in the github wiki.
 4) Clean up the unneccessary comments (dead code).
 5) Add more comments to explain how the code works and its tinkers construct counterpart.
-
+6) Add Armor invis and item in hand invis
+7) Add a trait that has the target say something in chat
+8) Make some textures :)
 
