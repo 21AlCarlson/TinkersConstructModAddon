@@ -6,6 +6,7 @@ import henryandalex.tinkersaddonmod.utils.IHasModel;
 
 import slimeknights.tconstruct.common.TinkerOredict;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -62,5 +63,8 @@ public class RegistryHandler {
 	private static void registerCommon() {
 		TinkerOredict.oredict(Items.LEATHER, "leather");
 		TinkerOredict.oredict(ItemInit.TUNGSTEN_INGOT, "tungsten");
+		TinkerOredict.oredict(Blocks.GLASS, "glass");
+		TinkerOredict.oredict(Items.CHICKEN, "chicken");
+		TinkerOredict.oredict(Items.BREAD, "bread");
 	}
 }
