@@ -53,7 +53,7 @@ public class RegistryHandler {
 		
 		for (Block block : BlockInit.BLOCKS) {
 			if (block instanceof IHasModel) {
-				((IHasModel)block).registerModels();
+				((IHasModel) block).registerModels();
 			}
 		}
 	}

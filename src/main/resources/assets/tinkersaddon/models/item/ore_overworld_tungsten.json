@@ -1,6 +1,6 @@
 {
 	"variants":
 	{
-		"normal": { "model": "ha:ore_overworld_tungsten" }
+		"normal": { "model": "tinkersaddon:ore_overworld_tungsten" }
 	}
 }

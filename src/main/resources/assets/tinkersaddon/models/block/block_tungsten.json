@@ -1,6 +1,6 @@
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"all": "ha/blocks/block_tungsten"
+		"all": "tinkersaddon:blocks/block_tungsten"
 	}
 }

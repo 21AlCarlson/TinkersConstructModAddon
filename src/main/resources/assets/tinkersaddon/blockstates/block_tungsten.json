@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "ha:block_tungsten" }
+		"normal": { "model": "tinkersaddon:block_tungsten" }
 	}
 }

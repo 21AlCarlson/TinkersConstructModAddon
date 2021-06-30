@@ -1,7 +1,7 @@
 {
 	"variants": {
 		"normal": {
-			"model": "ha:ingot_tungsten"
+			"model": "tinkersaddon:ingot_tungsten"
 		}
 	}
 }
