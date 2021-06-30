@@ -71,5 +71,7 @@ public class RegistryHandler {
 		TinkerOredict.oredict(Blocks.GLASS, "glass");
 		TinkerOredict.oredict(Items.CHICKEN, "chicken");
 		TinkerOredict.oredict(Items.BREAD, "bread");
+		TinkerOredict.oredict(Blocks.RED_MUSHROOM, "mushroom");
+		TinkerOredict.oredict(BlockInit.BLOCK_TUNGSTEN, "tungsten_block");
 	}
 }
