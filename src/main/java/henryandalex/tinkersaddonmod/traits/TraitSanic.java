@@ -28,6 +28,8 @@ public class TraitSanic extends AbstractTrait {
 		int motionAmplifierX = (player.motionX < 0 ? -motionAmplifier : motionAmplifier);
 		int motionAmplifierZ = (player.motionZ < 0 ? -motionAmplifier : motionAmplifier);
 		
+		// possibly have it repeat a few times???
+		
 		// set up the task
 		TimerTask runFaster = new TimerTask() {
 			@Override
