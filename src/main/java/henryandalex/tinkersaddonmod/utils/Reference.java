@@ -1,5 +1,12 @@
 package henryandalex.tinkersaddonmod.utils;
 
+/**
+ * This is where most of the information about the mod is <br>
+ * stored as a static final variable
+ * 
+ * @author AlexC
+ *
+ */
 public class Reference {
 	public static final String MODID = "tinkersaddon";
 	public static final String NAME = "Tinkers_Addon";

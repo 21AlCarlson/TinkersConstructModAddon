@@ -16,6 +16,7 @@ import henryandalex.tinkersaddonmod.materials.TCAddonMaterials;
 import henryandalex.tinkersaddonmod.proxy.CommonProxy;
 import henryandalex.tinkersaddonmod.utils.Reference;;
 
+//Required to load after Tinkers Construct because it uses some of their methods.
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, dependencies = "required-after:tconstruct")
 public class TCAddonMod {
 
@@ -28,14 +29,13 @@ public class TCAddonMod {
     private static Logger logger;
     
     static {
+    	// These are needed to make sure the these classes hop on the Event bus used by tinkers
     	TConstruct.pulseManager.registerPulse(new TCAddonIntegration());
     	TConstruct.pulseManager.registerPulse(new TCAddonMaterials());
     }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-    	//TCAddonIntegration.preInit(event);
-    	//TCAddonMaterials.preInit(event);
         logger = event.getModLog();
     }
 
@@ -43,25 +43,10 @@ public class TCAddonMod {
     public void init(FMLInitializationEvent event) {
         // some example code
         logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-        //TCAddonMaterials.init(event);
     }
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
     	
     }
-    
-    
-    
-    /*
-    // this is the class used to register most things
-    @Mod.EventBusSubscriber
-    public static class RegistrationHandler {
-    	@SubscribeEvent
-    	public static void registerItems(RegistryEvent.Register<Item> event) {
-    		
-    	}
-    }
-    */
 }
-// register at 714

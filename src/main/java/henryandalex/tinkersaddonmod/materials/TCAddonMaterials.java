@@ -23,6 +23,13 @@ import slimeknights.tconstruct.library.utils.HarvestLevels;
 
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
 
+/**
+ * Contains all the materials for Tinkers Construct and <br>
+ * deals with all of the registration of materials to that mod; <br>
+ * however, you need to integrate these materials in <br>
+ * {@link TCAddonIntegration#preInit(FMLPreInitializationEvent)}<br>
+ * before they will be recognized by tinkers.
+ */
 @Pulse(id = TCAddonMaterials.ThisPulseId, description = "All the tool materials added by TCAddonMod", pulsesRequired = TinkerTools.PulseId, forced = true)
 public final class TCAddonMaterials {
 	
@@ -34,21 +41,33 @@ public final class TCAddonMaterials {
 	public static final Material bread = mat("bread", 0xb35900);
 	public static final Material glass = mat("glass", 0xb35900);
 	
+	/** 
+	 * Initializes the material. See TinkerMaterials.mat() for initial usage.
+	 */
 	private static Material mat(String name, int color) {
 	    // make materials hidden by default, integration will make them visible if integrated
 	    Material mat = new Material(name, color, true);
 	    return mat;
 	}
 	
-	//TinkerMaterials class
+	/**
+	 * Initializes the Stats for the all materials
+	 * Stats need to be present before model loading/texture 
+	 * generation so we don't generate unneeded parts.
+	 * See TinkerMaterials.setupMaterialStats()
+	 * for initial usage.
+	 */
 	@Subscribe
 	public static void setupMaterialStats(FMLPreInitializationEvent event) {
-		// stats need to be present before model loading/texture generation so we don't generate unneeded parts
 		registerToolMaterialStatsAdded();
 	}
 	
 	
-	//TinkerMaterials class
+	/**
+	 * Initializes the all materials for TinkersContruct.
+	 * See TinkerMaterials.setupMaterials()
+	 * for initial usage.
+	 */
 	@Subscribe
 	public static void setupMaterials(FMLInitializationEvent event) {
 		leather.setCraftable(true);
@@ -76,6 +95,10 @@ public final class TCAddonMaterials {
 	    glass.addTrait(TraitsAdded.fragile);
 	}
 	
+	/**
+	 * Register all the stats for each tool here. For initial usage, see
+	 * TinkersMaterial.registerToolMaterialStats()
+	 */
 	public static void registerToolMaterialStatsAdded() {
 		TinkerRegistry.addMaterialStats(leather,
 			new HeadMaterialStats(35, 1.50f, 2.50f, HarvestLevels.STONE),

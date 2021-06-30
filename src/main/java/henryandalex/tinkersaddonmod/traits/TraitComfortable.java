@@ -8,10 +8,13 @@ import slimeknights.tconstruct.library.tools.ToolNBT;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
-
+/**
+ * This trait is for leather handles/extra, it increases base stats by 130%
+ * 
+ * @author Henry
+ *
+ */
 public class TraitComfortable extends AbstractTrait {
-	
-	//This trait is for leather handles/extra, it increases base stats by 130%
 
 	public TraitComfortable() {
 		super("comfortable", TextFormatting.GRAY);

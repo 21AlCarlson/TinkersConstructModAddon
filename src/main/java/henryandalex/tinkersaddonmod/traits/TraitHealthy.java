@@ -6,6 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
+/**
+ * 
+ * @author Henry
+ *
+ */
 public class TraitHealthy extends AbstractTrait {
 	
 	public TraitHealthy() {

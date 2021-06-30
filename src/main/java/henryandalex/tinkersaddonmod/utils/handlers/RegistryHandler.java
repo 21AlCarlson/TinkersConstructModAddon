@@ -13,6 +13,10 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+/**
+ * This is where everything gets registered - items, blocks, <br>
+ * and models - with the predefined methods in each class.
+ */
 @EventBusSubscriber
 public class RegistryHandler {
 	
@@ -20,7 +24,7 @@ public class RegistryHandler {
 	 * Registers all the blocks and item oredicts.
 	 * Note that it's using the item registry event, since it's called after blocks.
 	 * This relies on the TinkerOredict pulse being called after the pulses registering the items
-	 * See TinerOredict for initial usage.
+	 * See {@link TinerOredict} for initial usage.
 	 */
 	@SubscribeEvent
 	public static void registerItemsToTinkers(RegistryEvent.Register<Item> event) {

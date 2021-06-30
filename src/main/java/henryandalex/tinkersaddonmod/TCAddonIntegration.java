@@ -16,6 +16,13 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.materials.Material;
 
+/**
+ * This deals with the integrating all materials with tinkers. <br>
+ * See {@link TinkerIntegration}
+ * 
+ * @author AlexC
+ *
+ */
 @Pulse(id = TCAddonIntegration.PulseId, forced = true)
 public class TCAddonIntegration extends TinkerPulse {
 	

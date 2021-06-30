@@ -7,15 +7,16 @@ import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
-
+/**
+ * This trait is for the leather head of tools
+ * This trait does 10 extra bonus damage to cows (so they are always a one-shot)
+ * This trait also heals the durability of the tool when hitting a cow by 5 
+ * 
+ * @author Henry
+ *
+ */
 
 public class TraitBovineBane extends AbstractTrait {
-	
-	
-	//This trait is for the leather head of tools
-	//This trait does 10 extra bonus damage to cows (so they are always a one-shot)
-	//This trait also heals the durability of the tool when hitting a cow by 5 (I think, idk how to test this one out yet)
-	
 	
 	private static float bonusDamage = 10f;
 	

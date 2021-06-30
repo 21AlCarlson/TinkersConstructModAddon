@@ -8,8 +8,11 @@ import henryandalex.tinkersaddonmod.objects.blocks.BlockOres;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
-
-
+/**
+ * 
+ * @author Henry
+ *
+ */
 public class BlockInit {
 	
 	public static final List<Block> BLOCKS = new ArrayList<Block>();

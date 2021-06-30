@@ -9,6 +9,11 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 
+/**
+ * 
+ * @author Henry
+ *
+ */
 public class TraitFragileII extends AbstractTrait {
 
 	public TraitFragileII() {
