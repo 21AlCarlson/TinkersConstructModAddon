@@ -38,8 +38,9 @@ public final class TCAddonMaterials {
 	// items added to Tinkers tools
 	public static final Material leather = mat("leather", 0x8e661b);
 	public static final Material tungsten = mat("tungsten", 0xb35900);
-	public static final Material bread = mat("bread", 0xb35900);
-	public static final Material glass = mat("glass", 0xb35900);
+	public static final Material bread = mat("bread", 0x957800);
+	public static final Material glass = mat("glass", 0xe7f2ff);
+	public static final Material chicken = mat("chicken", 0xf9c0c0);
 	
 	/** 
 	 * Initializes the material. See TinkerMaterials.mat() for initial usage.
@@ -93,6 +94,14 @@ public final class TCAddonMaterials {
 	    glass.setRepresentativeItem(new ItemStack(Blocks.GLASS));
 	    glass.addTrait(TraitsAdded.fragileII, HEAD);
 	    glass.addTrait(TraitsAdded.fragile);
+	    glass.addTrait(TraitsAdded.shatter, HEAD);
+	    
+	    chicken.setCraftable(true);
+	    chicken.addItem("chicken", 1, Material.VALUE_Ingot);
+	    chicken.setRepresentativeItem(new ItemStack(Items.CHICKEN));
+	    chicken.addTrait(TraitsAdded.chickenception, HEAD);
+	    chicken.addTrait(TraitsAdded.salmonella);
+	    chicken.addTrait(TraitsAdded.salmonella, HEAD);
 	}
 	
 	/**
@@ -120,5 +129,11 @@ public final class TCAddonMaterials {
 			new HandleMaterialStats(1.0f, 0),
 			new ExtraMaterialStats(0)
 		);
+		TinkerRegistry.addMaterialStats(chicken,
+				new HeadMaterialStats(10, 1.0f, 1.0f, HarvestLevels.STONE),
+				new HandleMaterialStats(1.0f, 0),
+				new ExtraMaterialStats(0)
+			);
+		
 	}
 }

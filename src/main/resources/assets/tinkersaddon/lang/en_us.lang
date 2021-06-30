@@ -5,6 +5,9 @@ tile.block_tungsten.name=Tungsten Block
 material.leather.name=Leather
 material.tungsten.name=Tungsten
 material.bread.name=Bread
+material.glass.name=Glass
+material.chicken.name=Chicken
+
 modifier.bovinebane.name=Bovinebane
 modifier.comfortable.name=Comfortable
 modifier.antiarmor.name=Anti-Armor
@@ -13,3 +16,6 @@ modifier.hearty.name=Hearty
 modifier.healthy.name=Healthy
 modifier.fragileii.name=Fragile II
 modifier.fragile.name=Fragile
+modifier.shatter.name=Shatter
+modifier.salmonella.name=Salmonella
+modifier.chickenception.name=Chickenception

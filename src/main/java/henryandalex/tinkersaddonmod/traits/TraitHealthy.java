@@ -21,7 +21,7 @@ public class TraitHealthy extends AbstractTrait {
 	public void onHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, boolean isCritical) {
 		// gives the player more hunger
 		double chance = Math.random();
-		if ((chance < 0.5) && (player instanceof EntityPlayer)) {
+		if (player instanceof EntityPlayer) {
 			((EntityPlayer) player).getFoodStats().addStats(1, 0);
 		}
 	}

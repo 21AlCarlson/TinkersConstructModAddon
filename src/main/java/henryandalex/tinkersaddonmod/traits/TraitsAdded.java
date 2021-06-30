@@ -12,4 +12,7 @@ public class TraitsAdded extends TinkerTraits {
 	public static final AbstractTrait healthy = new TraitHealthy();
 	public static final AbstractTrait fragileII = new TraitFragileII();
 	public static final AbstractTrait fragile = new TraitFragile();
+	public static final AbstractTrait shatter = new TraitShatter();
+	public static final AbstractTrait chickenception = new TraitChickenception();
+	public static final AbstractTrait salmonella = new TraitSalmonella();
 }

@@ -20,7 +20,7 @@ public class TraitHearty extends AbstractTrait {
 	public void onHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, boolean isCritical) {
 		// heals the player (5% chance)
 		double chance = Math.random();
-		if (chance < 0.25) {
+		if (chance < (1/3)) {
 			player.heal(1);
 		}
 	}
