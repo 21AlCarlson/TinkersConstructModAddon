@@ -1,14 +1,18 @@
 item.ingot_tungsten.name=Tungsten Ingot
 
-tile.ore_overworld_tungsten.name=Tungsten Ore 
+tile.block_ore_tungsten.name=Tungsten Ore 
 tile.block_tungsten.name=Tungsten Block
+<<<<<<< HEAD
 tile.witchs_wood.name=Witch's Wood
+=======
+>>>>>>> c5bc7ecb08de99b23e4eab94c86a07f90c85c253
 
 material.leather.name=Leather
 material.tungsten.name=Tungsten
 material.bread.name=Bread
 material.glass.name=Glass
 material.chicken.name=Chicken
+material.mushroom.name=Mushroom
 
 modifier.bovinebane.name=Bovinebane
 modifier.comfortable.name=Comfortable
@@ -21,3 +25,5 @@ modifier.fragile.name=Fragile
 modifier.shatter.name=Shatter
 modifier.salmonella.name=Salmonella
 modifier.chickenception.name=Chickenception
+modifier.shout.name=Shout
+modifier.sanic.name=Sanic

@@ -12,9 +12,11 @@ import slimeknights.tconstruct.TConstruct;
 
 import org.apache.logging.log4j.Logger;
 
+import henryandalex.tinkersaddonmod.init.FurnaceInit;
 import henryandalex.tinkersaddonmod.materials.TCAddonMaterials;
 import henryandalex.tinkersaddonmod.proxy.CommonProxy;
-import henryandalex.tinkersaddonmod.utils.Reference;;
+import henryandalex.tinkersaddonmod.utils.Reference;
+import henryandalex.tinkersaddonmod.utils.handlers.RegistryHandler;;
 
 //Required to load after Tinkers Construct because it uses some of their methods.
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, dependencies = "required-after:tconstruct")
@@ -36,12 +38,14 @@ public class TCAddonMod {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        logger = event.getModLog();
+        RegistryHandler.otherRegistries();
+    	logger = event.getModLog();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         // some example code
+    	FurnaceInit.Init();
         logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
     

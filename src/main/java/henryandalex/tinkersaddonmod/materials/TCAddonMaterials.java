@@ -2,6 +2,7 @@ package henryandalex.tinkersaddonmod.materials;
 
 import com.google.common.eventbus.Subscribe;
 
+import henryandalex.tinkersaddonmod.init.BlockInit;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.traits.TraitsAdded;
 import net.minecraft.init.Blocks;
@@ -41,6 +42,7 @@ public final class TCAddonMaterials {
 	public static final Material bread = mat("bread", 0x957800);
 	public static final Material glass = mat("glass", 0xe7f2ff);
 	public static final Material chicken = mat("chicken", 0xf9c0c0);
+	public static final Material mushroom = mat("mushroom", 0xff0000);
 	
 	/** 
 	 * Initializes the material. See TinkerMaterials.mat() for initial usage.
@@ -103,6 +105,13 @@ public final class TCAddonMaterials {
 	    chicken.addTrait(TraitsAdded.chickenception, HEAD);
 	    chicken.addTrait(TraitsAdded.salmonella);
 	    chicken.addTrait(TraitsAdded.salmonella, HEAD);
+	    
+	    mushroom.setCraftable(true);
+	    mushroom.addItem("mushroom", 1, Material.VALUE_Ingot);
+	    mushroom.setRepresentativeItem(new ItemStack(Blocks.RED_MUSHROOM));
+	    mushroom.addTrait(TraitsAdded.shout, HEAD);
+	    mushroom.addTrait(TraitsAdded.sanic);
+	    mushroom.addTrait(TraitsAdded.sanic, HEAD);
 	}
 	
 	/**
@@ -135,6 +144,12 @@ public final class TCAddonMaterials {
 				new HandleMaterialStats(1.0f, 0),
 				new ExtraMaterialStats(0)
 			);
+		TinkerRegistry.addMaterialStats(mushroom,
+				new HeadMaterialStats(10, 0.1f, 0.1f, HarvestLevels.STONE),
+				new HandleMaterialStats(0.1f, 0),
+				new ExtraMaterialStats(0)
+			);
+		
 		
 	}
 }
