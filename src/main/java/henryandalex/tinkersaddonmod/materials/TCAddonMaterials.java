@@ -37,7 +37,7 @@ public final class TCAddonMaterials {
 	
 	// items added to Tinkers tools
 	public static final Material leather = mat("leather", 0x8e661b);
-	public static final Material tungsten = mat("tungsten", 0xb35900);
+	public static final Material tungsten = mat("tungsten", 0xe6f2ff);
 	public static final Material bread = mat("bread", 0x957800);
 	public static final Material glass = mat("glass", 0xe7f2ff);
 	public static final Material chicken = mat("chicken", 0xf9c0c0);

@@ -2,6 +2,8 @@ item.ingot_tungsten.name=Tungsten Ingot
 
 tile.ore_overworld_tungsten.name=Tungsten Ore 
 tile.block_tungsten.name=Tungsten Block
+tile.witchs_wood.name=Witch's Wood
+
 material.leather.name=Leather
 material.tungsten.name=Tungsten
 material.bread.name=Bread
