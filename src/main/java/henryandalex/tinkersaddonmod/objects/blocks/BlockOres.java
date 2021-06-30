@@ -25,7 +25,6 @@ public class BlockOres extends Block implements IHasModel, henryandalex.tinkersa
 	
 	
 	public static final PropertyEnum<EnumHandler.EnumType> VARIANT = PropertyEnum.<EnumHandler.EnumType>create("variant", EnumHandler.EnumType.class);
-	private String name;
 	private String dimension;
 	
 	public BlockOres(String name, String dimension) {
@@ -35,7 +34,6 @@ public class BlockOres extends Block implements IHasModel, henryandalex.tinkersa
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumType.TUNGSTEN));
 		
-		this.name = name;
 		this.dimension = dimension;
 		
 		BlockInit.BLOCKS.add(this);

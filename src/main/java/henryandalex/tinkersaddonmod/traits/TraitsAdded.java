@@ -15,4 +15,5 @@ public class TraitsAdded extends TinkerTraits {
 	public static final AbstractTrait shatter = new TraitShatter();
 	public static final AbstractTrait chickenception = new TraitChickenception();
 	public static final AbstractTrait salmonella = new TraitSalmonella();
+	public static final AbstractTrait sanic = new TraitSanic();
 }

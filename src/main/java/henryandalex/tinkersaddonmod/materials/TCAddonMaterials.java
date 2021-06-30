@@ -82,6 +82,7 @@ public final class TCAddonMaterials {
 	    tungsten.setRepresentativeItem(new ItemStack(ItemInit.TUNGSTEN_INGOT));
 	    tungsten.addTrait(TraitsAdded.antiArmor);
 	    tungsten.addTrait(TraitsAdded.antiGravity);
+	    tungsten.addTrait(TraitsAdded.sanic);
 	    
 	    bread.setCraftable(true);
 	    bread.addItem("bread", 1, Material.VALUE_Ingot);

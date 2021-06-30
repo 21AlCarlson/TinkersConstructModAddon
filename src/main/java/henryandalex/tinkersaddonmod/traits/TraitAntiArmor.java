@@ -33,7 +33,7 @@ public class TraitAntiArmor extends AbstractTrait {
 			
 			double chance = Math.random();
 			
-			if(chance < 0.1) {
+			if(chance < 0.05) {
 			
 				// Random number between one and four. 
 				// These numbers correspond with the slot index of the armor which is to be dropped

@@ -5,7 +5,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.common.MinecraftForge;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class TraitSalmonella extends AbstractTrait {
