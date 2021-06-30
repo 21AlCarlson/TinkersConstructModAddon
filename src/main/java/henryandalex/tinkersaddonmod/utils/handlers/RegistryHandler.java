@@ -3,7 +3,7 @@ package henryandalex.tinkersaddonmod.utils.handlers;
 import henryandalex.tinkersaddonmod.init.BlockInit;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.utils.IHasModel;
-
+import henryandalex.tinkersaddonmod.world.gen.WorldGenCustomOres;
 import slimeknights.tconstruct.common.TinkerOredict;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -13,6 +13,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * This is where everything gets registered - items, blocks, <br>
@@ -57,6 +58,10 @@ public class RegistryHandler {
 				((IHasModel) block).registerModels();
 			}
 		}
+	}
+	
+	public static void otherRegistries() {
+		GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
 	}
 	
 	
