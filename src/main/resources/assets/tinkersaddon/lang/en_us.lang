@@ -1,11 +1,18 @@
 item.ingot_tungsten.name=Tungsten Ingot
+item.stars_heart.name=Star's Heart
+item.beam.name=Beam
 
 tile.block_ore_tungsten.name=Tungsten Ore 
 tile.block_tungsten.name=Tungsten Block
-<<<<<<< HEAD
 tile.witchs_wood.name=Witch's Wood
-=======
->>>>>>> c5bc7ecb08de99b23e4eab94c86a07f90c85c253
+tile.stone_brick.name=Stone Bricks
+tile.water_wash.name=Water Wash
+
+entity.beam.name=Beam
+
+
+key.categories.TCAddonMod=TCAddonMod
+key.TCAddonMod.beam=Beam
 
 material.leather.name=Leather
 material.tungsten.name=Tungsten
@@ -27,3 +34,4 @@ modifier.salmonella.name=Salmonella
 modifier.chickenception.name=Chickenception
 modifier.shout.name=Shout
 modifier.sanic.name=Sanic
+modifier.beam.name=Beam
