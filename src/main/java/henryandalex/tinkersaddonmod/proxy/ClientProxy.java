@@ -2,6 +2,7 @@ package henryandalex.tinkersaddonmod.proxy;
 
 import henryandalex.tinkersaddonmod.entity.EntityBeam;
 import henryandalex.tinkersaddonmod.init.ItemInit;
+import henryandalex.tinkersaddonmod.traits.Beam.BeamRenderer;
 import henryandalex.tinkersaddonmod.traits.Beam.KeyInputHandler;
 import henryandalex.tinkersaddonmod.traits.Beam.Keybindings;
 import henryandalex.tinkersaddonmod.utils.Reference;
@@ -46,7 +47,7 @@ public class ClientProxy extends CommonProxy {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void render() {
-		RenderingRegistry.registerEntityRenderingHandler(EntityBeam.class, new RenderSnowball<EntityBeam>(Minecraft.getMinecraft().getRenderManager(), ItemInit.BEAM, Minecraft.getMinecraft().getRenderItem()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBeam.class, new BeamRenderer<EntityBeam>(Minecraft.getMinecraft().getRenderManager(), ItemInit.BEAM, Minecraft.getMinecraft().getRenderItem()));
 	}
 	
 	
