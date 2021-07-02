@@ -4,9 +4,11 @@ item.beam.name=Beam
 
 tile.block_ore_tungsten.name=Tungsten Ore 
 tile.block_tungsten.name=Tungsten Block
-tile.witchs_wood.name=Witch's Wood
-tile.stone_brick.name=Stone Bricks
+tile.witchs_wood_log.name=Witch's Wood
+tile.witchs_wood_leaves.name=Witch's Wood Leaves
+tile.witchs_wood_sapling.name=Witch's Wood Sapling
 tile.water_wash.name=Water Wash
+tile.concrete_brick.name=Concrete Brick
 
 entity.beam.name=Beam
 
