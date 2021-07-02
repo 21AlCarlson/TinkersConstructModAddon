@@ -2,10 +2,11 @@ item.ingot_tungsten.name=Tungsten Ingot
 
 tile.block_ore_tungsten.name=Tungsten Ore 
 tile.block_tungsten.name=Tungsten Block
-<<<<<<< HEAD
-tile.witchs_wood.name=Witch's Wood
-=======
->>>>>>> c5bc7ecb08de99b23e4eab94c86a07f90c85c253
+tile.witchs_wood_log.name=Witch's Wood
+tile.witchs_wood_leaves.name=Witch's Wood Leaves
+tile.witchs_wood_sapling.name=Witch's Wood Sapling
+tile.water_wash.name=Water Wash
+tile.concrete_brick.name=Concrete Brick
 
 material.leather.name=Leather
 material.tungsten.name=Tungsten
@@ -13,6 +14,7 @@ material.bread.name=Bread
 material.glass.name=Glass
 material.chicken.name=Chicken
 material.mushroom.name=Mushroom
+material.stars_heart.name=Star's Heart
 
 modifier.bovinebane.name=Bovinebane
 modifier.comfortable.name=Comfortable

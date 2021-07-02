@@ -2,7 +2,6 @@ package henryandalex.tinkersaddonmod.materials;
 
 import com.google.common.eventbus.Subscribe;
 
-import henryandalex.tinkersaddonmod.init.BlockInit;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.traits.TraitsAdded;
 import net.minecraft.init.Blocks;

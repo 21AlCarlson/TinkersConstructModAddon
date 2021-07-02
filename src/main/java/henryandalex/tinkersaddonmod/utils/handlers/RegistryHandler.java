@@ -3,6 +3,7 @@ package henryandalex.tinkersaddonmod.utils.handlers;
 import henryandalex.tinkersaddonmod.init.BlockInit;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.utils.IHasModel;
+import henryandalex.tinkersaddonmod.world.feature.tree.WitchsWoodTreeGen;
 import henryandalex.tinkersaddonmod.world.gen.WorldGenCustomOres;
 import slimeknights.tconstruct.common.TinkerOredict;
 import net.minecraft.block.Block;
@@ -62,7 +63,10 @@ public class RegistryHandler {
 	
 	public static void otherRegistries() {
 		GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
+		GameRegistry.registerWorldGenerator(new WitchsWoodTreeGen(), 0);
 	}
+	
+	public static void registerEventListeners() {}
 	
 	
 	private static void registerCommon() {

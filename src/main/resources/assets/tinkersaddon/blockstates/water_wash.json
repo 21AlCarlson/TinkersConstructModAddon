@@ -1,14 +1,6 @@
 {
   "forge_marker": 1,
-  "defaults": {
-    "textures": {
-      "all": "tinkersaddon:blocks/water_wash"
-    },
-    "model": "cube_all",
-    "uvlock": true
-  },
   "variants": {
-    "normal": [{}],
-    "inventory": [{}]
+    "normal": { "model": "tinkersaddon:water_wash" }
   }
 }

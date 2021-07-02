@@ -44,9 +44,9 @@ public class TCAddonMod {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        // some example code
+    	RegistryHandler.registerEventListeners();
     	FurnaceInit.Init();
-        logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    	logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
     
     @EventHandler
