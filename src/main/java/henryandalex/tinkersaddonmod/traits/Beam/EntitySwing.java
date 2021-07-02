@@ -1,6 +1,5 @@
 package henryandalex.tinkersaddonmod.traits.Beam;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

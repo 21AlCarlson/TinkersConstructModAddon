@@ -8,7 +8,6 @@ import henryandalex.tinkersaddonmod.traits.Beam.Keybindings;
 import henryandalex.tinkersaddonmod.utils.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;

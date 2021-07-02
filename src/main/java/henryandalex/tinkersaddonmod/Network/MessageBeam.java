@@ -4,7 +4,6 @@ import org.jline.utils.Log;
 
 import henryandalex.tinkersaddonmod.entity.EntityBeam;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 
