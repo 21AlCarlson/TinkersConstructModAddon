@@ -1,5 +1,6 @@
 package henryandalex.tinkersaddonmod.traits;
 
+import henryandalex.tinkersaddonmod.traits.Beam.TraitBeam;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
@@ -17,4 +18,5 @@ public class TraitsAdded extends TinkerTraits {
 	public static final AbstractTrait salmonella = new TraitSalmonella();
 	public static final AbstractTrait sanic = new TraitSanic();
 	public static final AbstractTrait shout = new TraitShout();
+	public static final AbstractTrait beam = new TraitBeam();
 }

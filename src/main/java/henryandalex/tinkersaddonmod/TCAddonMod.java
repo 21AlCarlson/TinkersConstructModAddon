@@ -12,8 +12,11 @@ import slimeknights.tconstruct.TConstruct;
 
 import org.apache.logging.log4j.Logger;
 
+import henryandalex.tinkersaddonmod.Network.NetworkHandler;
+import henryandalex.tinkersaddonmod.init.EntityInit;
 import henryandalex.tinkersaddonmod.init.FurnaceInit;
 import henryandalex.tinkersaddonmod.materials.TCAddonMaterials;
+import henryandalex.tinkersaddonmod.proxy.ClientProxy;
 import henryandalex.tinkersaddonmod.proxy.CommonProxy;
 import henryandalex.tinkersaddonmod.utils.Reference;
 import henryandalex.tinkersaddonmod.utils.handlers.RegistryHandler;;
@@ -38,15 +41,19 @@ public class TCAddonMod {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        RegistryHandler.otherRegistries();
+    	RegistryHandler.otherRegistries();
     	logger = event.getModLog();
+    	ClientProxy.registerKeyBinds();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
     	RegistryHandler.registerEventListeners();
     	FurnaceInit.Init();
-    	logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    	EntityInit.registerEntities();
+    	TCAddonMod.proxy.render();
+    	NetworkHandler.init();
+        logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
     
     @EventHandler
