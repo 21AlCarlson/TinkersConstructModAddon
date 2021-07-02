@@ -1,0 +1,15 @@
+  {
+    "forge_marker": 1,
+	"defaults": {
+	  "model": "cross",
+	  "textures": {
+	    "cross": "tcaddon:blocks/witchs_wood_sapling"
+	  },
+	  "uvlock": true
+    },
+    "variants": {
+        "normal": { "model": "tcaddon:witchs_wood_sapling" },
+	    "stage=0":[{ }],
+	    "stage=1":[{ }]
+    }
+}

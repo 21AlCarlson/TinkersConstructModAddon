@@ -1,0 +1,5 @@
+{
+	"variants": {
+		"normal": { "model": "tcaddon:block_ore_tungsten" }
+	}
+}

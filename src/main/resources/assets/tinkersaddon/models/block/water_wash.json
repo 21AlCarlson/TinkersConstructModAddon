@@ -1,6 +1,0 @@
-{
-	"parent": "block/cube_all",
-	"textures": {
-		"all": "tinkersaddon:blocks/water_wash"
-	}
-}

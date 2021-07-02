@@ -1,6 +1,0 @@
-{
-	"parent": "block/cross",
-	"textures": {
-		"cross": "tinkersaddon:blocks/witchs_wood_sapling"
-	}
-}

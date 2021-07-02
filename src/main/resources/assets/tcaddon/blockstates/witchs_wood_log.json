@@ -1,0 +1,30 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "tcaddon:blocks/witchs_wood_log_side"
+    },
+    "model": "cube_all",
+    "uvlock": false
+  },
+  "variants": {
+    "normal": [{
+      "textures": {
+        "side": "tcaddon:blocks/witchs_wood_log_side",
+        "end": "tcaddon:blocks/witchs_wood_log_top"
+      },
+      "model": "cube_column"
+    }],
+    "axis=y": { "model": "tcaddon:witchs_wood_log" },
+    "axis=z": { "model": "tcaddon:witchs_wood_log", "x": 90 },
+    "axis=x": { "model": "tcaddon:witchs_wood_log", "x": 90, "y": 90 },
+    "axis=none": { "model": "tcaddon:witchs_wood_log" },
+    "inventory": [{
+      "textures": {
+        "side": "tcaddon:blocks/witchs_wood_log_side",
+        "end": "tcaddon:blocks/witchs_wood_log_top"
+      },
+      "model": "cube_column"
+    }]
+  }
+}

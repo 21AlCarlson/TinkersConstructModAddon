@@ -1,16 +1,14 @@
-[
-{
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+[{
+  "modid": "tcaddon",
+  "name": "TC Addon",
+  "description": "boo",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://github.com/21AlCarlson/TinkersConstructModAddon",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Alexander C", "Henry Davis"],
+  "credits": "Harry Talks for their tutorials, and Jabelar for their forge tutorials",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
-}
-]
+}]
