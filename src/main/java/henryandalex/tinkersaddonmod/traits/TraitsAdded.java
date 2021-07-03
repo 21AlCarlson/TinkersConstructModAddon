@@ -20,4 +20,6 @@ public class TraitsAdded extends TinkerTraits {
 	public static final AbstractTrait shout = new TraitShout();
 	public static final AbstractTrait beam = new TraitBeam();
 	public static final AbstractTrait bossslayer = new TraitBossSlayer();
+	public static final AbstractTrait finnesse = new TraitFinnesse();
+	public static final AbstractTrait mobmauler = new TraitMobMauler();
 }

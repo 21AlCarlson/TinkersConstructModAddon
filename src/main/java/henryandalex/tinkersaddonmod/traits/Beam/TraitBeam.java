@@ -1,5 +1,8 @@
 package henryandalex.tinkersaddonmod.traits.Beam;
 
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
+
 import org.jline.utils.Log;
 
 import henryandalex.tinkersaddonmod.Network.MessageBeam;
@@ -16,7 +19,9 @@ import slimeknights.tconstruct.library.utils.TagUtil;
 public class TraitBeam extends AbstractTrait {
 	
 	
-	//public static boolean ready;
+	public static boolean ready = true;
+
+
 
 	public TraitBeam() {
 		super("beam", 0x0efde9);
@@ -26,29 +31,23 @@ public class TraitBeam extends AbstractTrait {
 	
 	  public static void BeamCheck(ItemStack tool, World world, Entity entity, boolean isSelected) {
 	    if(!isSelected || !(entity instanceof EntityPlayer) || entity.getEntityWorld().isRemote) {
-	    	//if(ready == true) {
+	    	if(ready == true) {
 	    		NBTTagList data = TagUtil.getTraitsTagList(tool);
 	    		for(int i = 0; i < data.tagCount(); i++) {
 	    			String tag = data.getStringTagAt(i);
-	    			Log.info(tag);
 	    			if (tag.equals("beam")) {
 	    				NetworkHandler.sendToServer(new MessageBeam());
-	    				//ready = false;
-	    				//Cooldown();
+	    				ready = false;
 	    				break;
 	    			}
-	    		//}
 	    	}
 	    }
+	    	Log.info(ready);
 	       
 	    
 	}
-	  /*
-	  public static void Cooldown() {
-	    	for(int i = 0; i < 10000; i++) {
+	  }
+	  
 
-	    	}
-	    	ready = true;
-	    }*/
-
+	  
 }

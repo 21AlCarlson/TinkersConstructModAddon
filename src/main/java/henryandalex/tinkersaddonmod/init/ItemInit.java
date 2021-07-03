@@ -30,4 +30,6 @@ public class ItemInit {
 	public static final Item TOTEM_SATCHEL = new ItemTotemSatchel("totem_satchel");
 	
 	public static final Item MASTER_INGOT = new ItemBase("ingot_master");
+	
+	public static final Item SUPERIOR_STEEL_INGOT = new ItemBase("ingot_superior_steel");
 }
