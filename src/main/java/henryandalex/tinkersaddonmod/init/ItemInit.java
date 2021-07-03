@@ -28,4 +28,6 @@ public class ItemInit {
 	public static final Item BEAM = new ItemBase("beam");
 	
 	public static final Item TOTEM_SATCHEL = new ItemTotemSatchel("totem_satchel");
+	
+	public static final Item MASTER_INGOT = new ItemBase("ingot_master");
 }

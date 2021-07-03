@@ -42,6 +42,7 @@ public final class TCAddonMaterials {
 	public static final Material glass = mat("glass", 0xe7f2ff);
 	public static final Material chicken = mat("chicken", 0xf9c0c0);
 	public static final Material mushroom = mat("mushroom", 0xff0000);
+	public static final Material master = mat("master", 0x0efde9);
 	
 	/** 
 	 * Initializes the material. See TinkerMaterials.mat() for initial usage.
@@ -105,13 +106,19 @@ public final class TCAddonMaterials {
 	    chicken.addTrait(TraitsAdded.chickenception, HEAD);
 	    chicken.addTrait(TraitsAdded.salmonella);
 	    chicken.addTrait(TraitsAdded.salmonella, HEAD);
-	    
+	  
 	    mushroom.setCraftable(true);
 	    mushroom.addItem("mushroom", 1, Material.VALUE_Ingot);
 	    mushroom.setRepresentativeItem(new ItemStack(Blocks.RED_MUSHROOM));
 	    mushroom.addTrait(TraitsAdded.shout, HEAD);
 	    mushroom.addTrait(TraitsAdded.sanic);
 	    mushroom.addTrait(TraitsAdded.sanic, HEAD);
+	    
+	    master.setCraftable(true);
+	    master.addItem("master", 1, Material.VALUE_Ingot);
+	    master.setRepresentativeItem(new ItemStack(ItemInit.MASTER_INGOT));
+	    master.addTrait(TraitsAdded.bossslayer);
+	    master.addTrait(TraitsAdded.beam, HEAD);
 	}
 	
 	/**
@@ -148,6 +155,11 @@ public final class TCAddonMaterials {
 				new HeadMaterialStats(10, 0.1f, 0.1f, HarvestLevels.STONE),
 				new HandleMaterialStats(0.1f, 0),
 				new ExtraMaterialStats(0)
+			);
+		TinkerRegistry.addMaterialStats(master, 
+				new HeadMaterialStats(800, 5.0f, 10.0f, HarvestLevels.COBALT),
+				new HandleMaterialStats(0.8f, 100),
+				new ExtraMaterialStats(75)
 			);
 		
 		
