@@ -101,23 +101,22 @@ public final class TCAddonMaterials {
 	    chicken.setCraftable(true);
 	    chicken.addItem("chicken", 1, Material.VALUE_Ingot);
 	    chicken.setRepresentativeItem(new ItemStack(Items.CHICKEN));
-	    chicken.addTrait(TraitsAdded.chickenception, HEAD);
-	    chicken.addTrait(TraitsAdded.salmonella);
-	    chicken.addTrait(TraitsAdded.salmonella, HEAD);
+	    chicken.addTrait(AddedTraits.chickenception, HEAD);
+	    chicken.addTrait(AddedTraits.salmonella);
+	    chicken.addTrait(AddedTraits.salmonella, HEAD);
 	  
 	    mushroom.setCraftable(true);
 	    mushroom.addItem("mushroom", 1, Material.VALUE_Ingot);
 	    mushroom.setRepresentativeItem(new ItemStack(Blocks.RED_MUSHROOM));
-	    mushroom.addTrait(TraitsAdded.shout, HEAD);
-	    mushroom.addTrait(TraitsAdded.sanic);
-	    mushroom.addTrait(TraitsAdded.sanic, HEAD);
+	    mushroom.addTrait(AddedTraits.shout, HEAD);
+	    mushroom.addTrait(AddedTraits.sanic);
+	    mushroom.addTrait(AddedTraits.sanic, HEAD);
 	    
 	    master.setCraftable(true);
 	    master.addItem("master", 1, Material.VALUE_Ingot);
 	    master.setRepresentativeItem(new ItemStack(ItemInit.MASTER_INGOT));
-	    master.addTrait(TraitsAdded.bossslayer);
-	    master.addTrait(TraitsAdded.beam, HEAD);
->>>>>>> f59c978a66bd54e1a2e99338460898463331a7d6
+	    master.addTrait(AddedTraits.bossslayer);
+	    master.addTrait(AddedTraits.beam, HEAD);
 	}
 	
 	/**

@@ -23,4 +23,5 @@ public class AddedTraits extends TinkerTraits {
 	public static final AbstractTrait bossslayer = new TraitBossSlayer();
 	public static final AbstractTrait finnesse = new TraitFinnesse();
 	public static final AbstractTrait mobmauler = new TraitMobMauler();
+	public static final AbstractTrait autoTotem = new TraitAutoTotem();
 }
