@@ -5,4 +5,6 @@
 5) Add more comments to explain how the code works and its tinkers construct counterpart.
 6) Add Armor invis and item in hand invis
 7) Add a trait that has the target say something in chat
+8) Add capabilities to totem bag so it actually keeps the totems in the bag across restarts.
+9) Make it so that the Totems keep thier custom data like names when being moved into the totem bag
 

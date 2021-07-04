@@ -3,7 +3,7 @@ package henryandalex.tinkersaddonmod.materials;
 import com.google.common.eventbus.Subscribe;
 
 import henryandalex.tinkersaddonmod.init.ItemInit;
-import henryandalex.tinkersaddonmod.traits.TraitsAdded;
+import henryandalex.tinkersaddonmod.traits.AddedTraits;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -75,43 +75,41 @@ public final class TCAddonMaterials {
 		leather.setCraftable(true);
 	    leather.addItem("leather", 1, Material.VALUE_Ingot);
 	    leather.setRepresentativeItem(new ItemStack(Items.LEATHER));
-	    leather.addTrait(TraitsAdded.bovinebane, HEAD);
-	    leather.addTrait(TraitsAdded.comfortable);
+	    leather.addTrait(AddedTraits.bovinebane, HEAD);
+	    leather.addTrait(AddedTraits.comfortable);
 	    
 	    tungsten.setCraftable(true);
 	    tungsten.addItem("tungsten", 1, Material.VALUE_Ingot);
 	    tungsten.setRepresentativeItem(new ItemStack(ItemInit.TUNGSTEN_INGOT));
-	    tungsten.addTrait(TraitsAdded.antiArmor);
-	    tungsten.addTrait(TraitsAdded.antiGravity);
-	    tungsten.addTrait(TraitsAdded.shout);
-	    tungsten.addTrait(TraitsAdded.beam, HEAD);
+	    tungsten.addTrait(AddedTraits.autoTotem);
+	    tungsten.addTrait(AddedTraits.beam, HEAD);
 	    
 	    bread.setCraftable(true);
 	    bread.addItem("bread", 1, Material.VALUE_Ingot);
 	    bread.setRepresentativeItem(new ItemStack(Items.BREAD));
-	    bread.addTrait(TraitsAdded.hearty, HEAD);
-	    bread.addTrait(TraitsAdded.healthy);
+	    bread.addTrait(AddedTraits.hearty, HEAD);
+	    bread.addTrait(AddedTraits.healthy);
 	    
 	    glass.setCraftable(true);
 	    glass.addItem("glass", 1, Material.VALUE_Ingot);
 	    glass.setRepresentativeItem(new ItemStack(Blocks.GLASS));
-	    glass.addTrait(TraitsAdded.fragileII, HEAD);
-	    glass.addTrait(TraitsAdded.fragile);
-	    glass.addTrait(TraitsAdded.shatter, HEAD);
+	    glass.addTrait(AddedTraits.fragileII, HEAD);
+	    glass.addTrait(AddedTraits.fragile);
+	    glass.addTrait(AddedTraits.shatter, HEAD);
 	    
 	    chicken.setCraftable(true);
 	    chicken.addItem("chicken", 1, Material.VALUE_Ingot);
 	    chicken.setRepresentativeItem(new ItemStack(Items.CHICKEN));
-	    chicken.addTrait(TraitsAdded.chickenception, HEAD);
-	    chicken.addTrait(TraitsAdded.salmonella);
-	    chicken.addTrait(TraitsAdded.salmonella, HEAD);
+	    chicken.addTrait(AddedTraits.chickenception, HEAD);
+	    chicken.addTrait(AddedTraits.salmonella);
+	    chicken.addTrait(AddedTraits.salmonella, HEAD);
 	    
 	    mushroom.setCraftable(true);
 	    mushroom.addItem("mushroom", 1, Material.VALUE_Ingot);
 	    mushroom.setRepresentativeItem(new ItemStack(Blocks.RED_MUSHROOM));
-	    mushroom.addTrait(TraitsAdded.shout, HEAD);
-	    mushroom.addTrait(TraitsAdded.sanic);
-	    mushroom.addTrait(TraitsAdded.sanic, HEAD);
+	    mushroom.addTrait(AddedTraits.shout, HEAD);
+	    mushroom.addTrait(AddedTraits.sanic);
+	    mushroom.addTrait(AddedTraits.sanic, HEAD);
 	}
 	
 	/**

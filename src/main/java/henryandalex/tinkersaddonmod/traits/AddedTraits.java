@@ -4,7 +4,8 @@ import henryandalex.tinkersaddonmod.traits.Beam.TraitBeam;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
-public class TraitsAdded extends TinkerTraits {
+// changed to added Traits to make it easier to find the file.
+public class AddedTraits extends TinkerTraits {
 	public static final AbstractTrait bovinebane = new TraitBovineBane();
 	public static final AbstractTrait comfortable = new TraitComfortable();
 	public static final AbstractTrait antiArmor = new TraitAntiArmor();
@@ -19,4 +20,5 @@ public class TraitsAdded extends TinkerTraits {
 	public static final AbstractTrait sanic = new TraitSanic();
 	public static final AbstractTrait shout = new TraitShout();
 	public static final AbstractTrait beam = new TraitBeam();
+	public static final AbstractTrait autoTotem = new TraitAutoTotem();
 }

@@ -1,7 +1,6 @@
 package henryandalex.tinkersaddonmod.traits.Beam;
 
-import org.jline.utils.Log;
-
+import henryandalex.tinkersaddonmod.TCAddonMod;
 import henryandalex.tinkersaddonmod.Network.MessageBeam;
 import henryandalex.tinkersaddonmod.Network.NetworkHandler;
 import net.minecraft.entity.Entity;
@@ -26,7 +25,7 @@ public class TraitBeam extends AbstractTrait {
 	    	NBTTagList data = TagUtil.getTraitsTagList(tool);
 	    	for(int i = 0; i < data.tagCount(); i++) {
 	    		String tag = data.getStringTagAt(i);
-	    		Log.info(tag);
+	    		TCAddonMod.instance.getLogger().info(tag);
 	    		if (tag.equals("beam")) {
 	    			NetworkHandler.sendToServer(new MessageBeam());
 	    			break;

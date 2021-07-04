@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import henryandalex.tinkersaddonmod.items.ItemBase;
-import henryandalex.tinkersaddonmod.items.ItemTotemSatchel;
+import henryandalex.tinkersaddonmod.items.totemsatchel.ItemTotemSatchel;
 import net.minecraft.item.Item;
 
 /**

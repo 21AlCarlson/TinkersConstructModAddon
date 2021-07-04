@@ -1,7 +1,6 @@
 package henryandalex.tinkersaddonmod.Network;
 
-import org.jline.utils.Log;
-
+import henryandalex.tinkersaddonmod.TCAddonMod;
 import henryandalex.tinkersaddonmod.entity.EntityBeam;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,7 +28,7 @@ public class MessageBeam extends MessageBase<MessageBeam>{
 	@Override
 	public void handleServerSide(MessageBeam message, EntityPlayer player) {
 		if(!player.world.isRemote && (player.getMaxHealth() == player.getHealth())) {
-				Log.info("hello");
+				TCAddonMod.instance.getLogger().info("hello");
 				Vec3d look = player.getLookVec();
 				EntityBeam beam = new EntityBeam(player.world, 1.0D, 1.0D, 1.0D);
 				beam.setPosition(player.posX + look.x * 1.5D, player.posY + look.y * 1.5D + 1, player.posZ + look.z * 1.5D);

@@ -1,6 +1,6 @@
 package henryandalex.tinkersaddonmod.traits.Beam;
 
-import org.jline.utils.Log;
+import henryandalex.tinkersaddonmod.TCAddonMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -21,7 +21,7 @@ public class KeyInputHandler {
 		if(key != null) {
 			switch(key) {
 			case BEAM:
-				Log.info("Beam");
+				TCAddonMod.instance.getLogger().info("Beam");
 				EntityPlayer player = Minecraft.getMinecraft().player;
 				ItemStack item = player.getHeldItemMainhand();
 				//check if item held is tinker tool with Beam modifier

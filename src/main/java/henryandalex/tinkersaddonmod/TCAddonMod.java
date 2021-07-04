@@ -31,7 +31,7 @@ public class TCAddonMod {
 	@SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.SERVER)
 	public static CommonProxy proxy;
 	
-    private static Logger logger;
+    private Logger logger;
     
     static {
     	// These are needed to make sure the these classes hop on the Event bus used by tinkers
@@ -59,5 +59,9 @@ public class TCAddonMod {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
     	
+    }
+    
+    public Logger getLogger() {
+    	return this.logger;
     }
 }
