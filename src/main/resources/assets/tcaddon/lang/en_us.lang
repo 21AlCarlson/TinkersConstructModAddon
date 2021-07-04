@@ -1,6 +1,8 @@
 item.ingot_tungsten.name=Tungsten Ingot
 item.stars_heart.name=Star's Heart
 item.beam.name=Beam
+item.ingot_master.name=Master Ingot
+item.ingot_superior_steel.name=Superior Steel Ingot
 
 tile.block_ore_tungsten.name=Tungsten Ore 
 tile.block_tungsten.name=Tungsten Block

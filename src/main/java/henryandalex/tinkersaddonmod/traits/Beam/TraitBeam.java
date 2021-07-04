@@ -1,18 +1,28 @@
 package henryandalex.tinkersaddonmod.traits.Beam;
 
-import henryandalex.tinkersaddonmod.TCAddonMod;
+
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
+
+import org.jline.utils.Log;
+
 import henryandalex.tinkersaddonmod.Network.MessageBeam;
 import henryandalex.tinkersaddonmod.Network.NetworkHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.CooldownTracker;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 
 public class TraitBeam extends AbstractTrait {
 	
+	
+	public static boolean ready = true;
+
+
 
 	public TraitBeam() {
 		super("beam", 0x0efde9);
@@ -22,18 +32,23 @@ public class TraitBeam extends AbstractTrait {
 	
 	  public static void BeamCheck(ItemStack tool, World world, Entity entity, boolean isSelected) {
 	    if(!isSelected || !(entity instanceof EntityPlayer) || entity.getEntityWorld().isRemote) {
-	    	NBTTagList data = TagUtil.getTraitsTagList(tool);
-	    	for(int i = 0; i < data.tagCount(); i++) {
-	    		String tag = data.getStringTagAt(i);
-	    		TCAddonMod.instance.getLogger().info(tag);
-	    		if (tag.equals("beam")) {
-	    			NetworkHandler.sendToServer(new MessageBeam());
-	    			break;
-	    		}
+	    	if(ready == true) {
+	    		NBTTagList data = TagUtil.getTraitsTagList(tool);
+	    		for(int i = 0; i < data.tagCount(); i++) {
+	    			String tag = data.getStringTagAt(i);
+	    			if (tag.equals("beam")) {
+	    				NetworkHandler.sendToServer(new MessageBeam());
+	    				ready = false;
+	    				break;
+	    			}
 	    	}
-	    	
 	    }
+	    	Log.info(ready);
+	       
 	    
 	}
+	  }
+	  
 
+	  
 }
