@@ -1,10 +1,10 @@
 package henryandalex.tinkersaddonmod.proxy;
 
+import henryandalex.tinkersaddonmod.KeyBindings.KeyInputHandler;
+import henryandalex.tinkersaddonmod.KeyBindings.Keybindings;
 import henryandalex.tinkersaddonmod.entity.EntityBeam;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.traits.Beam.BeamRenderer;
-import henryandalex.tinkersaddonmod.traits.Beam.KeyInputHandler;
-import henryandalex.tinkersaddonmod.traits.Beam.Keybindings;
 import henryandalex.tinkersaddonmod.utils.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

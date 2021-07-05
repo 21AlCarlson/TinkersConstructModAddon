@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.traits.Beam;
+package henryandalex.tinkersaddonmod.KeyBindings;
 
 import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
@@ -6,8 +6,9 @@ import org.lwjgl.input.Keyboard;
 
 public enum Keybindings {
 	
-	BEAM("key.TCAddonMod.beam", Keyboard.KEY_G);
+	BEAM("key.TCAddonMod.beam", Keyboard.KEY_G), SPIN("key.TCAddonMod.spin", Keyboard.KEY_H);
 	
+
 	private final KeyBinding keybinding;
 	
 	private Keybindings(String keyName, int defaultKeyCode) {

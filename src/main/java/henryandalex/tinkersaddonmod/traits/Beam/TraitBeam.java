@@ -2,6 +2,10 @@ package henryandalex.tinkersaddonmod.traits.Beam;
 
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
+import java.util.Date;
+
+import org.jline.utils.Log;
+
 import henryandalex.tinkersaddonmod.Network.MessageBeam;
 import henryandalex.tinkersaddonmod.Network.NetworkHandler;
 import net.minecraft.entity.Entity;
@@ -16,6 +20,8 @@ public class TraitBeam extends AbstractTrait {
 	
 	
 	public static boolean ready = true;
+	
+	public static int i = 0;
 
 
 
@@ -34,12 +40,30 @@ public class TraitBeam extends AbstractTrait {
 					String tag = data.getStringTagAt(i);
 					if (tag.equals("beam")) {
 						NetworkHandler.sendToServer(new MessageBeam());
-						ready = false;
+						ready = false;					
 						break;
 					}
 				}
 			}
 			TCAddonMod.instance.getLogger().info(ready);
 	    }
+	}
+	
+	@Override
+	  public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
+	    // needs to be in hand to be eaten!
+	    if(i > 150) {
+	    	i = 0;
+	    	ready = true;
+	    	Log.info(ready);
+	    } else if (ready == false) {
+	    	i++;
+	    	Log.info(i);
+	    } else {
+	    	return;
+	    }
+	
+	
+	
 	}
 }

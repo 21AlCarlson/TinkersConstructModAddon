@@ -1,6 +1,8 @@
-package henryandalex.tinkersaddonmod.traits.Beam;
+package henryandalex.tinkersaddonmod.KeyBindings;
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
+import henryandalex.tinkersaddonmod.traits.TraitSpin2Win;
+import henryandalex.tinkersaddonmod.traits.Beam.TraitBeam;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,7 +28,10 @@ public class KeyInputHandler {
 				ItemStack item = player.getHeldItemMainhand();
 				//check if item held is tinker tool with Beam modifier
 				TraitBeam.BeamCheck(item, player.world, player, true);					
-				
+				break;
+			
+			case SPIN:
+				//TraitSpin2Win.checkAOEattack();
 				break;
 			}
 		}
