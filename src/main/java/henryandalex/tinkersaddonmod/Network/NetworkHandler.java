@@ -12,7 +12,10 @@ public class NetworkHandler {
 	public static void init() {
 		INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MODID);
 	
-		INSTANCE.registerMessage(MessageBeam.class, MessageBeam.class, 0, Side.SERVER);
+		INSTANCE.registerMessage(MessageSpin.class, MessageSpin.class, 0, Side.SERVER);
+		INSTANCE.registerMessage(MessageBeam.class, MessageBeam.class, 1, Side.SERVER);
+		//INSTANCE.registerMessage(MessageSpin.class, MessageSpin.class, 1, Side.SERVER);
+		
 	}
 	
 	public static void sendToServer(IMessage message) {

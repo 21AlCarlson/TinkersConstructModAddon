@@ -1,8 +1,8 @@
 package henryandalex.tinkersaddonmod.KeyBindings;
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
-import henryandalex.tinkersaddonmod.traits.TraitSpin2Win;
 import henryandalex.tinkersaddonmod.traits.Beam.TraitBeam;
+import henryandalex.tinkersaddonmod.traits.Spin2Win.TraitSpin2Win;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -31,7 +31,9 @@ public class KeyInputHandler {
 				break;
 			
 			case SPIN:
-				//TraitSpin2Win.checkAOEattack();
+				EntityPlayer player2 = Minecraft.getMinecraft().player;
+				ItemStack item2 = player2.getHeldItemMainhand();
+				TraitSpin2Win.checkAOEattack(player2, item2);
 				break;
 			}
 		}

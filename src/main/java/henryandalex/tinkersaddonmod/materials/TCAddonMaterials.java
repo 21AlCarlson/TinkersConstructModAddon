@@ -117,6 +117,7 @@ public final class TCAddonMaterials {
 	    master.setRepresentativeItem(new ItemStack(ItemInit.MASTER_INGOT));
 	    master.addTrait(AddedTraits.bossslayer);
 	    master.addTrait(AddedTraits.beam, HEAD);
+	    master.addTrait(AddedTraits.spin2win);
 	}
 	
 	/**
