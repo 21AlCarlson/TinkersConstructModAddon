@@ -1,5 +1,7 @@
 package henryandalex.tinkersaddonmod.Network;
 
+import org.jline.utils.Log;
+
 import henryandalex.tinkersaddonmod.traits.Spin2Win.Spin2WinKnockback;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.EntityLiving;
@@ -24,8 +26,8 @@ public class MessageSpin extends MessageBase<MessageSpin>{
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		// TODO Auto-generated method stub
-		entityId = buf.getInt(entityId);
-		damage = buf.getInt(damage);
+		entityId = buf.readInt();
+		damage = buf.readInt();
 	}
 
 	@Override
@@ -46,6 +48,8 @@ public class MessageSpin extends MessageBase<MessageSpin>{
 		// TODO Auto-generated method stub
 		EntityLiving entity = (EntityLiving)player.world.getEntityByID(message.entityId);
 		Spin2WinKnockback.spinKnockback(player, entity, 2.0);
+		Log.info(message.entityId);
+		Log.info(message.damage);
 		entity.attackEntityFrom(DamageSource.GENERIC, message.damage);
 	}
 

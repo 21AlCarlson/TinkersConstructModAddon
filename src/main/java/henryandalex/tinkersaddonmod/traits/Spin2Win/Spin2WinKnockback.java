@@ -30,7 +30,7 @@ public class Spin2WinKnockback {
 		
 		Log.info("hello");
 		
-		target.addVelocity(kX, knockbackBase/2, kZ);
+		target.addVelocity(kX, knockbackBase/3, kZ);
 		
 		
 	}
