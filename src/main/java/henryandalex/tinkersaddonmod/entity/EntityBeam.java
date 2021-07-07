@@ -7,6 +7,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class EntityBeam extends EntityThrowable {
+	
+	int i = 0;
 
 	public EntityBeam(World worldIn) {
 		super(worldIn);
@@ -33,5 +35,14 @@ public class EntityBeam extends EntityThrowable {
 			}
 		}
 	}
+	
+	/*@Override
+	public void onUpdate() {
+		if(i > 20) {
+			this.setDead();
+		} else {
+			i++;
+		}
+	}*/
 
 }

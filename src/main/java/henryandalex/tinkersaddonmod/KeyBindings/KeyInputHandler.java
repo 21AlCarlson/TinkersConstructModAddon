@@ -10,6 +10,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 
 public class KeyInputHandler {
+	
+	public static boolean secondPress = false;
+	
+	
 	private Keybindings getPressedKey() {
 		for(Keybindings key : Keybindings.values()) {
 			if(key.isPressed()) return key;
@@ -31,10 +35,17 @@ public class KeyInputHandler {
 				break;
 			
 			case SPIN:
-				EntityPlayer player2 = Minecraft.getMinecraft().player;
-				ItemStack item2 = player2.getHeldItemMainhand();
-				TraitSpin2Win.checkAOEattack(player2, item2);
-				break;
+				
+				if (secondPress == true) {
+					TraitSpin2Win.ready2 = true;
+					secondPress = false;
+					break;
+				} else {
+					EntityPlayer player2 = Minecraft.getMinecraft().player;
+					ItemStack item2 = player2.getHeldItemMainhand();
+					TraitSpin2Win.checkAOEattack(player2, item2);
+					
+				}
 			}
 		}
 	}

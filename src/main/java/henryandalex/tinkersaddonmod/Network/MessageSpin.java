@@ -3,6 +3,7 @@ package henryandalex.tinkersaddonmod.Network;
 import org.jline.utils.Log;
 
 import henryandalex.tinkersaddonmod.traits.Spin2Win.Spin2WinKnockback;
+import henryandalex.tinkersaddonmod.traits.Spin2Win.TraitSpin2Win;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,7 +48,8 @@ public class MessageSpin extends MessageBase<MessageSpin>{
 	public void handleServerSide(MessageSpin message, EntityPlayer player) {
 		// TODO Auto-generated method stub
 		EntityLiving entity = (EntityLiving)player.world.getEntityByID(message.entityId);
-		Spin2WinKnockback.spinKnockback(player, entity, 2.0);
+		Spin2WinKnockback.spinKnockback(player, entity, 2.0 * TraitSpin2Win.scale);
+		TraitSpin2Win.scale = 0.0;
 		Log.info(message.entityId);
 		Log.info(message.damage);
 		entity.attackEntityFrom(DamageSource.GENERIC, message.damage);

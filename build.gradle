@@ -21,7 +21,14 @@ archivesBaseName = 'tinkersaddon'
 repositories {
 	maven {
 		url "http://dvs1.progwml6.com/files/maven"
+		//url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		
 	}
+	
+	maven {
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+	}
+	
 }
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -84,15 +91,20 @@ dependencies {
     
     //compile fg.deobf("slimeknights.mantle:Mantle:1.12-1.3.3.52")
     //compile fg.deobf("slimeknights.tconstruct:TConstruct:1.12.2-2.12.0.135")
+    //compile fg.deobf("software.bernie.geckolib.gecko-forge-1.12:3.0.0-beta.7")
+   	//implementation fg.deobf('software.bernie.geckolib:forge-1.12.2-geckolib:3.0.0-beta.7')
     
     implementation 'slimeknights.mantle:Mantle:1.12-1.3.3.55'
     implementation 'slimeknights:TConstruct:1.12.2-2.12.0.135'
+    implementation 'software.bernie.geckolib:forge-1.12.2-geckolib:3.0.0-beta.7'
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
 }
+
+
 
 // Example for how to get properties into the manifest for reading by the runtime..
 jar {

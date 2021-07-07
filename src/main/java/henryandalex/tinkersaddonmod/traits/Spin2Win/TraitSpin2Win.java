@@ -5,6 +5,7 @@ import java.util.List;
 import org.jline.utils.Log;
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
+import henryandalex.tinkersaddonmod.KeyBindings.KeyInputHandler;
 import henryandalex.tinkersaddonmod.Network.MessageBeam;
 import henryandalex.tinkersaddonmod.Network.MessageSpin;
 import henryandalex.tinkersaddonmod.Network.NetworkHandler;
@@ -17,6 +18,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.stats.StatList;
@@ -25,6 +27,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import slimeknights.tconstruct.common.TinkerNetwork;
 import slimeknights.tconstruct.library.events.TinkerToolEvent;
@@ -43,6 +46,19 @@ public class TraitSpin2Win extends AbstractTrait {
 
 	public static List<Entity> entities;
 	
+	private static int i = 0;
+	
+	public static boolean ready = false;
+	
+	public static boolean ready2 = false;
+	
+	public static double scale = 0;
+	
+	public static double startX;
+	public static double startY;
+	public static double startZ;
+	
+	
 	public TraitSpin2Win() {
 		super("spin2win", 0x706295);
 		// TODO Auto-generated constructor stub
@@ -55,12 +71,65 @@ public class TraitSpin2Win extends AbstractTrait {
 				for(int i = 0; i < data.tagCount(); i++) {
 					String tag = data.getStringTagAt(i);
 					if (tag.equals("spin2win")) {
-						AOEattack(tool, player);					
+						startX = player.posX;
+						startY = player.posY;
+						startZ = player.posZ;
+						ready = true;
+						KeyInputHandler.secondPress = true;
 						break;
 					}
 				}
 			}
 	    }
+	
+	@Override
+	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
+		if(ready == true) {
+			NBTTagCompound root = TagUtil.getTagSafe(tool);
+			ToolNBT data = TagUtil.getToolStats(tool);
+			float tempAttack = data.attack;
+			data.attack = 0;
+			TagUtil.setToolTag(root, data.get());
+			if((ready2 == true) || i >= 150) {
+				data.attack = tempAttack;
+				TagUtil.setToolTag(root, data.get());
+				AOEattack(tool, (EntityPlayer)entity);
+				ready = false;
+				ready2 = false;
+				i = 0;
+				KeyInputHandler.secondPress = false;
+			} else if (tool != ((EntityPlayer)entity).getHeldItemMainhand()){
+				ready = false;
+				ready2 = false;
+				i = 0;
+				KeyInputHandler.secondPress = false;
+				data.attack = tempAttack;
+				TagUtil.setToolTag(root, data.get());
+			}
+			EntityPlayer player = (EntityPlayer)entity;
+			player.motionX = 0;
+			player.motionY = 0;
+			player.motionZ = 0;
+			player.posX = startX;
+			player.posY = startY;
+			player.posZ = startZ;
+			player.moveForward = 0F;
+			player.moveStrafing = 0F;
+			player.moveVertical = 0F;
+			
+			scale += 0.01;
+			i++;
+			Log.info(i);
+			
+		} else {
+			ready2 = false;
+			i = 0;
+		}
+	}
+	
+	public static void setReadyTrue() {
+		ready = true;
+	}
 	
 	public static void AOEattack(ItemStack stack, EntityPlayer player) {
 		if(player.getCooledAttackStrength(0.5F) <= 0.9f) {
@@ -78,9 +147,11 @@ public class TraitSpin2Win extends AbstractTrait {
 	    	Log.info(entity.getUniqueID());
 	    	if(entity instanceof EntityLivingBase) {
 	    		EntityLivingBase entityLiving = (EntityLivingBase)entity;
-	    		int id = entityLiving.getEntityId();
-	    		int damage = Math.round(data.attack);
+	    		int id = entityLiving.getEntityId();	
+	    		int damage = (int)Math.round(data.attack * scale);
+	    		ToolHelper.damageTool(stack, 2, player);
 	    		NetworkHandler.sendToServer(new MessageSpin(id, damage));
+	    		
 	    	//hit |= Spin2WinAttack.attackEntity(stack, (ToolCore)stack.getItem(), player, entity, null, false);
 	    	//attackEntity(stack, (ToolCore)stack.getItem(), player, entity, null, true);
 	    	}
