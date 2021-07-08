@@ -13,6 +13,7 @@ import slimeknights.tconstruct.TConstruct;
 import org.apache.logging.log4j.Logger;
 
 import henryandalex.tinkersaddonmod.Network.NetworkHandler;
+import henryandalex.tinkersaddonmod.init.CapabilitiesInit;
 import henryandalex.tinkersaddonmod.init.EntityInit;
 import henryandalex.tinkersaddonmod.init.FurnaceInit;
 import henryandalex.tinkersaddonmod.materials.TCAddonMaterials;
@@ -42,6 +43,7 @@ public class TCAddonMod {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
     	RegistryHandler.otherRegistries();
+    	CapabilitiesInit.registerCapabilities();
     	logger = event.getModLog();
     	ClientProxy.registerKeyBinds();
     }

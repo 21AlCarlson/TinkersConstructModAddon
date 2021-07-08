@@ -2,10 +2,6 @@ package henryandalex.tinkersaddonmod.traits.Beam;
 
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
-import java.util.Date;
-
-import org.jline.utils.Log;
-
 import henryandalex.tinkersaddonmod.Network.MessageBeam;
 import henryandalex.tinkersaddonmod.Network.NetworkHandler;
 import net.minecraft.entity.Entity;
@@ -55,10 +51,10 @@ public class TraitBeam extends AbstractTrait {
 	    if(i > 150) {
 	    	i = 0;
 	    	ready = true;
-	    	Log.info(ready);
+	    	TCAddonMod.instance.getLogger().info(ready);
 	    } else if (ready == false) {
 	    	i++;
-	    	Log.info(i);
+	    	TCAddonMod.instance.getLogger().info(i);
 	    } else {
 	    	return;
 	    }

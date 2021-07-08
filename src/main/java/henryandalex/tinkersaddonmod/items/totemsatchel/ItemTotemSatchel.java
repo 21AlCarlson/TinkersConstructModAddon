@@ -1,34 +1,33 @@
 package henryandalex.tinkersaddonmod.items.totemsatchel;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
+import henryandalex.tinkersaddonmod.capabilities.inventory.InventoryProvider;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.utils.IHasModel;
+import henryandalex.tinkersaddonmod.utils.Util;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import slimeknights.mantle.item.ItemArmorTooltip;
-import slimeknights.tconstruct.library.Util;
 
 public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 	
 	// private static final int MAX_TOTEM_STACK = 3; // how many Totems can be carried at once
 	public static ArmorMaterial TOTEM_SATCHEL_MATERIAL = EnumHelper.addArmorMaterial("TOTEMSATCHEL", Util.resource("totem_satchel"), 0, new int[] { 0, 0, 0, 0 }, 0, SoundEvents.BLOCK_SLIME_PLACE, 0);
-	public InventorySatchel inv;
 
 	public ItemTotemSatchel(String name) {
 		super(TOTEM_SATCHEL_MATERIAL, 0, EntityEquipmentSlot.CHEST);
@@ -37,7 +36,6 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 		setCreativeTab(CreativeTabs.MATERIALS);
 		
 		this.setMaxStackSize(1);
-		this.inv = new InventorySatchel();
 		
 		ItemInit.ITEMS.add(this);
 	}
@@ -47,40 +45,22 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		ItemStack itemStackIn = playerIn.getHeldItem(hand);
 		if (!worldIn.isRemote) {
-			if(!this.inv.updateIsFull()) {
-				/**
-				 * {@link net.minecraft.entity.player.InventoryPlayer#hasItemStack()
-				 */
-				List<NonNullList<ItemStack>> allInventories = Arrays.<NonNullList<ItemStack>>asList(playerIn.inventory.mainInventory);
+			InventorySatchel inv = (InventorySatchel) itemStackIn.getCapability(InventoryProvider.INVENTORY_CAP, null);
+			if(!inv.updateIsFull()) {
 				
-				label23:
-					
-				for (List<ItemStack> list : allInventories) {
-					
-					Iterator<ItemStack> iterator = list.iterator();
-		
-		            while (true) {
-		                if (!iterator.hasNext()) {
-		                    continue label23;
-		                }
-		
-		                ItemStack itemstack = (ItemStack)iterator.next();
-		
-		                if (!itemstack.isEmpty() && itemstack.isItemEqual(new ItemStack(Items.TOTEM_OF_UNDYING))) {
-		                	if(!this.inv.setTotemInAvailable(itemstack)) {
-		                		// if you can not setTotem in bag it, that means the bag is full 
-		                		// so we dont need to check any more.
-		                		break label23;
-		                	}
-		                	else {
-		                		playerIn.inventory.removeStackFromSlot(playerIn.inventory.getSlotFor(itemstack));
-		                	}
-		                }
-		            }
+				Map<Integer, ItemStack> tempMap = Util.getFromInventory(Items.TOTEM_OF_UNDYING, playerIn.inventory.mainInventory);
+				
+				for (Map.Entry<Integer, ItemStack> entry : tempMap.entrySet()) {
+					if (inv.setTotemInAvailable(entry.getValue())) {
+						playerIn.inventory.removeStackFromSlot(entry.getKey());
+					}
+					else {
+						break;
+					}
 				}
 			}
 			else {
-				this.inv.clear();
+				inv.clear();
 				for(int i = 0; i < InventorySatchel.SIZE; i++) {
 					playerIn.inventory.addItemStackToInventory(new ItemStack(Items.TOTEM_OF_UNDYING));
 				}
@@ -89,12 +69,47 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 	    return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 	}
 	
-	public void setTotem(EntityPlayer player) {
-		if(!this.inv.isEmpty()) {
+	/**
+	 * <p><i><b> Preconditions: Should check if the bag is empty </b></i></p>
+	 * 
+	 * <p> 
+	 * Should accept the instance of the off hand inventory then append and return it; However, <br>
+	 * you can not set the off hand inventory to the returned value. Therefore, you must directly <br>
+	 * change it.
+	 * <p>
+	 * 
+	 * @param player Player whose off hand need to be changed to a totem
+	 * @return Whether or not the action was a success
+	 */
+	public boolean setTotem(EntityPlayer player, ItemStack satchel) {
+		InventorySatchel inv = (InventorySatchel) satchel.getCapability(InventoryProvider.INVENTORY_CAP, null);
+		if(inv.removeSingleStack()) {
 			player.inventory.offHandInventory.set(0, new ItemStack(Items.TOTEM_OF_UNDYING));
-			this.inv.removeSingleStack();
+			return true;
 		}
+		return false;
 	}
+	
+	@Override
+	public boolean getShareTag() {
+		return true;
+	}
+	
+	// might be why InventoryStorage#writeNBT is called so much. Maybe get rid of this in the furture?
+	@Nullable
+    @Override
+    public NBTTagCompound getNBTShareTag(ItemStack stack) {
+        NBTTagCompound tag = super.getNBTShareTag(stack);
+
+        if(tag == null) {
+            tag = new NBTTagCompound();
+        }
+
+        tag.setTag("Inventory", InventoryProvider.INVENTORY_CAP.writeNBT(stack.getCapability(InventoryProvider.INVENTORY_CAP, null), null));
+        
+        return tag;
+    }
+	
 	
 	@Override
 	public void registerModels() {

@@ -1,7 +1,6 @@
 package henryandalex.tinkersaddonmod.KeyBindings;
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
-import henryandalex.tinkersaddonmod.traits.TraitSpin2Win;
 import henryandalex.tinkersaddonmod.traits.Beam.TraitBeam;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;

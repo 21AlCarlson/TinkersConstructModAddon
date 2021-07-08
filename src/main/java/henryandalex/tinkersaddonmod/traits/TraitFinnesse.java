@@ -1,6 +1,5 @@
 package henryandalex.tinkersaddonmod.traits;
 
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.events.TinkerEvent;
@@ -23,7 +22,7 @@ public class TraitFinnesse extends AbstractTrait {
 		      ToolNBT data = TagUtil.getToolStats(event.tag);
 		      data.attackSpeedMultiplier = Math.max(1, (data.attack * 130) / 100);
 		      TagUtil.setToolTag(event.tag, data.get());
-		    }
+	    }
 	}
 
 }

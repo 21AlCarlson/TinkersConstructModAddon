@@ -1,10 +1,7 @@
 package henryandalex.tinkersaddonmod.traits;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class TraitBossSlayer extends AbstractTrait {
@@ -17,7 +14,8 @@ public class TraitBossSlayer extends AbstractTrait {
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 	    
-		if (target instanceof EntityWither || target instanceof EntityDragon) {
+		// changed to is non boss so it addscompatibility with other mods.
+		if (!target.isNonBoss()) {
 			newDamage = damage * 2;
 		}
 		

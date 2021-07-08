@@ -5,6 +5,14 @@
 5) Add more comments to explain how the code works and its tinkers construct counterpart.
 6) Add Armor invis and item in hand invis
 7) Add a trait that has the target say something in chat
-8) Add capabilities to totem bag so it actually keeps the totems in the bag across restarts.
-9) Make it so that the Totems keep thier custom data like names when being moved into the totem bag
+8) Make InventorySatchel more dynamic like Inventory<T> where T is an instance of ItemTotemSatchel
+9) Make it so that the Totems keep thier custom data like names when being moved into the totem bag (make a nonnulllist and save the stack to the list)
+10) Make sure the satchel saves its inventory after it accepts the totems in the bag
+11) add trait schafold, auto eat, freecam?, double jump, Anti Overlay {Removes various overlays from your screen like pumpkin on your head}, 
+auto armor, breadcrumbs {Creates a trail behind you}, click tp {Teleport to the block you're looking at}, jump boost, 
+HeatlhReveal {Shows how much health the other player has}, antiKnockback, Pot {automatically throws potions from your inventory}, 
+aimbot for bows, spider {can climb walls}, Step {allows you to step up a full block}, and weather controller {only turn rain off, not on}
 
+***Some of the traits in 10) are overpowered and may need to be nerfed some how.
+
+12) Make Recipes for each of the new items in the game!!! (0_0)

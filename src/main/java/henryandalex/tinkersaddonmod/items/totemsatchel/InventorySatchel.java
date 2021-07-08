@@ -1,11 +1,10 @@
 package henryandalex.tinkersaddonmod.items.totemsatchel;
 
+import henryandalex.tinkersaddonmod.capabilities.inventory.ISaveInventorySpaces;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -15,19 +14,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Referenced {@link net.minecraft.entity.player.InventoryPlayer}
+ * TODO: make this more dynamic with <[T]>
  * 
  * @author AlexC
  *
  */
-public class InventorySatchel implements IInventory {
+public class InventorySatchel implements IInventory, ISaveInventorySpaces {
 
 	public static final int SIZE = 3;
 	private int timesChanged;
-	public final NonNullList<ItemStack> inv;
+	public NonNullList<ItemStack> inv;
 	private boolean isFull;
-	private static final int nbtIndex = 0;
+	//private static final int nbtIndex = 0;
 	
-	InventorySatchel() {
+	public InventorySatchel() {
 		this.timesChanged = 0;
 		this.isFull = false;
 		this.inv = NonNullList.<ItemStack>withSize(SIZE, ItemStack.EMPTY);
@@ -68,6 +68,7 @@ public class InventorySatchel implements IInventory {
 		return inv.get(index);
 	}
 
+	@Deprecated
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
 		updateIsFull();
@@ -134,28 +135,22 @@ public class InventorySatchel implements IInventory {
 		return false;
 	}
 	
-	public NBTTagList writeToNBT(NBTTagList nbtTagListIn) {
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		int numOfItemsInInv = 0;
-		for (ItemStack stack : inv) {
-			if(stack.isItemEqual(new ItemStack(Items.TOTEM_OF_UNDYING))) numOfItemsInInv++;
-		}
-		nbttagcompound.setInteger("itemsInInv", numOfItemsInInv);
-		nbtTagListIn.set(nbtIndex, nbttagcompound);
-		return nbtTagListIn;
+	@Override
+	public NonNullList<ItemStack> getInventory() {
+		return this.inv;
+	}
+
+	@Override
+	public void setInventory(NonNullList<ItemStack> inv) {
+		this.inv = inv;
 	}
 	
-	public void readFromNBT(NBTTagList nbtTagListIn) {
-		this.clear();
-		
-		NBTTagCompound nbttagcompound = nbtTagListIn.getCompoundTagAt(nbtIndex);
-		int itemsInInv = nbttagcompound.getInteger("itemsInInv");
-		if (itemsInInv != 0)
-		for (int i = 0; i < itemsInInv; i++) {
-			inv.set(i, new ItemStack(Items.TOTEM_OF_UNDYING));
-		}
-		updateIsFull();
+	@Override
+	public int getSize() {
+		return SIZE;
 	}
+	
+	/***********************************/
 	
 	@Override
 	public int getInventoryStackLimit() {
