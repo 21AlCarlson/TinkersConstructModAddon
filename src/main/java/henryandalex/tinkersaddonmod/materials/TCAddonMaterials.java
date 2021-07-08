@@ -83,7 +83,7 @@ public final class TCAddonMaterials {
 	    tungsten.setCraftable(true);
 	    tungsten.addItem("tungsten", 1, Material.VALUE_Ingot);
 	    tungsten.setRepresentativeItem(new ItemStack(ItemInit.TUNGSTEN_INGOT));
-	    tungsten.addTrait(AddedTraits.autoTotem);
+	    tungsten.addTrait(AddedTraits.shout);
 	    tungsten.addTrait(AddedTraits.beam, HEAD);
 	    
 	    bread.setCraftable(true);

@@ -6,15 +6,14 @@ Things that always need to be done (◔_◔):
 
 Temperary TODO Tasks:
 5) Add Armor invis and item in hand invis
-6) Add a trait that has the target say something in chat
-7) Make InventorySatchel more dynamic like Inventory<T> where T is an instance of ItemTotemSatchel
-8) Make it so that the Totems keep thier custom data like names when being moved into the totem bag.
-9) Maybe remove shareTagCompound from itemTotemSacthel
-10) add trait schafold, auto eat, freecam?, double jump, Anti Overlay {Removes various overlays from your screen like pumpkin on your head}, 
+6) Make InventorySatchel more dynamic like Inventory<T> where T is an instance of ItemTotemSatchel
+7) Make it so that the Totems keep thier custom data like names when being moved into the totem bag.
+8) Maybe remove shareTagCompound from itemTotemSacthel
+9) add trait schafold, auto eat, freecam?, double jump, Anti Overlay {Removes various overlays from your screen like pumpkin on your head}, 
 auto armor, breadcrumbs {Creates a trail behind you}, click tp {Teleport to the block you're looking at}, jump boost, 
 HeatlhReveal {Shows how much health the other player has}, antiKnockback, Pot {automatically throws potions from your inventory}, 
 aimbot for bows, spider {can climb walls}, Step {allows you to step up a full block}, and weather controller {only turn rain off, not on}
 
 ***Some of the traits in 10) are overpowered and may need to be nerfed some how.
 
-11) Make Recipes for each of the new items in the game!!! (0_0)
+10) Make Recipes for each of the new items in the game!!! (0_0)
