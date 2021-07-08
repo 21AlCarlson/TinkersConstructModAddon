@@ -8,8 +8,8 @@ Temperary TODO Tasks:
 5) Add Armor invis and item in hand invis
 6) Add a trait that has the target say something in chat
 7) Make InventorySatchel more dynamic like Inventory<T> where T is an instance of ItemTotemSatchel
-8) Make it so that the Totems keep thier custom data like names when being moved into the totem bag (make a nonnulllist and save the stack to the list)
-9) Make sure the satchel saves its inventory after it accepts the totems in the bag
+8) Make it so that the Totems keep thier custom data like names when being moved into the totem bag.
+9) Maybe remove shareTagCompound from itemTotemSacthel
 10) add trait schafold, auto eat, freecam?, double jump, Anti Overlay {Removes various overlays from your screen like pumpkin on your head}, 
 auto armor, breadcrumbs {Creates a trail behind you}, click tp {Teleport to the block you're looking at}, jump boost, 
 HeatlhReveal {Shows how much health the other player has}, antiKnockback, Pot {automatically throws potions from your inventory}, 
