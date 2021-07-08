@@ -11,13 +11,14 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitBeam extends AbstractTrait {
 	
 	
-	public static boolean ready = true;
+	private static boolean ready = true;
 	
-	public static int i = 0;
+	private static int i = 0;
 
 
 
@@ -36,6 +37,7 @@ public class TraitBeam extends AbstractTrait {
 					String tag = data.getStringTagAt(i);
 					if (tag.equals("beam")) {
 						NetworkHandler.sendToServer(new MessageBeam());
+			    		ToolHelper.damageTool(tool, 1, (EntityPlayer)entity);
 						ready = false;					
 						break;
 					}

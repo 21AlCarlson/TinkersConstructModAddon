@@ -1,6 +1,7 @@
 package henryandalex.tinkersaddonmod.traits;
 
 import henryandalex.tinkersaddonmod.traits.Beam.TraitBeam;
+import henryandalex.tinkersaddonmod.traits.Spin2Win.TraitSpin2Win;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
@@ -24,5 +25,6 @@ public class AddedTraits extends TinkerTraits {
 	public static final AbstractTrait finnesse = new TraitFinnesse();
 	public static final AbstractTrait mobmauler = new TraitMobMauler();
 	public static final AbstractTrait autoTotem = new TraitAutoTotem();
+	public static final AbstractTrait spin2win = new TraitSpin2Win();
 	public static final AbstractTrait fullInvis = new TraitFullInvis();
 }

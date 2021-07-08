@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import slimeknights.tconstruct.TConstruct;
+import software.bernie.geckolib3.GeckoLib;
 
 import org.apache.logging.log4j.Logger;
 
@@ -56,6 +57,7 @@ public class TCAddonMod {
     	TCAddonMod.proxy.render();
     	NetworkHandler.init();
         logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        GeckoLib.initialize();
     }
     
     @EventHandler
@@ -66,4 +68,6 @@ public class TCAddonMod {
     public Logger getLogger() {
     	return this.logger;
     }
+    
+    
 }

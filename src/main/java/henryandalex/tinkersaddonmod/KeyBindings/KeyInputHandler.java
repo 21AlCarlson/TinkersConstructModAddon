@@ -2,6 +2,7 @@ package henryandalex.tinkersaddonmod.KeyBindings;
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
 import henryandalex.tinkersaddonmod.traits.Beam.TraitBeam;
+import henryandalex.tinkersaddonmod.traits.Spin2Win.TraitSpin2Win;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -9,6 +10,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 
 public class KeyInputHandler {
+	
+	public static boolean secondPress = false;
+	
+	
 	private Keybindings getPressedKey() {
 		for(Keybindings key : Keybindings.values()) {
 			if(key.isPressed()) return key;
@@ -30,8 +35,17 @@ public class KeyInputHandler {
 				break;
 			
 			case SPIN:
-				//TraitSpin2Win.checkAOEattack();
-				break;
+				
+				if (secondPress == true) {
+					TraitSpin2Win.ready2 = true;
+					secondPress = false;
+					break;
+				} else {
+					EntityPlayer player2 = Minecraft.getMinecraft().player;
+					ItemStack item2 = player2.getHeldItemMainhand();
+					TraitSpin2Win.checkAOEattack(player2, item2);
+					
+				}
 			}
 		}
 	}

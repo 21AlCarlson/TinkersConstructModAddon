@@ -43,6 +43,7 @@ public final class TCAddonMaterials {
 	public static final Material chicken = mat("chicken", 0xf9c0c0);
 	public static final Material mushroom = mat("mushroom", 0xff0000);
 	public static final Material master = mat("master", 0x0efde9);
+	public static final Material superior_steel = mat("superior_steel", 0x706295);
 	
 	/** 
 	 * Initializes the material. See TinkerMaterials.mat() for initial usage.
@@ -117,6 +118,14 @@ public final class TCAddonMaterials {
 	    master.setRepresentativeItem(new ItemStack(ItemInit.MASTER_INGOT));
 	    master.addTrait(AddedTraits.bossslayer);
 	    master.addTrait(AddedTraits.beam, HEAD);
+
+	    
+	    superior_steel.setCraftable(true);
+	    superior_steel.addItem("superior_steel", 1, Material.VALUE_Ingot);
+	    superior_steel.setRepresentativeItem(new ItemStack(ItemInit.SUPERIOR_STEEL_INGOT));
+	    superior_steel.addTrait(AddedTraits.finnesse, HEAD);
+	    superior_steel.addTrait(AddedTraits.spin2win);
+	    superior_steel.addTrait(AddedTraits.mobmauler);
 	}
 	
 	/**
@@ -158,6 +167,11 @@ public final class TCAddonMaterials {
 				new HeadMaterialStats(800, 5.0f, 10.0f, HarvestLevels.COBALT),
 				new HandleMaterialStats(0.8f, 100),
 				new ExtraMaterialStats(75)
+			);
+		TinkerRegistry.addMaterialStats(superior_steel,
+				new HeadMaterialStats(400, 7.0f, 6.0f, HarvestLevels.COBALT),
+				new HandleMaterialStats(1.2F, 250),
+				new ExtraMaterialStats(250)
 			);
 		
 		
