@@ -21,7 +21,8 @@ import henryandalex.tinkersaddonmod.materials.TCAddonMaterials;
 import henryandalex.tinkersaddonmod.proxy.ClientProxy;
 import henryandalex.tinkersaddonmod.proxy.CommonProxy;
 import henryandalex.tinkersaddonmod.utils.Reference;
-import henryandalex.tinkersaddonmod.utils.handlers.RegistryHandler;;
+import henryandalex.tinkersaddonmod.utils.handlers.RegistryHandler;
+import henryandalex.tinkersaddonmod.utils.handlers.RenderHandler;;
 
 //Required to load after Tinkers Construct because it uses some of their methods.
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, dependencies = "required-after:tconstruct")
@@ -47,6 +48,8 @@ public class TCAddonMod {
     	CapabilitiesInit.registerCapabilities();
     	logger = event.getModLog();
     	ClientProxy.registerKeyBinds();
+    	EntityInit.registerLivingEntities();
+    	RenderHandler.registerEntityRenders();
     }
 
     @EventHandler

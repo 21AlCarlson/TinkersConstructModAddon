@@ -18,4 +18,5 @@ public class Reference {
 	
 	
 	public static final int ENTITY_BEAM = 250;
+	public static final int ENTITY_SEWER_CROC = 249;
 }
