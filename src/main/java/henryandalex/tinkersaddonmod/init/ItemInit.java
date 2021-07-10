@@ -23,8 +23,6 @@ public class ItemInit {
 	// declaration of the Tungsten Ingot
 	public static final Item TUNGSTEN_INGOT = new ItemBase("ingot_tungsten");
 	
-	public static final Item STARS_HEART = new ItemBase("stars_heart");
-	
 	public static final Item BEAM = new ItemBase("beam");
 	
 	public static final Item TOTEM_SATCHEL = new ItemTotemSatchel("totem_satchel");

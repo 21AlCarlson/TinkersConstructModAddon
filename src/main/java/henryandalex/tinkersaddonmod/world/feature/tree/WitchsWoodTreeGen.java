@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import henryandalex.tinkersaddonmod.world.biomes.BiomeWitchsSwamp;
 import henryandalex.tinkersaddonmod.world.gen.WorldGenWitchsWoodTree;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -30,8 +31,8 @@ public class WitchsWoodTreeGen  implements IWorldGenerator {
 			break;
 			
 		case 0:
-			// chance = 8000: good luck finding a tree >:D
-			runGenerator(WITCHS_WOOD, world, random, chunkX, chunkZ, 5, Blocks.GRASS, BiomeForest.class);
+	
+			runGenerator(WITCHS_WOOD, world, random, chunkX, chunkZ, 1, Blocks.GRASS, BiomeWitchsSwamp.class, BiomeForest.class);
 			
 			break;
 			

@@ -17,3 +17,16 @@ aimbot for bows, spider {can climb walls}, Step {allows you to step up a full bl
 ***Some of the traits in 10) are overpowered and may need to be nerfed some how.
 
 10) Make Recipes for each of the new items in the game!!! (0_0)
+11) Add Our files to Java Maven for other coders.
+12) Make leaves see through
+13) Add Armor texture for Totem Bag
+14) Fix issue with sapling grown trees
+	BlockWitchsWoodSapling#generateTrees (WorldGenWitchsWoodTree.LOG -> WorldGenWitchsWoodTree.LOG.withProperty)
+
+15) Fix "TC Addon loaded a new chunk [54, -72] in dimension 0 (overworld) while populating chunk [55, -72], causing cascading worldgen lag." issue
+16) Fix witchs wood water color.
+17) Reduce the frequency of Witch's Swamp after done experiementing with it.
+
+
+
+

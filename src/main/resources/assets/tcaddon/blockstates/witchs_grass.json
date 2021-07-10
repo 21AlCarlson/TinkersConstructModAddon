@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "tcaddon:blocks/witchs_grass_top"
+    },
+    "model": "cube_all",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": { "model": "tcaddon:witchs_grass" }
+  }
+}

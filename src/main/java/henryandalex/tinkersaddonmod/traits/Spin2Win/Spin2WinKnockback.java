@@ -18,7 +18,7 @@ public class Spin2WinKnockback {
 		double deltaX = tX - pX;
 		double deltaZ = tZ - pZ;
 		
-		double angle = Math.tan(deltaZ/deltaX);
+		//double angle = Math.tan(deltaZ/deltaX);
 		
 		double hyp = Math.sqrt((deltaX * deltaX) + (deltaZ * deltaZ));
 		

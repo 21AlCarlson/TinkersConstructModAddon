@@ -1,0 +1,10 @@
+{
+    "parent": "block/grass",
+    "textures": {
+        "particle": "blocks/dirt",
+        "bottom": "blocks/dirt",
+        "top": "tcaddon:blocks/witchs_grass_top",
+        "side": "tcaddon:blocks/witchs_grass_side",
+        "overlay": "tcaddon:blocks/witchs_grass_side"
+    }
+}
