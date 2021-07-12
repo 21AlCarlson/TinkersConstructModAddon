@@ -1,6 +1,7 @@
 package henryandalex.tinkersaddonmod.init;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import henryandalex.tinkersaddonmod.objects.blocks.BlockBase;
@@ -34,6 +35,8 @@ public class BlockInit {
 	//public static final Block WITCHS_WOOD_PLANKS = new BlockWitchsWoodPlanks("witchs_wood_planks");
 	
 	public static final Block WITCHS_GRASS = new BlockBase("witchs_grass", Material.GRASS) {
+		
+		@SuppressWarnings("unlikely-arg-type")
 		@Override
 		public boolean canSustainPlant(IBlockState state, IBlockAccess access, BlockPos pos, EnumFacing facing, IPlantable plant) {
 			if (plant.equals(Blocks.TALLGRASS) || plant.equals(Blocks.YELLOW_FLOWER) || plant.equals(Blocks.RED_FLOWER) || plant.equals(Blocks.REEDS) || plant.equals(Blocks.DOUBLE_PLANT)) {
@@ -47,6 +50,7 @@ public class BlockInit {
 			}
 		}
 	};
+	Date date = new Date();
 	
 	public static final Block CONCRETE_BRICK = new BlockBase("concrete_brick", Material.ROCK);
 	

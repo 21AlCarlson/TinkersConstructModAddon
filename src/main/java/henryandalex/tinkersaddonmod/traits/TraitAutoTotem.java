@@ -3,7 +3,7 @@ package henryandalex.tinkersaddonmod.traits;
 import java.util.Map;
 
 import henryandalex.tinkersaddonmod.init.ItemInit;
-import henryandalex.tinkersaddonmod.items.totemsatchel.ItemTotemSatchel;
+import henryandalex.tinkersaddonmod.items.ItemTotemSatchel;
 import henryandalex.tinkersaddonmod.utils.Util;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

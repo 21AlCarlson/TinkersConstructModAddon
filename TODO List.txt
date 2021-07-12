@@ -1,6 +1,6 @@
 Things that always need to be done (◔_◔):
 1) Set up more complex items to Tinkers.
-2) Create a guide to register materials in the github wiki.
+2) Create a guide to register materials in the github wiki/ update Wiki
 3) Clean up the unneccessary comments (dead code).
 4) Add more comments to explain how the code works and its tinkers construct counterpart.
 

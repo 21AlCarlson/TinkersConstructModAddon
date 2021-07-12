@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.items.totemsatchel;
+package henryandalex.tinkersaddonmod.items;
 
 import java.util.Map;
 
@@ -28,7 +28,7 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 	
 	// private static final int MAX_TOTEM_STACK = 3; // how many Totems can be carried at once
 	public static ArmorMaterial TOTEM_SATCHEL_MATERIAL = EnumHelper.addArmorMaterial("TOTEMSATCHEL", Util.resource("totem_satchel"), 0, new int[] { 0, 0, 0, 0 }, 0, SoundEvents.BLOCK_SLIME_PLACE, 0);
-
+	
 	public ItemTotemSatchel(String name) {
 		super(TOTEM_SATCHEL_MATERIAL, 0, EntityEquipmentSlot.CHEST);
 		setUnlocalizedName(name);
@@ -45,7 +45,9 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		ItemStack itemStackIn = playerIn.getHeldItem(hand);
 		if (!worldIn.isRemote) {
-			InventorySatchel inv = (InventorySatchel) itemStackIn.getCapability(InventoryProvider.INVENTORY_CAP, null);
+			// This itemStackIn is always a ItemTotemStack so we can suppress this warning.
+			@SuppressWarnings("unchecked")
+			ItemInventory<ItemTotemSatchel> inv = (ItemInventory<ItemTotemSatchel>) itemStackIn.getCapability(InventoryProvider.INVENTORY_CAP, null);
 			if(!inv.updateIsFull()) {
 				
 				Map<Integer, ItemStack> tempMap = Util.getFromInventory(Items.TOTEM_OF_UNDYING, playerIn.inventory.mainInventory);
@@ -61,7 +63,7 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 			}
 			else {
 				inv.clear();
-				for(int i = 0; i < InventorySatchel.SIZE; i++) {
+				for(int i = 0; i < inv.getSize(); i++) {
 					playerIn.inventory.addItemStackToInventory(new ItemStack(Items.TOTEM_OF_UNDYING));
 				}
 			}
@@ -70,19 +72,21 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 	}
 	
 	/**
-	 * <p><i><b> Preconditions: Should check if the bag is empty </b></i></p>
+	 * <p><i><b> Preconditions: Should check if the bag is empty. **Probably not necessary** </b></i></p>
 	 * 
 	 * <p> 
 	 * Should accept the instance of the off hand inventory then append and return it; However, <br>
 	 * you can not set the off hand inventory to the returned value. Therefore, you must directly <br>
 	 * change it.
-	 * <p>
+	 * </p> 
 	 * 
 	 * @param player Player whose off hand need to be changed to a totem
+	 * @param satchel <i>**Must be a ItemStack containing a Satchel!!**</i>
 	 * @return Whether or not the action was a success
 	 */
 	public boolean setTotem(EntityPlayer player, ItemStack satchel) {
-		InventorySatchel inv = (InventorySatchel) satchel.getCapability(InventoryProvider.INVENTORY_CAP, null);
+		@SuppressWarnings("unchecked")
+		ItemInventory<ItemTotemSatchel> inv = (ItemInventory<ItemTotemSatchel>) satchel.getCapability(InventoryProvider.INVENTORY_CAP, null);
 		if(inv.removeSingleStack()) {
 			player.inventory.offHandInventory.set(0, new ItemStack(Items.TOTEM_OF_UNDYING));
 			return true;
@@ -95,7 +99,7 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 		return true;
 	}
 	
-	// might be why InventoryStorage#writeNBT is called so much. Maybe get rid of this in the furture?
+	// might be why InventoryStorage#writeNBT is called so much. Maybe get rid of this in the future?
 	@Nullable
     @Override
     public NBTTagCompound getNBTShareTag(ItemStack stack) {

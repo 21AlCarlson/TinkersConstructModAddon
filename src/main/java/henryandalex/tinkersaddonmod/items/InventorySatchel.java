@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.items.totemsatchel;
+package henryandalex.tinkersaddonmod.items;
 
 import henryandalex.tinkersaddonmod.capabilities.inventory.ISaveInventorySpaces;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * 
  * @author AlexC
  *
- */
+ 
 public class InventorySatchel implements IInventory, ISaveInventorySpaces {
 
 	public static final int SIZE = 3;
@@ -150,7 +150,7 @@ public class InventorySatchel implements IInventory, ISaveInventorySpaces {
 		return SIZE;
 	}
 	
-	/***********************************/
+
 	
 	@Override
 	public int getInventoryStackLimit() {
@@ -195,3 +195,4 @@ public class InventorySatchel implements IInventory, ISaveInventorySpaces {
 		return 0;
 	}
 }
+*/

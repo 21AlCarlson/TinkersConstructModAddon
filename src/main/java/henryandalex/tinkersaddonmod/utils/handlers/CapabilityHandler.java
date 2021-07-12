@@ -1,7 +1,7 @@
 package henryandalex.tinkersaddonmod.utils.handlers;
 
 import henryandalex.tinkersaddonmod.capabilities.inventory.InventoryProvider;
-import henryandalex.tinkersaddonmod.items.totemsatchel.ItemTotemSatchel;
+import henryandalex.tinkersaddonmod.items.ItemTotemSatchel;
 import henryandalex.tinkersaddonmod.utils.Util;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
