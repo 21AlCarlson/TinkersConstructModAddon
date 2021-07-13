@@ -3,18 +3,22 @@ package henryandalex.tinkersaddonmod.init;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import henryandalex.tinkersaddonmod.objects.blocks.BlockBase;
+import henryandalex.tinkersaddonmod.objects.blocks.BlockWitchGrass;
 import henryandalex.tinkersaddonmod.objects.blocks.BlockWitchsWoodLeaves;
 import henryandalex.tinkersaddonmod.objects.blocks.BlockWitchsWoodLog;
 import henryandalex.tinkersaddonmod.objects.blocks.BlockWitchsWoodSapling;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirt;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
 /**
@@ -34,7 +38,7 @@ public class BlockInit {
 	public static final Block WITCHS_WOOD_SAPLING = new BlockWitchsWoodSapling("witchs_wood_sapling");
 	//public static final Block WITCHS_WOOD_PLANKS = new BlockWitchsWoodPlanks("witchs_wood_planks");
 	
-	public static final Block WITCHS_GRASS = new BlockBase("witchs_grass", Material.GRASS) {
+	public static final Block WITCHS_GRASS = new BlockWitchGrass("witchs_grass", Material.GRASS) {
 		
 		@SuppressWarnings("unlikely-arg-type")
 		@Override
@@ -49,6 +53,8 @@ public class BlockInit {
 				return true;
 			}
 		}
+		
+		
 	};
 	Date date = new Date();
 	
