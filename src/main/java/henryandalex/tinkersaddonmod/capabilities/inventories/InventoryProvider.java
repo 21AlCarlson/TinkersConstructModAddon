@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.capabilities.inventory;
+package henryandalex.tinkersaddonmod.capabilities.inventories;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;

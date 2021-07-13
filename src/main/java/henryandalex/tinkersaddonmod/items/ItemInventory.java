@@ -1,6 +1,6 @@
 package henryandalex.tinkersaddonmod.items;
 
-import henryandalex.tinkersaddonmod.capabilities.inventory.ISaveInventorySpaces;
+import henryandalex.tinkersaddonmod.capabilities.inventories.ISaveInventorySpaces;
 import henryandalex.tinkersaddonmod.utils.Util;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -14,23 +14,27 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
+ * <b>**Must Initialize before usage!!**</b>
+ * 
+ * 
+ * Single type inventory
+ * 
  * Referenced {@link net.minecraft.entity.player.InventoryPlayer}
- * TODO: make this more dynamic with <[T]>
  * 
  * @author AlexC
  *
  */
-public class ItemInventory<T extends Item> implements IInventory, ISaveInventorySpaces {
+public class ItemInventory implements IInventory, ISaveInventorySpaces {
 
 	public final int SIZE;
 	public static final int DEFAULT_SIZE = 3;
 	private int timesChanged;
 	public NonNullList<ItemStack> inv;
 	private boolean isFull;
-	public T t;
+	private Item itemTypeInInv;
 	
 	public ItemInventory(int size) {
-		SIZE = size;
+		this.SIZE = size;
 		this.timesChanged = 0;
 		this.isFull = false;
 		this.inv = NonNullList.<ItemStack>withSize(SIZE, ItemStack.EMPTY);
@@ -39,7 +43,12 @@ public class ItemInventory<T extends Item> implements IInventory, ISaveInventory
 	public ItemInventory() {
 		this(DEFAULT_SIZE);
 	}
-
+	
+	@Override
+	public <T extends Item> void initInvSpaceType(T t) {
+		this.itemTypeInInv = t;
+	}
+	
 	@Override
 	public String getName() {
 		return "container.inventory";
@@ -103,7 +112,7 @@ public class ItemInventory<T extends Item> implements IInventory, ISaveInventory
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		if (inv.get(index).isEmpty() && stack.isItemEqual(new ItemStack(
 				// This should be done to get the registered instance of the item class. Probably not necessary but safer.
-				Item.getByNameOrId(Util.resource(t.getUnlocalizedName()))
+				Item.getByNameOrId(Util.resource(this.itemTypeInInv.getRegistryName().getResourceDomain(), this.itemTypeInInv.getRegistryName().getResourcePath()))
 			))) {
 			return true;
 		}
@@ -117,7 +126,7 @@ public class ItemInventory<T extends Item> implements IInventory, ISaveInventory
 		}
 	}
 
-	public boolean setTotemInAvailable(ItemStack stack) {
+	public boolean setItemInAvailable(ItemStack stack) {
 		for (int index = 0; index < SIZE; index++) {
 			if(this.isItemValidForSlot(index, stack)) {
 				this.setInventorySlotContents(index, stack);

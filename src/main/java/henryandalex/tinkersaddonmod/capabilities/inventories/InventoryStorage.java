@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.capabilities.inventory;
+package henryandalex.tinkersaddonmod.capabilities.inventories;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,8 +6,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
-import henryandalex.tinkersaddonmod.capabilities.inventory.InventoryProvider;
 import henryandalex.tinkersaddonmod.init.ItemInit;
+import henryandalex.tinkersaddonmod.capabilities.inventories.InventoryProvider;
 import henryandalex.tinkersaddonmod.utils.IHasModel;
 import henryandalex.tinkersaddonmod.utils.Util;
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import slimeknights.mantle.item.ItemArmorTooltip;
 
-public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
+public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel{
 	
 	// private static final int MAX_TOTEM_STACK = 3; // how many Totems can be carried at once
 	public static ArmorMaterial TOTEM_SATCHEL_MATERIAL = EnumHelper.addArmorMaterial("TOTEMSATCHEL", Util.resource("totem_satchel"), 0, new int[] { 0, 0, 0, 0 }, 0, SoundEvents.BLOCK_SLIME_PLACE, 0);
@@ -46,14 +46,13 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 		ItemStack itemStackIn = playerIn.getHeldItem(hand);
 		if (!worldIn.isRemote) {
 			// This itemStackIn is always a ItemTotemStack so we can suppress this warning.
-			@SuppressWarnings("unchecked")
-			ItemInventory<ItemTotemSatchel> inv = (ItemInventory<ItemTotemSatchel>) itemStackIn.getCapability(InventoryProvider.INVENTORY_CAP, null);
+			ItemInventory inv = (ItemInventory) itemStackIn.getCapability(InventoryProvider.INVENTORY_CAP, null);
 			if(!inv.updateIsFull()) {
 				
 				Map<Integer, ItemStack> tempMap = Util.getFromInventory(Items.TOTEM_OF_UNDYING, playerIn.inventory.mainInventory);
 				
 				for (Map.Entry<Integer, ItemStack> entry : tempMap.entrySet()) {
-					if (inv.setTotemInAvailable(entry.getValue())) {
+					if (inv.setItemInAvailable(entry.getValue())) {
 						playerIn.inventory.removeStackFromSlot(entry.getKey());
 					}
 					else {
@@ -85,8 +84,7 @@ public class ItemTotemSatchel extends ItemArmorTooltip implements IHasModel {
 	 * @return Whether or not the action was a success
 	 */
 	public boolean setTotem(EntityPlayer player, ItemStack satchel) {
-		@SuppressWarnings("unchecked")
-		ItemInventory<ItemTotemSatchel> inv = (ItemInventory<ItemTotemSatchel>) satchel.getCapability(InventoryProvider.INVENTORY_CAP, null);
+		ItemInventory inv = (ItemInventory) satchel.getCapability(InventoryProvider.INVENTORY_CAP, null);
 		if(inv.removeSingleStack()) {
 			player.inventory.offHandInventory.set(0, new ItemStack(Items.TOTEM_OF_UNDYING));
 			return true;

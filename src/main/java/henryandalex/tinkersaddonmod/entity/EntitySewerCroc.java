@@ -1,29 +1,15 @@
 package henryandalex.tinkersaddonmod.entity;
 
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntityPigZombie;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class EntitySewerCroc extends EntityMob {
@@ -41,16 +27,16 @@ public class EntitySewerCroc extends EntityMob {
 		this.tasks.addTask(1, new EntityAIAttackMelee(this, 0.8D, true));
 		this.tasks.addTask(3, new EntityAIWander(this, 0.3D));
 		this.tasks.addTask(3, new EntityAIBreakDoor(this));
-		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntitySewerCroc.class, 5.0F, 0.4, 0.4));
+		this.tasks.addTask(1, new EntityAIAvoidEntity<EntitySewerCroc>(this, EntitySewerCroc.class, 5.0F, 0.4, 0.4));
 		
 		this.applyEntityAI();
 	}
 	
 	protected void applyEntityAI()
     {
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMob.class, true));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAnimal.class, false));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<EntityMob>(this, EntityMob.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<EntityAnimal>(this, EntityAnimal.class, false));
 
     }
 	

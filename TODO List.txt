@@ -6,7 +6,7 @@ Things that always need to be done (◔_◔):
 
 Temperary TODO Tasks:
 5) Add Armor invis and item in hand invis
-6) Make InventorySatchel more dynamic like Inventory<T> where T is an instance of ItemTotemSatchel
+6) Clean up ItemInventory's initiation in CapabilityHandler#attachCapability. Maybe declare the iventory's type by the first time something enters the bag.
 7) Make it so that the Totems keep thier custom data like names when being moved into the totem bag.
 8) Maybe remove shareTagCompound from itemTotemSacthel
 9) add trait schafold, auto eat, freecam?, double jump, Anti Overlay {Removes various overlays from your screen like pumpkin on your head}, 
