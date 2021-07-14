@@ -12,12 +12,16 @@ import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockWitchsWoodLeaves extends BlockLeaves implements IHasModel {
 
@@ -46,9 +50,15 @@ public class BlockWitchsWoodLeaves extends BlockLeaves implements IHasModel {
     }
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return Blocks.LEAVES.getBlockLayer();
+	}
+	
+	@Override
 	public boolean isOpaqueCube(IBlockState state)
     {
-        return true;
+        return Blocks.LEAVES.isOpaqueCube(state);
     }
 
 	/**

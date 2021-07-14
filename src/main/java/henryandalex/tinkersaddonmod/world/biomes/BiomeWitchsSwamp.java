@@ -17,7 +17,7 @@ public class BiomeWitchsSwamp extends Biome {
 	public static final WorldGenAbstractTree TREE = new WorldGenWitchsWoodTree();
 
 	public BiomeWitchsSwamp() {
-		super(new BiomeProperties("WitchsSwamp").setBaseHeight(0.4F).setHeightVariation(0.1F).setTemperature(0.8F).setRainfall(0.9F).setWaterColor(16747520));
+		super(new BiomeProperties("WitchsSwamp").setBaseHeight(1.0F).setHeightVariation(0.2F).setTemperature(0.8F).setRainfall(0.9F).setWaterColor(16747520));
 	
 		topBlock = BlockInit.WITCHS_GRASS.getDefaultState();
 		fillerBlock = Blocks.DIRT.getDefaultState();
