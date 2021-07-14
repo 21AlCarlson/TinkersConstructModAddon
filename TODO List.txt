@@ -7,7 +7,7 @@ Things that always need to be done (◔_◔):
 Temperary TODO Tasks:
 5) Add Armor invis and item in hand invis
 6) Clean up ItemInventory's initiation in CapabilityHandler#attachCapability. Maybe declare the iventory's type by the first time something enters the bag.
-7) Make it so that the Totems keep thier custom data like names when being moved into the totem bag.
+7) Make it so that the Totems keep thier custom data like names when being moved into the totem bag and dont get destroyed when unpacking while the user has a full inv
 8) Maybe remove shareTagCompound from itemTotemSacthel
 9) add trait schafold, auto eat, freecam?, double jump, Anti Overlay {Removes various overlays from your screen like pumpkin on your head}, 
 auto armor, breadcrumbs {Creates a trail behind you}, click tp {Teleport to the block you're looking at}, jump boost, 
@@ -24,9 +24,11 @@ aimbot for bows, spider {can climb walls}, Step {allows you to step up a full bl
 	BlockWitchsWoodSapling#generateTrees (WorldGenWitchsWoodTree.LOG -> WorldGenWitchsWoodTree.LOG.withProperty)
 
 15) Fix "TC Addon loaded a new chunk [54, -72] in dimension 0 (overworld) while populating chunk [55, -72], causing cascading worldgen lag." issue
+	!worldIn.isAreaLoaded(pos, 3)
+
 16) Fix witchs wood water color.
 17) Reduce the frequency of Witch's Swamp after done experiementing with it.
-
+18) PopulateChunkEvent can get rid of foliage?
 
 
 

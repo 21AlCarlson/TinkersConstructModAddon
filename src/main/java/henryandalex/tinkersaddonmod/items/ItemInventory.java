@@ -112,7 +112,7 @@ public class ItemInventory implements IInventory, ISaveInventorySpaces {
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		if (inv.get(index).isEmpty() && stack.isItemEqual(new ItemStack(
 				// This should be done to get the registered instance of the item class. Probably not necessary but safer.
-				Item.getByNameOrId(Util.resource(this.itemTypeInInv.getRegistryName().getResourceDomain(), this.itemTypeInInv.getRegistryName().getResourcePath()))
+				Item.getByNameOrId(Util.res(this.itemTypeInInv.getRegistryName().getResourceDomain(), this.itemTypeInInv.getRegistryName().getResourcePath()))
 			))) {
 			return true;
 		}

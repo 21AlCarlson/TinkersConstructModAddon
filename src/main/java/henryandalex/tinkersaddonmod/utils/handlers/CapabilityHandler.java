@@ -28,7 +28,7 @@ public class CapabilityHandler {
 	 public static void attachCapability(AttachCapabilitiesEvent<ItemStack> event) {
 		if(event.getObject().getItem() instanceof ItemTotemSatchel && !event.getObject().hasCapability(InventoryProvider.INVENTORY_CAP, null)) {
 			// doesn't actually set the capabilities but registers them to be set :(
-			event.addCapability(new ResourceLocation(Util.resource("inventory_storage")), new InventoryProvider());
+			event.addCapability(new ResourceLocation(Util.res("inventory_storage")), new InventoryProvider());
 			// need init ISaveInventorySpaces but event.getObject().getCapabilities still return null right now.
 			// this is icky but oh well. Forge can be a pain in the rear sometimes :(
 			new Thread(() -> {

@@ -10,12 +10,15 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 
 public class Util {
 	
 	public static final String RESOURCE = Reference.MODID;
 	
-	public static String resource(String domain, String path) {
+	public static String res(String domain, String path) {
 		return String.format("%s:%s", domain, path);
 	}
 	
@@ -24,8 +27,8 @@ public class Util {
 	 * resource locations.
 	 * {@link slimeknights.tconstruct.library.Util#resource(String)}
 	 */
-	public static String resource(String path) {
-		return resource(RESOURCE, path);
+	public static String res(String path) {
+		return res(RESOURCE, path);
 	}
 	
 	/**
@@ -119,5 +122,9 @@ public class Util {
 		catch(NullPointerException eee) {}
 		
 		return returnMap;
+	}
+
+	public static <T extends Biome> boolean isBiomeNearby(BlockPos blockPos, T biome, World world) {
+		return true;
 	}
 }

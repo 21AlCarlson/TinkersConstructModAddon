@@ -4,18 +4,25 @@ import henryandalex.tinkersaddonmod.init.BiomeInit;
 import henryandalex.tinkersaddonmod.init.BlockInit;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.utils.IHasModel;
+import henryandalex.tinkersaddonmod.utils.Util;
 import henryandalex.tinkersaddonmod.world.feature.tree.WitchsWoodTreeGen;
 import henryandalex.tinkersaddonmod.world.gen.WorldGenCustomOres;
+import henryandalex.tinkersaddonmod.world.gen.structure.witchsvillage.WitchsVillageHouse;
+import henryandalex.tinkersaddonmod.world.gen.structure.witchsvillage.WitchsVillageHouseCreationHandler;
 import slimeknights.tconstruct.common.TinkerOredict;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 
 /**
  * This is where everything gets registered - items, blocks, <br>
@@ -67,9 +74,13 @@ public class RegistryHandler {
 		GameRegistry.registerWorldGenerator(new WitchsWoodTreeGen(), 0);
 		
 		BiomeInit.registerBiomes();
+		
+		
 	}
 	
-	public static void registerEventListeners() {}
+	public static void registerEventListeners() {
+		MinecraftForge.TERRAIN_GEN_BUS.register(TerrainGenHandler.class);
+	}
 	
 	
 	private static void registerCommon() {
@@ -81,5 +92,11 @@ public class RegistryHandler {
 		TinkerOredict.oredict(Blocks.RED_MUSHROOM, "mushroom");
 		TinkerOredict.oredict(BlockInit.BLOCK_TUNGSTEN, "tungsten_block");
 		TinkerOredict.oredict(ItemInit.MASTER_INGOT, "master");
+	}
+
+
+	public static void registerCustomVillage() {
+		MapGenStructureIO.registerStructureComponent(WitchsVillageHouse.class, Util.res("village_house"));
+		VillagerRegistry.instance().registerVillageCreationHandler((IVillageCreationHandler) new WitchsVillageHouseCreationHandler());
 	}
 }

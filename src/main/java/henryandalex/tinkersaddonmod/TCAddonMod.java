@@ -55,6 +55,7 @@ public class TCAddonMod {
     @EventHandler
     public void init(FMLInitializationEvent event) {
     	RegistryHandler.registerEventListeners();
+    	RegistryHandler.registerCustomVillage();
     	FurnaceInit.Init();
     	EntityInit.registerEntities();
     	TCAddonMod.proxy.render();
