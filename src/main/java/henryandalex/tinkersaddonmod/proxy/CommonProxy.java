@@ -13,4 +13,6 @@ public class CommonProxy {
 	public void registerVariantRenderer(Item item, int meta, String filename, String id) {}
 	
 	public void render() {};
+	
+	
 }

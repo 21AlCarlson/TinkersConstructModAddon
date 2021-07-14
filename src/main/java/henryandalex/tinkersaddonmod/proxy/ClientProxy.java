@@ -4,6 +4,7 @@ import henryandalex.tinkersaddonmod.KeyBindings.KeyInputHandler;
 import henryandalex.tinkersaddonmod.KeyBindings.Keybindings;
 import henryandalex.tinkersaddonmod.entity.EntityBeam;
 import henryandalex.tinkersaddonmod.init.ItemInit;
+import henryandalex.tinkersaddonmod.objects.blocks.BlockWitchsWoodLeaves;
 import henryandalex.tinkersaddonmod.traits.Beam.BeamRenderer;
 import henryandalex.tinkersaddonmod.utils.Reference;
 import net.minecraft.client.Minecraft;
@@ -50,6 +51,11 @@ public class ClientProxy extends CommonProxy {
 	}
 	
 	
+	
+	public void setGraphicsLevel(BlockWitchsWoodLeaves parBlock, boolean parFancyEnabled)
+    {
+        parBlock.setGraphicsLevel(parFancyEnabled);
+    }
 
 	/**
 	 * Not sure what this does :P <br>
