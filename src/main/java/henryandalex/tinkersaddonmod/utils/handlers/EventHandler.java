@@ -2,8 +2,8 @@ package henryandalex.tinkersaddonmod.utils.handlers;
 /*
 import java.util.Random;
 
+import henryandalex.tinkersaddonmod.init.BlockInit;
 import henryandalex.tinkersaddonmod.utils.Util;
-import henryandalex.tinkersaddonmod.world.biomes.BiomeWitchsSwamp;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeRiver;
@@ -12,12 +12,12 @@ import net.minecraftforge.event.terraingen.ChunkGeneratorEvent.ReplaceBiomeBlock
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-*/
 
-//@EventBusSubscriber
+
+@EventBusSubscriber
 public class EventHandler {
 	
-	/*
+	
 	@SubscribeEvent
 	public static <T extends Biome> void replaceBlocksEvent(ReplaceBiomeBlocks event) {
 		
@@ -34,15 +34,15 @@ public class EventHandler {
 			
 	        depthBuffer = ((ChunkGeneratorOverworld) event.getGen()).surfaceNoise.getRegion(depthBuffer, (double)(x * 16), (double)(z * 16), 16, 16, 0.0625D, 0.0625D, 1.0D);
 
-	        for (int i = 0; i < 16; ++i)
-	        {
-	            for (int j = 0; j < 16; ++j)
-	            {
+	        for (int i = 0; i < 16; ++i) {
+	        	
+	            for (int j = 0; j < 16; ++j) {
+	            	biome.topBlock = BlockInit.WITCHS_GRASS.getDefaultState();
 	            	biome.genTerrainBlocks(event.getWorld(), new Random(), event.getPrimer(), x * 16 + i, z * 16 + j, depthBuffer[j + i * 16]);
 	            }
 	        }
 	        event.setResult(Result.DENY);
-			/*
+			//
 			ChunkPrimer primer = event.getPrimer();
 			
 			int surfaceLevel = event.getWorld().getTopSolidOrLiquidBlock(pos).getY();
@@ -63,7 +63,7 @@ public class EventHandler {
 				primer.setBlockState(event.getX(), surfaceLevel, event.getZ(), Blocks.DIRT.getDefaultState());
 			}
 			event.setResult(Result.DENY);
-			*/
-		//}
-	//}
-}
+			//
+		}
+	}
+}*/

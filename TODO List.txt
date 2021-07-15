@@ -20,8 +20,7 @@ aimbot for bows, spider {can climb walls}, Step {allows you to step up a full bl
 11) Add Our files to Java Maven for other coders.
 12) Make leaves see through
 13) Add Armor texture for Totem Bag
-14) Fix issue with sapling grown trees
-	BlockWitchsWoodSapling#generateTrees (WorldGenWitchsWoodTree.LOG -> WorldGenWitchsWoodTree.LOG.withProperty)
+14) (resolved)
 
 15) Fix "TC Addon loaded a new chunk [54, -72] in dimension 0 (overworld) while populating chunk [55, -72], causing cascading worldgen lag." issue
 	!worldIn.isAreaLoaded(pos, 3)

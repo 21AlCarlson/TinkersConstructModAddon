@@ -7,6 +7,7 @@ import henryandalex.tinkersaddonmod.utils.IHasModel;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -18,12 +19,15 @@ import net.minecraft.world.IBlockAccess;
 
 public class BlockWitchsWoodLog extends BlockLog implements IHasModel {
 	
+	public static final PropertyEnum<BlockLog.EnumAxis> LOG_AXIS = PropertyEnum.<BlockLog.EnumAxis>create("axis", BlockLog.EnumAxis.class);
+	
 	public BlockWitchsWoodLog(String name) {
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
 	
 		BlockInit.BLOCKS.add(this);
 		ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+		this.setDefaultState(this.getDefaultState().withProperty(LOG_AXIS, BlockLog.EnumAxis.Y));
 	}
 
 	// all of this except the last function is from 

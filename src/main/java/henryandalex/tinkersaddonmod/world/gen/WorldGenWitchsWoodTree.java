@@ -12,7 +12,7 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class WorldGenWitchsWoodTree extends WorldGenAbstractTree {
 
-	public static final IBlockState LOG = BlockInit.WITCHS_WOOD_LOG.getDefaultState();
+	public static final IBlockState LOG = BlockInit.WITCHS_WOOD_LOG.getDefaultState();                                   
 	public static final IBlockState LEAF = BlockInit.WITCHS_WOOD_LEAVES.getDefaultState();
 
 	private int minHeight;
