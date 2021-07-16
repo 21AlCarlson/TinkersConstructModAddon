@@ -51,16 +51,25 @@ public class WitchsVillageHouse extends StructureVillagePieces.Village {
         IBlockState logWitchs = BlockInit.WITCHS_WOOD_LOG.getDefaultState();
         IBlockState logWitchsSideways = logWitchs.withProperty(BlockWitchsWoodLog.LOG_AXIS, BlockLog.EnumAxis.X);
 		IBlockState planksWitchs = BlockInit.WITCHS_WOOD_PLANKS.getDefaultState();
+		//IBlockState stairsWitchsNorth = BlockInit.WITCHS_WOOD_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH);
+		IBlockState stairsWitchsWestBottom = BlockInit.WITCHS_WOOD_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST).withProperty(BlockStairs.HALF, BlockStairs.EnumHalf.BOTTOM);
+        IBlockState stairsWitchsWestTop = BlockInit.WITCHS_WOOD_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST).withProperty(BlockStairs.HALF, BlockStairs.EnumHalf.TOP);
+        IBlockState stairsWitchsEastBottom = BlockInit.WITCHS_WOOD_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST).withProperty(BlockStairs.HALF, BlockStairs.EnumHalf.BOTTOM);
+        IBlockState stairsWitchsEastTop = BlockInit.WITCHS_WOOD_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST).withProperty(BlockStairs.HALF, BlockStairs.EnumHalf.TOP);
+        IBlockState slabWitchsBottom = BlockInit.WITCHS_WOOD_SLAB.getDefaultState().withProperty(BlockSlab.HALF, EnumBlockHalf.BOTTOM);
+        IBlockState slabWitchsTop = BlockInit.WITCHS_WOOD_SLAB.getDefaultState().withProperty(BlockSlab.HALF, EnumBlockHalf.TOP);
         
 		// Acacia wood
 		IBlockState logAcacia = Blocks.LOG2.getDefaultState().withProperty(BlockNewLog.VARIANT, BlockPlanks.EnumType.ACACIA);
-        IBlockState planksAcacia = Blocks.PLANKS.getDefaultState().withProperty(BlockPlanks.VARIANT, BlockPlanks.EnumType.ACACIA);
-        IBlockState stairsAcaciaNorth = Blocks.ACACIA_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH);
-        IBlockState stairsAcaciaWestBottom = Blocks.ACACIA_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST).withProperty(BlockStairs.HALF, BlockStairs.EnumHalf.BOTTOM);
+		IBlockState planksAcacia = Blocks.PLANKS.getDefaultState().withProperty(BlockPlanks.VARIANT, BlockPlanks.EnumType.ACACIA);
+		IBlockState stairsAcaciaNorth = Blocks.ACACIA_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH);
+        /*
+		IBlockState stairsAcaciaWestBottom = Blocks.ACACIA_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST).withProperty(BlockStairs.HALF, BlockStairs.EnumHalf.BOTTOM);
         IBlockState stairsAcaciaWestTop = Blocks.ACACIA_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST).withProperty(BlockStairs.HALF, BlockStairs.EnumHalf.TOP);
         IBlockState stairsAcaciaEastBottom = Blocks.ACACIA_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST).withProperty(BlockStairs.HALF, BlockStairs.EnumHalf.BOTTOM);
         IBlockState stairsAcaciaEastTop = Blocks.ACACIA_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST).withProperty(BlockStairs.HALF, BlockStairs.EnumHalf.TOP);
         IBlockState slabAcaciaBottom = Blocks.WOODEN_SLAB.getDefaultState().withProperty(BlockPlanks.VARIANT, BlockPlanks.EnumType.ACACIA).withProperty(BlockSlab.HALF, EnumBlockHalf.BOTTOM);
+        */
         IBlockState slabAcaciaTop = Blocks.WOODEN_SLAB.getDefaultState().withProperty(BlockPlanks.VARIANT, BlockPlanks.EnumType.ACACIA).withProperty(BlockSlab.HALF, EnumBlockHalf.TOP);
         
         //Stone Bricks
@@ -114,6 +123,7 @@ public class WitchsVillageHouse extends StructureVillagePieces.Village {
         
         // fill in wood slabs/planks along the bottom of the beam
         fillWithBlocks(world, structureBB, 2, 3, 0, 9, 3, 0, slabAcaciaTop, slabAcaciaTop, false);
+        // TODO: make staircase instead
         setBlockState(world, planksAcacia, 4, 3, 0, structureBB);
         setBlockState(world, planksAcacia, 7, 3, 0, structureBB);
         
@@ -178,32 +188,38 @@ public class WitchsVillageHouse extends StructureVillagePieces.Village {
         setBlockState(world, stairsBrickEastTop, 11, 4, 12, structureBB);
         
         // place wood roof (same as two segments before but the depth changes)
-        fillWithBlocks(world, structureBB, 0, 5, 0, 0, 5, 11, stairsAcaciaEastBottom, stairsAcaciaEastBottom, false);
-        fillWithBlocks(world, structureBB, 0, 4, 1, 0, 4, 10, stairsAcaciaWestTop, stairsAcaciaWestTop, false);
-        fillWithBlocks(world, structureBB, 1, 6, 0, 1, 6, 11, stairsAcaciaEastBottom, stairsAcaciaEastBottom, false);
-        fillWithBlocks(world, structureBB, 1, 5, 0, 1, 5, 11, stairsAcaciaWestTop, stairsAcaciaWestTop, false);
-        fillWithBlocks(world, structureBB, 2, 7, 0, 2, 7, 11, slabAcaciaBottom, slabAcaciaBottom, false);
-        fillWithBlocks(world, structureBB, 2, 6, 0, 2, 6, 11, stairsAcaciaWestTop, stairsAcaciaWestTop, false);
-        fillWithBlocks(world, structureBB, 3, 7, 0, 3, 7, 11, planksAcacia, planksAcacia, false);
-        fillWithBlocks(world, structureBB, 4, 7, 0, 4, 7, 11, slabAcaciaTop, slabAcaciaTop, false);
-        fillWithBlocks(world, structureBB, 4, 8, 0, 4, 8, 11, slabAcaciaBottom, slabAcaciaBottom, false);
-        fillWithBlocks(world, structureBB, 5, 8, 0, 5, 8, 11, slabAcaciaBottom, slabAcaciaBottom, false);
+        fillWithBlocks(world, structureBB, 0, 5, 0, 0, 5, 11, stairsWitchsEastBottom, stairsWitchsEastBottom, false);
+        fillWithBlocks(world, structureBB, 0, 4, 1, 0, 4, 10, stairsWitchsWestTop, stairsWitchsWestTop, false);
+        fillWithBlocks(world, structureBB, 1, 6, 0, 1, 6, 11, stairsWitchsEastBottom, stairsWitchsEastBottom, false);
+        fillWithBlocks(world, structureBB, 1, 5, 0, 1, 5, 11, stairsWitchsWestTop, stairsWitchsWestTop, false);
+        fillWithBlocks(world, structureBB, 2, 7, 0, 2, 7, 11, slabWitchsBottom, slabWitchsBottom, false);
+        fillWithBlocks(world, structureBB, 2, 6, 0, 2, 6, 11, stairsWitchsWestTop, stairsWitchsWestTop, false);
+        fillWithBlocks(world, structureBB, 3, 7, 0, 3, 7, 11, planksWitchs, planksWitchs, false);
+        fillWithBlocks(world, structureBB, 4, 7, 0, 4, 7, 11, slabWitchsTop, slabWitchsTop, false);
+        fillWithBlocks(world, structureBB, 4, 8, 0, 4, 8, 11, slabWitchsBottom, slabWitchsBottom, false);
+        fillWithBlocks(world, structureBB, 5, 8, 0, 5, 8, 11, slabWitchsBottom, slabWitchsBottom, false);
         // start of other side of roof outline
-        fillWithBlocks(world, structureBB, 6, 8, 0, 6, 8, 11, slabAcaciaBottom, slabAcaciaBottom, false);
-        fillWithBlocks(world, structureBB, 7, 8, 0, 7, 8, 11, slabAcaciaBottom, slabAcaciaBottom, false);
-        fillWithBlocks(world, structureBB, 7, 7, 0, 7, 7, 11, slabAcaciaTop, slabAcaciaTop, false);
-        fillWithBlocks(world, structureBB, 8, 7, 0, 8, 7, 11, planksAcacia, planksAcacia, false);
-        fillWithBlocks(world, structureBB, 9, 7, 0, 9, 7, 11, slabAcaciaBottom, slabAcaciaBottom, false);
-        fillWithBlocks(world, structureBB, 9, 6, 0, 9, 6, 11, stairsAcaciaEastTop, stairsAcaciaEastTop, false);
-        fillWithBlocks(world, structureBB, 10, 6, 0, 10, 6, 11, stairsAcaciaWestBottom, stairsAcaciaWestBottom, false);
-        fillWithBlocks(world, structureBB, 10, 5, 0, 10, 5, 11, stairsAcaciaEastTop, stairsAcaciaEastTop, false);
-        fillWithBlocks(world, structureBB, 11, 5, 0, 11, 5, 11, stairsAcaciaWestBottom, stairsAcaciaWestBottom, false);
-        fillWithBlocks(world, structureBB, 11, 4, 1, 11, 4, 10, stairsAcaciaEastTop, stairsAcaciaEastTop, false);
+        fillWithBlocks(world, structureBB, 6, 8, 0, 6, 8, 11, slabWitchsBottom, slabWitchsBottom, false);
+        fillWithBlocks(world, structureBB, 7, 8, 0, 7, 8, 11, slabWitchsBottom, slabWitchsBottom, false);
+        fillWithBlocks(world, structureBB, 7, 7, 0, 7, 7, 11, slabWitchsTop, slabWitchsTop, false);
+        fillWithBlocks(world, structureBB, 8, 7, 0, 8, 7, 11, planksWitchs, planksWitchs, false);
+        fillWithBlocks(world, structureBB, 9, 7, 0, 9, 7, 11, slabWitchsBottom, slabWitchsBottom, false);
+        fillWithBlocks(world, structureBB, 9, 6, 0, 9, 6, 11, stairsWitchsEastTop, stairsWitchsEastTop, false);
+        fillWithBlocks(world, structureBB, 10, 6, 0, 10, 6, 11, stairsWitchsWestBottom, stairsWitchsWestBottom, false);
+        fillWithBlocks(world, structureBB, 10, 5, 0, 10, 5, 11, stairsWitchsEastTop, stairsWitchsEastTop, false);
+        fillWithBlocks(world, structureBB, 11, 5, 0, 11, 5, 11, stairsWitchsWestBottom, stairsWitchsWestBottom, false);
+        fillWithBlocks(world, structureBB, 11, 4, 1, 11, 4, 10, stairsWitchsEastTop, stairsWitchsEastTop, false);
         
         // add Acacia log backdrop
         fillWithBlocks(world, structureBB, 1, 5, 1, 10, 5, 1, logAcacia, logAcacia, false);
         fillWithBlocks(world, structureBB, 2, 6, 1, 9, 6, 1, logAcacia, logAcacia, false);
         fillWithBlocks(world, structureBB, 4, 7, 1, 7, 7, 1, logAcacia, logAcacia, false);
+        // back side Acacia logs
+        fillWithBlocks(world, structureBB, 1, 5, 10, 10, 5, 10, logAcacia, logAcacia, false);
+        fillWithBlocks(world, structureBB, 2, 6, 10, 9, 6, 10, logAcacia, logAcacia, false);
+        fillWithBlocks(world, structureBB, 4, 7, 10, 7, 7, 10, logAcacia, logAcacia, false);
+        
+        // features on the back wall. 
 
         // place the blocks underneath the house to make it look supported. 
         for (int i1 = 0; i1 < 12; ++i1) {

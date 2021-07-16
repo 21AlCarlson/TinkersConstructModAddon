@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom": { "model": "tcaddon:witchs_wood_half_slab" },
+        "half=top": { "model": "tcaddon:witchs_wood_upper_slab" }
+    }
+}

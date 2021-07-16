@@ -31,23 +31,21 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationH
 @EventBusSubscriber
 public class RegistryHandler {
 	
+	@SubscribeEvent
+	public static void onItemRegister(RegistryEvent.Register<Item> event) {
+		event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));
+		registerItemsToTinkers(event);
+	}
+	
 	/**
 	 * Registers all the blocks and item oredicts.
 	 * Note that it's using the item registry event, since it's called after blocks.
 	 * This relies on the TinkerOredict pulse being called after the pulses registering the items
 	 * See {@link TinerOredict} for initial usage.
 	 */
-	@SubscribeEvent
 	public static void registerItemsToTinkers(RegistryEvent.Register<Item> event) {
 		registerCommon();
 	}
-	
-	
-	@SubscribeEvent
-	public static void onItemRegister(RegistryEvent.Register<Item> event) {
-		event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));
-	}
-	
 	
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
