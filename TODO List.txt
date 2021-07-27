@@ -30,6 +30,16 @@ aimbot for bows, spider {can climb walls}, Step {allows you to step up a full bl
 18) PopulateChunkEvent can get rid of foliage?
 19) Make it so slabs can double up on the same block
 20) Make Entryway blocks into stairs
+21) add a config file so users can balance how they please
+22) fix witchs swamp world type
+23) clean up file organization
+24) make MapGenVillageExtension more dynamic
+25) Change bounding box for custom village structures 
+	WitchsVillageHouseCreationHandler#buildComponent -> structBB
 
+26) Fix Witchs village spawning bug. They only like to spawn in one direction?
+27) Add custom path and well for witchs village 
+	Maybe use culdrens of potions instead of water for the well.
 
+28) make it so the witchs village path overrides the witchs grass to actually make a path.
 

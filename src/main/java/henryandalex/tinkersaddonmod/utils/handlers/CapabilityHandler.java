@@ -27,6 +27,7 @@ public class CapabilityHandler {
 	@SubscribeEvent
 	 public static void attachCapability(AttachCapabilitiesEvent<ItemStack> event) {
 		if(event.getObject().getItem() instanceof ItemTotemSatchel && !event.getObject().hasCapability(InventoryProvider.INVENTORY_CAP, null)) {
+			Thread mainThread = Thread.currentThread();
 			// doesn't actually set the capabilities but registers them to be set :(
 			event.addCapability(new ResourceLocation(Util.res("inventory_storage")), new InventoryProvider());
 			// need init ISaveInventorySpaces but event.getObject().getCapabilities still return null right now.
@@ -41,10 +42,17 @@ public class CapabilityHandler {
 						try {
 							Thread.sleep(100);
 						} 
-						catch (InterruptedException e) {}
+						catch (InterruptedException e) {
+							break;
+						}
 					}
 				}
-				Thread.currentThread().stop();
+				try {
+					mainThread.join();
+				} 
+				catch (InterruptedException e) {
+					Thread.currentThread().stop();
+				}
 			}, "init inventory on capability update").start();
 		}
 	}

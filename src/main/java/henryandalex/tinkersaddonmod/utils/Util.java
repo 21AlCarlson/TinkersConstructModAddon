@@ -2,6 +2,7 @@ package henryandalex.tinkersaddonmod.utils;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -14,6 +15,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 
+/**
+ * Has just a bunch of different helper functions that can be useful in more than one case.
+ * 
+ * @author AlexC
+ *
+ */
 public class Util {
 	
 	public static final String RESOURCE = Reference.MODID;
@@ -29,6 +36,13 @@ public class Util {
 	 */
 	public static String res(String path) {
 		return res(RESOURCE, path);
+	}
+	
+	/**
+	 * {@link slimeknights.tconstruct.library.Util#prefix(String)}
+	 */
+	public static String prefix(String name) {
+		return String.format("%s.%s", RESOURCE, name.toLowerCase(Locale.US));
 	}
 	
 	/**
@@ -126,5 +140,13 @@ public class Util {
 
 	public static <T extends Biome> boolean isBiomeNearby(BlockPos blockPos, T biome, World world) {
 		return true;
+	}
+
+	public static BlockPos getPosFromChunkCoords(int chunkX, int chunkZ) {
+		return new BlockPos(chunkX * 16, 0, chunkZ * 16);
+	}
+	
+	public static Biome getBiomefromChunkCoords(World world, int chunkX, int chunkZ) {
+		return world.getBiome(getPosFromChunkCoords(chunkX, chunkZ));
 	}
 }

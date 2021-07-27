@@ -4,8 +4,9 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.common.eventbus.Subscribe;
 
+import henryandalex.tinkersaddonmod.fluids.TCAddonFluids;
 import henryandalex.tinkersaddonmod.materials.TCAddonMaterials;
-
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import slimeknights.mantle.pulsar.pulse.Pulse;
@@ -36,7 +37,7 @@ public class TCAddonIntegration extends TinkerPulse {
     public static void preInit(FMLPreInitializationEvent event) {
     	// test item
     	integrate(TCAddonMaterials.leather);
-    	integrate(TCAddonMaterials.tungsten);
+    	integrate(TCAddonMaterials.tungsten, TCAddonFluids.tungsten, "Tungsten").toolforge();
     	integrate(TCAddonMaterials.bread);
     	integrate(TCAddonMaterials.glass);
     	integrate(TCAddonMaterials.chicken);
@@ -56,6 +57,15 @@ public class TCAddonIntegration extends TinkerPulse {
   
     private static MaterialIntegration integrate(Material material) {
     	return add(new MaterialIntegration(material));
+    }
+    
+    @SuppressWarnings("unused")
+	private static MaterialIntegration integrate(Material material, Fluid fluid) {
+    	return add(new MaterialIntegration(material, fluid));
+    }
+    
+    private static MaterialIntegration integrate(Material material, Fluid fluid, String oreSuffix) {
+    	return add(new MaterialIntegration(material, fluid, oreSuffix));
     }
     
     private static MaterialIntegration add(MaterialIntegration integration) {

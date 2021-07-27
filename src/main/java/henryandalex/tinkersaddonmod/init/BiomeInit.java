@@ -13,8 +13,9 @@ public class BiomeInit {
 	
 	public static final Biome WITCHS_SWAMP = new BiomeWitchsSwamp();
 	
+    // Must be called on the RegistryEvent.Register<Biome> which is in the registry handler.
 	public static void registerBiomes() {
-		initBiome(WITCHS_SWAMP, "WitchsSwamp", BiomeType.WARM, Type.WET, Type.SWAMP);
+		initBiome(WITCHS_SWAMP, BiomeWitchsSwamp.REGISTERY_NAME, BiomeType.WARM, Type.WET, Type.SWAMP);
 	}
 	
 	private static Biome initBiome(Biome biome, String name, BiomeType biomeType, Type... types) {
@@ -23,6 +24,8 @@ public class BiomeInit {
 		ForgeRegistries.BIOMES.register(biome);
 		BiomeDictionary.addTypes(biome, types);
 		BiomeManager.addBiome(biomeType, new BiomeEntry(biome, 40));
+		BiomeManager.addSpawnBiome(biome);
+		//BiomeManager.addVillageBiome(biome, true);
 		
 		return biome;
 	}
