@@ -18,6 +18,9 @@ import net.minecraft.world.biome.Biome;
 /**
  * Has just a bunch of different helper functions that can be useful in more than one case.
  * 
+ * Testing seed (Witch's Village): 5082801505840576449
+ * Testing seed (Vanilla Village): 113422530337198667
+ * 
  * @author AlexC
  *
  */
@@ -148,5 +151,11 @@ public class Util {
 	
 	public static Biome getBiomefromChunkCoords(World world, int chunkX, int chunkZ) {
 		return world.getBiome(getPosFromChunkCoords(chunkX, chunkZ));
+	}
+	
+	// Used for saving data
+	public static long concat(int x, int z) {
+		// shift by 32 bits move the length of the integer
+		return (x << 32) + z;
 	}
 }

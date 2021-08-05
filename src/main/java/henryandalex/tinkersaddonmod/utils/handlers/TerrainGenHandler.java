@@ -12,7 +12,9 @@ public class TerrainGenHandler {
 			// get Gen type -> if != MapGenVillage (but not extended), then 
 			// add current MapGenVillage to the list of MapGenVillages in 
 			// MapGenVillage Handler
-			event.setNewGen(new MapGenVillageExtension());
+			// initialize MapGenVillage then set it as the village generator
+			MapGenVillageExtension.mapGenVillage = new MapGenVillageExtension();
+			event.setNewGen(MapGenVillageExtension.mapGenVillage);
 		}
 	}
 }

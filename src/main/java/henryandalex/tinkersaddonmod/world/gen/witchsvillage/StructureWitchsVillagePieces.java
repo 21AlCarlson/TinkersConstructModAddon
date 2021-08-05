@@ -21,19 +21,29 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
-import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 
+/*
+ * Vanilla village Structure Key:
+ * Church -> Church
+ * House1 -> library
+ * House2 -> Blacksmith
+ * House3 -> Large House (L-shaped house)
+ * House4Garden -> Small House (House with roof access)
+ * Hall -> Butcher's Shop (House with backyard)
+ * WoodHut -> Hut (House with dirt floors)
+ * Field2 -> Small Farm
+ * Field1 -> Large Farm
+ */
 public class StructureWitchsVillagePieces {
 	
 	public static List<StructureVillagePieces.PieceWeight> getStructureVillageWeightedPieceList(Random random, int size) {
 		List<StructureVillagePieces.PieceWeight> list = Lists.<StructureVillagePieces.PieceWeight>newArrayList();
-		list.add(new StructureVillagePieces.PieceWeight(StructureWitchsVillagePieces.House.class, 20, MathHelper.getInt(random, 2 + size, 4 + size * 2)));
+		list.add(new StructureVillagePieces.PieceWeight(StructureWitchsVillagePieces.House.class, 20, 8/*MathHelper.getInt(random, 8 + size, 14 + size)*/));
 		Iterator<StructureVillagePieces.PieceWeight> iterator = list.iterator();
 		
         while (iterator.hasNext()) {
@@ -264,20 +274,33 @@ public class StructureWitchsVillagePieces {
 		public House(StructureVillagePieces.Start parStart, int parType, Random parRand, StructureBoundingBox parStructBB, EnumFacing parFacing) {
 			super(parStart, parType);
 			setCoordBaseMode(parFacing);
-			boundingBox = parStructBB;
+			this.boundingBox = parStructBB;
 		}
 		
-	    public static StructureWitchsVillagePieces.House createPiece(StructureVillagePieces.Start start, List<StructureComponent> p_175858_1_, Random rand, int p_175858_3_, int p_175858_4_, int p_175858_5_, EnumFacing facing, int p_175858_7_) {
-	        StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(p_175858_3_, p_175858_4_, p_175858_5_, 0, 0, 0, 5, 6, 5, facing);
-	        return StructureComponent.findIntersecting(p_175858_1_, structureboundingbox) != null ? null : new StructureWitchsVillagePieces.House(start, p_175858_7_, rand, structureboundingbox, facing);
+	    public static StructureVillagePieces.Village createPiece(StructureVillagePieces.Start start, List<StructureComponent> p_175858_1_, Random rand, int p_175858_3_, int p_175858_4_, int p_175858_5_, EnumFacing facing, int p_175858_7_) {
+	        StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(p_175858_3_, p_175858_4_, p_175858_5_, 0, 0, 0, 14, 10, 14, facing);
+	        return House.findIntersecting(p_175858_1_, structureboundingbox) == null ? new StructureWitchsVillagePieces.House(start, p_175858_7_, rand, structureboundingbox, facing) : null;
 	    }
 	    
-		public StructureVillagePieces.Village createPiece(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces,
-				Random random, int p1, int p2, int p3, EnumFacing facing, int p5) {
-	        StructureBoundingBox structBB = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 9, 7, 12, facing);
-	        return new StructureWitchsVillagePieces.House(startPiece, p5, random, structBB, facing);
-		}
-		
+	    /*
+	    public static StructureComponent findIntersecting(List<StructureComponent> listIn, StructureBoundingBox box1) {
+	    	for (StructureComponent comp : listIn) {
+	    		StructureBoundingBox box2 = comp.getBoundingBox();
+	    		
+	    		for (int x = box2.minX; x == box2.minX; x = box2.maxX) {
+	    			for (int y = box2.minY; y == box2.minY; y = box2.maxY) {
+	    				for (int z = box2.minZ; z == box2.minZ; z = box2.maxZ) {
+	    					if (Util.boxContains(new BlockPos(x, y, z), box1)) {
+	    						return comp;
+	    					}
+	    				}
+	    			}
+	    		}
+	    	}
+	    	return null;
+	    }
+	    */
+	    
 		@Override
 		public boolean addComponentParts(World world, Random random, StructureBoundingBox structureBB) {
 			
@@ -290,7 +313,7 @@ public class StructureWitchsVillagePieces {
 	                return true;
 	            }
 
-	            boundingBox.offset(0, averageGroundLvl - boundingBox.maxY + 7 - 1, 0);
+	            boundingBox.offset(0, averageGroundLvl - boundingBox.maxY + 10 - 1, 0);
 	        }
 			
 			IBlockState air = Blocks.AIR.getDefaultState();

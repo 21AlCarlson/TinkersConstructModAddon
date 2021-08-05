@@ -29,6 +29,8 @@ import net.minecraft.world.gen.structure.StructureStart;
  */
 public class MapGenVillageExtension extends MapGenVillage {
 	
+	public static MapGenVillageExtension mapGenVillage;
+	
 	private static final MapGenWitchsSwampVillage MAP_GEN_VILLAGE_CUSTOM = new MapGenWitchsSwampVillage();
 	
 	public MapGenVillageExtension() {
@@ -37,7 +39,7 @@ public class MapGenVillageExtension extends MapGenVillage {
 		
 
 	/**
-	 * Need to be called after this#getStructureStart().
+	 * Need to be called after {@link #getStructureStart(int, int)}.
 	 * This takes the all Village structures in the component list of the respective map gen village class and builds those components.
 	 * Called during in Chunk Populate method
 	 */
@@ -51,10 +53,14 @@ public class MapGenVillageExtension extends MapGenVillage {
 			return MAP_GEN_VILLAGE_CUSTOM.generateStructure(worldIn, randomIn, chunkCoord);
 		}
 		else {
-			return super.generateStructure(worldIn, randomIn, chunkCoord); // MAP_GEN_VILLAGE_VANILLA.generateStructure(worldIn, randomIn, chunkCoord);
+			return super.generateStructure(worldIn, randomIn, chunkCoord);
 		}
 	}
 	
+	/**
+	 * Called during the Chunk Generate method and results in {@link #getStructureStart(int, int)} being called
+	 */
+	/*
 	@Override
 	public void generate(World worldIn, int x, int z, ChunkPrimer primer) {
 		if(worldIn.getBiome(new BlockPos(x, 0, z)) instanceof BiomeWitchsSwamp) {
@@ -65,6 +71,7 @@ public class MapGenVillageExtension extends MapGenVillage {
 		}
 		return;
 	}
+	*/
 	
 
 	@Override
@@ -90,13 +97,17 @@ public class MapGenVillageExtension extends MapGenVillage {
 
 	/**
 	 * Adds the components (houses, paths, wells, etc) to the village instance. Does not actually build them.
-	 * Called during the Chunk Generate method.
+	 * Called during the Chunk Generate method as a part of {@link #generate(World, int, int, ChunkPrimer)}
 	 */
 	@Override
 	protected StructureStart getStructureStart(int chunkX, int chunkZ) {
 		if(Util.getBiomefromChunkCoords(this.world, chunkX, chunkZ) instanceof BiomeWitchsSwamp) {
 			MAP_GEN_VILLAGE_CUSTOM.getStructureStartPublic(chunkX, chunkZ);
-			return new StructureStart() {
+			/*
+			 * You have to use 'MapGenVillage.Start' and not 'new StructureStart' because StructureStart is not
+			 * registered with the MapGenStructureIO.
+			 */
+			return new MapGenVillage.Start() {
 				@Override 
 			    public boolean isValidForPostProcess(ChunkPos pair) {
 					/*

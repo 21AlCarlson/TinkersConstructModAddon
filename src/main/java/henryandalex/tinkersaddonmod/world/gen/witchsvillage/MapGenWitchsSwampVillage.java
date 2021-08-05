@@ -15,12 +15,12 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.structure.MapGenVillage;
+import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureStart;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 
-public class MapGenWitchsSwampVillage extends MapGenVillage {
+public class MapGenWitchsSwampVillage extends MapGenStructure {
 
 	public static List<Biome> VILLAGE_SPAWN_BIOMES = Arrays.<Biome>asList(BiomeInit.WITCHS_SWAMP);
     private int size;
@@ -136,23 +136,28 @@ public class MapGenWitchsSwampVillage extends MapGenVillage {
             TCAddonMod.instance.getLogger().info("(x: " + pos.getX() + ", z: " + pos.getZ() + ")");
             List<StructureVillagePieces.PieceWeight> list = StructureWitchsVillagePieces.getStructureVillageWeightedPieceList(rand, size);
             StructureWitchsVillagePieces.Start structurevillagepieces$start = new StructureWitchsVillagePieces.Start(worldIn.getBiomeProvider(), 0, rand, (x << 4) + 2, (z << 4) + 2, list, size);
+            // adds the well which is the starting point for the town.
             this.components.add(structurevillagepieces$start);
+            // generates the road around the well.
             structurevillagepieces$start.buildComponent(structurevillagepieces$start, this.components, rand);
-            List<StructureComponent> list1 = structurevillagepieces$start.pendingRoads;
-            List<StructureComponent> list2 = structurevillagepieces$start.pendingHouses;
-
-            while (!list1.isEmpty() || !list2.isEmpty())
+            List<StructureComponent> roads = structurevillagepieces$start.pendingRoads;
+            List<StructureComponent> houses = structurevillagepieces$start.pendingHouses;
+            // will cycle through until both lists are empty
+            while (!roads.isEmpty() || !houses.isEmpty())
             {
-                if (list1.isEmpty())
+                if (roads.isEmpty())
                 {
-                    int i = rand.nextInt(list2.size());
-                    StructureComponent structurecomponent = list2.remove(i);
+                    int i = rand.nextInt(houses.size());
+                    StructureComponent structurecomponent = houses.remove(i);
+                    // adds some buildings
+                    // typically is just the generic method found in StrucutreComponent.
                     structurecomponent.buildComponent(structurevillagepieces$start, this.components, rand);
                 }
                 else
                 {
-                    int j = rand.nextInt(list1.size());
-                    StructureComponent structurecomponent2 = list1.remove(j);
+                    int j = rand.nextInt(roads.size());
+                    StructureComponent structurecomponent2 = roads.remove(j);
+                    // add more paths and buildings.
                     structurecomponent2.buildComponent(structurevillagepieces$start, this.components, rand);
                 }
             }
