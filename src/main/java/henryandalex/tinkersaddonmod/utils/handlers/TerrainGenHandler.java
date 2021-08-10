@@ -1,6 +1,8 @@
 package henryandalex.tinkersaddonmod.utils.handlers;
 
-import henryandalex.tinkersaddonmod.world.gen.MapGenVillageExtension;
+import henryandalex.tinkersaddonmod.world.gen.village.MapGenVillageHandler;
+import net.minecraft.world.gen.structure.MapGenStructure;
+import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraftforge.event.terraingen.InitMapGenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -13,8 +15,14 @@ public class TerrainGenHandler {
 			// add current MapGenVillage to the list of MapGenVillages in 
 			// MapGenVillage Handler
 			// initialize MapGenVillage then set it as the village generator
-			MapGenVillageExtension.mapGenVillage = new MapGenVillageExtension();
-			event.setNewGen(MapGenVillageExtension.mapGenVillage);
+			MapGenVillageHandler.mapGenVillage = new MapGenVillageHandler();
+			
+			// This Should be working. Haven't tested it on any other mods tho.
+			if (!event.getOriginalGen().equals(new MapGenVillage())) {
+				MapGenVillageHandler.registerNewVanillaVillage((MapGenStructure) event.getOriginalGen());
+			}
+			
+			event.setNewGen(MapGenVillageHandler.mapGenVillage);
 		}
 	}
 }

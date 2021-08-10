@@ -5,7 +5,7 @@ import java.util.Random;
 
 import henryandalex.tinkersaddonmod.init.BiomeInit;
 import henryandalex.tinkersaddonmod.init.BlockInit;
-import henryandalex.tinkersaddonmod.world.gen.witchsvillage.MapGenWitchsSwampVillage;
+import henryandalex.tinkersaddonmod.world.gen.village.witchsvillage.MapGenWitchsSwampVillage;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureType;

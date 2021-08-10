@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.world.gen.witchsvillage;
+package henryandalex.tinkersaddonmod.world.gen.village.witchsvillage;
 
 import java.util.Iterator;
 import java.util.List;

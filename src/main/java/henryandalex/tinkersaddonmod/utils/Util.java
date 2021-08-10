@@ -1,5 +1,7 @@
 package henryandalex.tinkersaddonmod.utils;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
@@ -7,6 +9,7 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import henryandalex.tinkersaddonmod.TCAddonMod;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -153,9 +156,71 @@ public class Util {
 		return world.getBiome(getPosFromChunkCoords(chunkX, chunkZ));
 	}
 	
-	// Used for saving data
+	/** Used for saving data */
 	public static long concat(int x, int z) {
 		// shift by 32 bits move the length of the integer
 		return (x << 32) + z;
+	}
+	
+	/** 
+	 * Gets a method instance from the given class. Checks all the super classes too.
+	 * 
+	 * @param clazz Class to check
+	 * @param clazz2StopAt  Class at which the code will stop checking the methods for (exclusive) <br>
+	 * 						Use null if you don't want it to stop at a class.
+	 * @param methodName Name of the method you want to get
+	 * @param parameterTypes The types of parameters of the method takes in
+	 * @return
+	 */
+	public static Method getMethod(Class<?> clazz, Class<?> clazz2StopAt, String methodName, Class<?>... parameterTypes) {
+		while(true) {
+			try {
+				Method m = clazz.getDeclaredMethod(methodName, parameterTypes);
+				return m;
+			} 
+			catch(NoSuchMethodException e) {
+				clazz = clazz.getSuperclass();
+				if(clazz.equals(clazz2StopAt)) break;
+				else continue;
+			}
+			catch(SecurityException e) {
+				e.printStackTrace();
+				break;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * This will run a method whether or not it is accessible by the class or not.
+	 * 
+	 * @param m Method to run
+	 * @param retrunType The class of the object to be returned. Set as null if the method is void.
+	 * @param instance Instance to run the method on
+	 * @param args Arguments for the method
+	 * @return The object that the 
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> T runMethod(Object instance, Class<T> retrunType, Method m, Object... args) {
+		T returnObject = null;
+		Boolean accessible = m.isAccessible();
+		m.setAccessible(true);
+		try {
+			if(retrunType != null) {
+				returnObject = (T) m.invoke(instance, args);
+			}
+			else {
+				m.invoke(instance, args); 
+			}
+		}
+		catch(InvocationTargetException e) {
+			e.printStackTrace();
+			TCAddonMod.instance.getLogger().warn("Method threw an error when trying to call it during relfection.");
+		}
+		catch(IllegalAccessException | IllegalArgumentException e) {
+			e.printStackTrace();
+		}
+		m.setAccessible(accessible);
+		return returnObject;
 	}
 }

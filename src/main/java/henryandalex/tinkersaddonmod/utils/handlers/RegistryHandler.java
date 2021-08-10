@@ -1,5 +1,6 @@
 package henryandalex.tinkersaddonmod.utils.handlers;
 
+import henryandalex.tinkersaddonmod.events.RegisterCustomVillageEvent;
 import henryandalex.tinkersaddonmod.init.BiomeInit;
 import henryandalex.tinkersaddonmod.init.BlockInit;
 import henryandalex.tinkersaddonmod.init.ItemInit;
@@ -7,9 +8,9 @@ import henryandalex.tinkersaddonmod.utils.IHasModel;
 import henryandalex.tinkersaddonmod.utils.Util;
 import henryandalex.tinkersaddonmod.world.feature.tree.WitchsWoodTreeGen;
 import henryandalex.tinkersaddonmod.world.gen.WorldGenCustomOres;
-import henryandalex.tinkersaddonmod.world.gen.witchsvillage.MapGenWitchsSwampVillage;
-import henryandalex.tinkersaddonmod.world.gen.witchsvillage.StructureWitchsVillagePieces;
-import henryandalex.tinkersaddonmod.world.gen.witchsvillage.WitchsVillageHouseCreationHandler;
+import henryandalex.tinkersaddonmod.world.gen.village.witchsvillage.MapGenWitchsSwampVillage;
+import henryandalex.tinkersaddonmod.world.gen.village.witchsvillage.StructureWitchsVillagePieces;
+import henryandalex.tinkersaddonmod.world.gen.village.witchsvillage.WitchsVillageHouseCreationHandler;
 import slimeknights.tconstruct.common.TinkerOredict;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -72,6 +73,11 @@ public class RegistryHandler {
 				((IHasModel) block).registerModels();
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public static void registerCustomVillage(RegisterCustomVillageEvent event) {
+		event.registerCustomVillage(new MapGenWitchsSwampVillage());
 	}
 	
 	public static void otherRegistries() {

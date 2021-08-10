@@ -1,43 +1,35 @@
-package henryandalex.tinkersaddonmod.world.gen.witchsvillage;
+package henryandalex.tinkersaddonmod.world.gen.village.witchsvillage;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.Map.Entry;
-
-import henryandalex.tinkersaddonmod.TCAddonMod;
 import henryandalex.tinkersaddonmod.init.BiomeInit;
-import henryandalex.tinkersaddonmod.utils.Util;
+import henryandalex.tinkersaddonmod.world.gen.village.MapGenCustomVillageBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureStart;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 
-public class MapGenWitchsSwampVillage extends MapGenStructure {
-
-	public static List<Biome> VILLAGE_SPAWN_BIOMES = Arrays.<Biome>asList(BiomeInit.WITCHS_SWAMP);
-    private int size;
-    private int distance;
-    @SuppressWarnings("unused")
-	private final int minTownSeparation;
+public class MapGenWitchsSwampVillage extends MapGenCustomVillageBase {
 	
 	@Override
 	public String getStructureName() {
 		return "Witchs Wood Village";
 	}
 	
+	/*
+	 * Needs to be public to allow access to it from MapGenVillageExtension.
+	 * Also, NEED to initialize villageSpawnBiomes in the constructor
+	 */
     public MapGenWitchsSwampVillage() {
-        this.distance = 32;
-        this.minTownSeparation = 8;
+    	super();
+        villageSpawnBiomes = Arrays.<Biome>asList(BiomeInit.WITCHS_SWAMP);
 	}
     
+    /*
     public MapGenWitchsSwampVillage(Map<String, String> map)
     {
         this();
@@ -54,6 +46,7 @@ public class MapGenWitchsSwampVillage extends MapGenStructure {
             }
         }
     }
+	*/
 
 	@Override
 	public BlockPos getNearestStructurePos(World worldIn, BlockPos pos, boolean findUnexplored) {
@@ -86,7 +79,7 @@ public class MapGenWitchsSwampVillage extends MapGenStructure {
 
         if (i == k && j == l)
         {
-            boolean flag = this.world.getBiomeProvider().areBiomesViable(i * 16 + 8, j * 16 + 8, 0, MapGenWitchsSwampVillage.VILLAGE_SPAWN_BIOMES);
+            boolean flag = this.world.getBiomeProvider().areBiomesViable(i * 16 + 8, j * 16 + 8, 0, MapGenWitchsSwampVillage.villageSpawnBiomes);
 
             if (flag)
             {
@@ -97,26 +90,18 @@ public class MapGenWitchsSwampVillage extends MapGenStructure {
         return false;
 	}
 	
-	public boolean canSpawnStructureAtCoordsPublic(World world, int chunkX, int chunkZ) {
-		this.world = world;
-		return this.canSpawnStructureAtCoords(chunkX, chunkZ);
+	/*
+	 * This is needed because we need a way to get the village spawn biomes from an instance 
+	 * (non-static) in the method MapGenVillageHandler#registerVillage(T villageGenerator).
+	 */
+	@Override
+	public List<Biome> getVillageSpawnBiomes() {
+		return MapGenWitchsSwampVillage.villageSpawnBiomes;
 	}
 
 	@Override
 	protected StructureStart getStructureStart(int chunkX, int chunkZ) {
 		return new MapGenWitchsSwampVillage.Start(world, rand, chunkX, chunkZ, size);
-	}
-	
-	public StructureStart getStructureStartPublic(int chunkX, int chunkZ) {
-		StructureStart val = this.getStructureStart(chunkX, chunkZ);
-		/* 
-		 * Since this is accessed outside of the class, there is no way to put the new instance 
-		 * of the StartStructure into the structureMap which stores all the Villages. This is 
-		 * usually done right after calling this method in MapGenStructure#recursiveGenerate() 
-		 * Therefore, you need to add it here before you return the new StrucutreStart.
-		 */
-		this.structureMap.put(ChunkPos.asLong(chunkX, chunkZ), val);
-		return val;
 	}
 	
 	public class Start extends StructureStart
@@ -130,10 +115,6 @@ public class MapGenWitchsSwampVillage extends MapGenStructure {
         public Start(World worldIn, Random rand, int x, int z, int size)
         {
             super(x, z);
-            //TODO: remove coord printing in final release
-            TCAddonMod.instance.getLogger().info("(Chunk x: " + x + ", Chunk z: " + z + ")");
-            BlockPos pos = Util.getPosFromChunkCoords(x, z);
-            TCAddonMod.instance.getLogger().info("(x: " + pos.getX() + ", z: " + pos.getZ() + ")");
             List<StructureVillagePieces.PieceWeight> list = StructureWitchsVillagePieces.getStructureVillageWeightedPieceList(rand, size);
             StructureWitchsVillagePieces.Start structurevillagepieces$start = new StructureWitchsVillagePieces.Start(worldIn.getBiomeProvider(), 0, rand, (x << 4) + 2, (z << 4) + 2, list, size);
             // adds the well which is the starting point for the town.
