@@ -6,8 +6,9 @@ import henryandalex.tinkersaddonmod.init.BlockInit;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.utils.IHasModel;
 import henryandalex.tinkersaddonmod.utils.Util;
-import henryandalex.tinkersaddonmod.world.feature.tree.WitchsWoodTreeGen;
+import henryandalex.tinkersaddonmod.world.gen.feature.tree.WitchsWoodTreeGen;
 import henryandalex.tinkersaddonmod.world.gen.WorldGenCustomOres;
+import henryandalex.tinkersaddonmod.world.gen.WorldTypeWitchs;
 import henryandalex.tinkersaddonmod.world.gen.village.witchsvillage.MapGenWitchsSwampVillage;
 import henryandalex.tinkersaddonmod.world.gen.village.witchsvillage.StructureWitchsVillagePieces;
 import henryandalex.tinkersaddonmod.world.gen.village.witchsvillage.WitchsVillageHouseCreationHandler;
@@ -83,6 +84,10 @@ public class RegistryHandler {
 	public static void otherRegistries() {
 		GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
 		GameRegistry.registerWorldGenerator(new WitchsWoodTreeGen(), 0);
+		
+		// although instance isn't used, must create the instance to register the WorldType
+		// the register line is in the WorldType constructor
+		new WorldTypeWitchs();
 	}
 	
 	public static void registerEventListeners() {
@@ -106,6 +111,7 @@ public class RegistryHandler {
 		MapGenStructureIO.registerStructureComponent(StructureWitchsVillagePieces.House.class, Util.res("witchs_village_house"));
 		// register the start piece which is a well in the center of the town (just like vanilla)
 		MapGenStructureIO.registerStructureComponent(StructureWitchsVillagePieces.Start.class, Util.res("witchs_village_start_piece"));
+		MapGenStructureIO.registerStructureComponent(StructureWitchsVillagePieces.CustomPath.class, Util.res("witchs_village_start_piece"));
 		MapGenStructureIO.registerStructure(MapGenWitchsSwampVillage.Start.class, Util.res("witchs_village"));
 		VillagerRegistry.instance().registerVillageCreationHandler((IVillageCreationHandler) new WitchsVillageHouseCreationHandler());
 	}

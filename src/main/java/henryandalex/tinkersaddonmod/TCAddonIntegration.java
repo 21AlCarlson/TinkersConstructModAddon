@@ -37,7 +37,7 @@ public class TCAddonIntegration extends TinkerPulse {
     public static void preInit(FMLPreInitializationEvent event) {
     	// test item
     	integrate(TCAddonMaterials.leather);
-    	integrate(TCAddonMaterials.tungsten, TCAddonFluids.tungsten, "Tungsten").toolforge();
+    	integrate(TCAddonMaterials.tungsten, TCAddonMaterials.tungsten.getFluid(), "Tungsten").toolforge();
     	integrate(TCAddonMaterials.bread);
     	integrate(TCAddonMaterials.glass);
     	integrate(TCAddonMaterials.chicken);

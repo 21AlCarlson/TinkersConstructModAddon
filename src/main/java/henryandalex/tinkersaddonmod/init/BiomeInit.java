@@ -1,5 +1,6 @@
 package henryandalex.tinkersaddonmod.init;
 
+import henryandalex.tinkersaddonmod.utils.handlers.ConfigHandler;
 import henryandalex.tinkersaddonmod.world.biomes.BiomeWitchsSwamp;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -15,7 +16,7 @@ public class BiomeInit {
 	
     // Must be called on the RegistryEvent.Register<Biome> which is in the registry handler.
 	public static void registerBiomes() {
-		initBiome(WITCHS_SWAMP, BiomeWitchsSwamp.REGISTERY_NAME, BiomeType.WARM, Type.WET, Type.SWAMP);
+		initBiome(WITCHS_SWAMP, BiomeWitchsSwamp.REGISTERY_NAME, BiomeType.WARM, Type.WET, Type.FOREST);
 	}
 	
 	private static Biome initBiome(Biome biome, String name, BiomeType biomeType, Type... types) {
@@ -23,7 +24,7 @@ public class BiomeInit {
 		biome.setRegistryName(name);
 		ForgeRegistries.BIOMES.register(biome);
 		BiomeDictionary.addTypes(biome, types);
-		BiomeManager.addBiome(biomeType, new BiomeEntry(biome, 40));
+		BiomeManager.addBiome(biomeType, new BiomeEntry(biome, ConfigHandler.witchsSwampBiomeSpawnRate));
 		BiomeManager.addSpawnBiome(biome);
 		//BiomeManager.addVillageBiome(biome, true);
 		

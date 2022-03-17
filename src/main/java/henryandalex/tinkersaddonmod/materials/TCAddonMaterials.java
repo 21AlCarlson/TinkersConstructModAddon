@@ -2,6 +2,7 @@ package henryandalex.tinkersaddonmod.materials;
 
 import com.google.common.eventbus.Subscribe;
 
+import henryandalex.tinkersaddonmod.fluids.TCAddonFluids;
 import henryandalex.tinkersaddonmod.init.ItemInit;
 import henryandalex.tinkersaddonmod.traits.AddedTraits;
 import net.minecraft.init.Blocks;
@@ -85,6 +86,8 @@ public final class TCAddonMaterials {
 	    tungsten.setRepresentativeItem(new ItemStack(ItemInit.TUNGSTEN_INGOT));
 	    tungsten.addTrait(AddedTraits.shout);
 	    tungsten.addTrait(AddedTraits.beam, HEAD);
+	    TCAddonFluids.initFluid(tungsten, 1);
+	    
 	    
 	    bread.setCraftable(true);
 	    bread.addItem("bread", 1, Material.VALUE_Ingot);

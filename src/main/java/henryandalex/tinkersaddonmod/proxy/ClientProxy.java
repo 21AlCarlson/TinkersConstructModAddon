@@ -2,9 +2,9 @@ package henryandalex.tinkersaddonmod.proxy;
 
 import henryandalex.tinkersaddonmod.KeyBindings.KeyInputHandler;
 import henryandalex.tinkersaddonmod.KeyBindings.Keybindings;
+import henryandalex.tinkersaddonmod.blocks.BlockWitchsWoodLeaves;
 import henryandalex.tinkersaddonmod.entity.EntityBeam;
 import henryandalex.tinkersaddonmod.init.ItemInit;
-import henryandalex.tinkersaddonmod.objects.blocks.BlockWitchsWoodLeaves;
 import henryandalex.tinkersaddonmod.traits.Beam.BeamRenderer;
 import henryandalex.tinkersaddonmod.utils.Reference;
 import net.minecraft.client.Minecraft;

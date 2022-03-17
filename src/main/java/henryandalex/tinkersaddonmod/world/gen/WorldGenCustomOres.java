@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGenCustomOres implements IWorldGenerator {
 
+	//public WorldGenMinable minable; 
 	private WorldGenerator block_ore_tungsten;
 
 	

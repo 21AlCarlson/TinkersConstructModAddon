@@ -1,12 +1,29 @@
 package henryandalex.tinkersaddonmod.utils.handlers;
 
+import henryandalex.tinkersaddonmod.utils.Util;
+import henryandalex.tinkersaddonmod.world.biomes.BiomeWitchsSwamp;
 import henryandalex.tinkersaddonmod.world.gen.village.MapGenVillageHandler;
 import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.MapGenVillage;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate;
 import net.minecraftforge.event.terraingen.InitMapGenEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class TerrainGenHandler {
+	
+	@SubscribeEvent
+	public static void manageWitchsBiome(Decorate event) {
+		if(Util.getBiomefromChunkCoords(
+				event.getWorld(), 
+				event.getChunkPos().getXStart(), 
+				event.getChunkPos().getZStart()) 
+				instanceof BiomeWitchsSwamp) {
+			if(!event.getType().equals(Decorate.EventType.TREE)) {
+				event.setResult(Result.DENY);
+			}
+		}
+	}
 	
 	@SubscribeEvent
 	public static void createWitchsVillage(InitMapGenEvent event) {

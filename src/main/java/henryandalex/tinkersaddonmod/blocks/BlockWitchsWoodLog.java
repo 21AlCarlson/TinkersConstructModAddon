@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.objects.blocks;
+package henryandalex.tinkersaddonmod.blocks;
 
 import henryandalex.tinkersaddonmod.TCAddonMod;
 import henryandalex.tinkersaddonmod.init.BlockInit;

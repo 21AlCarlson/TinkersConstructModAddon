@@ -6,8 +6,8 @@ import java.util.Random;
 
 import com.google.common.collect.Lists;
 
+import henryandalex.tinkersaddonmod.blocks.BlockWitchsWoodLog;
 import henryandalex.tinkersaddonmod.init.BlockInit;
-import henryandalex.tinkersaddonmod.objects.blocks.BlockWitchsWoodLog;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockNewLog;
@@ -20,12 +20,15 @@ import net.minecraft.block.BlockSlab.EnumBlockHalf;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
+import net.minecraft.world.gen.structure.template.TemplateManager;
 
 /*
  * Vanilla village Structure Key:
@@ -163,18 +166,18 @@ public class StructureWitchsVillagePieces {
             }
         }
     }
-    
-    @SuppressWarnings("unused")
+    */
+
 	private static StructureComponent generateAndAddRoadPiece(StructureVillagePieces.Start start, List<StructureComponent> p_176069_1_, Random rand, int p_176069_3_, int p_176069_4_, int p_176069_5_, EnumFacing facing, int p_176069_7_) {
         
     	if (p_176069_7_ > 3 + start.terrainType) {
             return null;
         }
         else if (Math.abs(p_176069_3_ - start.getBoundingBox().minX) <= 112 && Math.abs(p_176069_5_ - start.getBoundingBox().minZ) <= 112) {
-            StructureBoundingBox structureboundingbox = StructureVillagePieces.Path.findPieceBox(start, p_176069_1_, rand, p_176069_3_, p_176069_4_, p_176069_5_, facing);
+            StructureBoundingBox structureboundingbox = StructureWitchsVillagePieces.CustomPath.findPieceBox(start, p_176069_1_, rand, p_176069_3_, p_176069_4_, p_176069_5_, facing);
 
             if (structureboundingbox != null && structureboundingbox.minY > 10) {
-                StructureComponent structurecomponent = new StructureVillagePieces.Path(start, p_176069_7_, rand, structureboundingbox, facing);
+                StructureComponent structurecomponent = new StructureWitchsVillagePieces.CustomPath(start, p_176069_7_, rand, structureboundingbox, facing);
                 p_176069_1_.add(structurecomponent);
                 start.pendingRoads.add(structurecomponent);
                 return structurecomponent;
@@ -187,7 +190,7 @@ public class StructureWitchsVillagePieces {
             return null;
         }
     }
-    
+    /*
     private static StructureVillagePieces.Village findAndCreateComponentFactory(StructureVillagePieces.Start start, StructureVillagePieces.PieceWeight weight, List<StructureComponent> structureComponents, Random rand, int structureMinX, int structureMinY, int structureMinZ, EnumFacing facing, int componentType) {
         
     	Class <? extends StructureVillagePieces.Village > oclass = weight.villagePieceClass;
@@ -512,10 +515,165 @@ public class StructureWitchsVillagePieces {
 		}
 	}
 	
+	public static class CustomPath extends StructureVillagePieces.Path {
+		
+		private int length;
+		
+		public CustomPath(StructureVillagePieces.Start start, int p_176069_7_, Random rand, StructureBoundingBox structureboundingbox, EnumFacing facing) {
+			super(start, p_176069_7_, rand, structureboundingbox, facing);
+            this.length = Math.max(structureboundingbox.getXSize(), structureboundingbox.getZSize());
+		}
+		
+		@Override
+        protected void writeStructureToNBT(NBTTagCompound tagCompound)
+        {
+            super.writeStructureToNBT(tagCompound);
+            tagCompound.setInteger("Length", this.length);
+        }
+
+		@Override
+        protected void readStructureFromNBT(NBTTagCompound tagCompound, TemplateManager p_143011_2_)
+        {
+            super.readStructureFromNBT(tagCompound, p_143011_2_);
+            this.length = tagCompound.getInteger("Length");
+        }
+		
+		@Override
+		public void buildComponent(StructureComponent componentIn, List<StructureComponent> listIn, Random rand) {
+			
+            boolean flag = false;
+
+            for (int i = rand.nextInt(5); i < this.length - 8; i += 2 + rand.nextInt(5)) {
+            	
+                StructureComponent structurecomponent = this.getNextComponentNN((StructureVillagePieces.Start)componentIn, listIn, rand, 0, i);
+
+                if (structurecomponent != null) {
+                	
+                    i += Math.max(structurecomponent.getBoundingBox().getXSize(), structurecomponent.getBoundingBox().getZSize());
+                    flag = true;
+                }
+            }
+
+            for (int j = rand.nextInt(5); j < this.length - 8; j += 2 + rand.nextInt(5))
+            {
+                StructureComponent structurecomponent1 = this.getNextComponentPP((StructureVillagePieces.Start)componentIn, listIn, rand, 0, j);
+
+                if (structurecomponent1 != null)
+                {
+                    j += Math.max(structurecomponent1.getBoundingBox().getXSize(), structurecomponent1.getBoundingBox().getZSize());
+                    flag = true;
+                }
+            }
+
+            EnumFacing enumfacing = this.getCoordBaseMode();
+
+            if (flag && rand.nextInt(3) > 0 && enumfacing != null)
+            {
+                switch (enumfacing)
+                {
+                    case NORTH:
+                    default:
+                    	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.minX - 1, this.boundingBox.minY, this.boundingBox.minZ, EnumFacing.WEST, this.getComponentType());
+                        break;
+                    case SOUTH:
+                    	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.minX - 1, this.boundingBox.minY, this.boundingBox.maxZ - 2, EnumFacing.WEST, this.getComponentType());
+                        break;
+                    case WEST:
+                    	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.minX, this.boundingBox.minY, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
+                        break;
+                    case EAST:
+                    	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.maxX - 2, this.boundingBox.minY, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
+                }
+            }
+
+            if (flag && rand.nextInt(3) > 0 && enumfacing != null)
+            {
+                switch (enumfacing)
+                {
+                    case NORTH:
+                    default:
+                    	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.maxX + 1, this.boundingBox.minY, this.boundingBox.minZ, EnumFacing.EAST, this.getComponentType());
+                        break;
+                    case SOUTH:
+                    	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.maxX + 1, this.boundingBox.minY, this.boundingBox.maxZ - 2, EnumFacing.EAST, this.getComponentType());
+                        break;
+                    case WEST:
+                    	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.minX, this.boundingBox.minY, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
+                        break;
+                    case EAST:
+                    	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.maxX - 2, this.boundingBox.minY, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
+                }
+            }
+        }
+		
+		@Override
+		public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn) {
+			
+            IBlockState iblockstate = Blocks.STONEBRICK.getDefaultState();
+            IBlockState iblockstate1 = BlockInit.WITCHS_WOOD_PLANKS.getDefaultState();
+            IBlockState iblockstate2 = this.getBiomeSpecificBlockState(Blocks.GRAVEL.getDefaultState());
+            IBlockState iblockstate3 = this.getBiomeSpecificBlockState(Blocks.COBBLESTONE.getDefaultState());
+
+            for (int i = this.boundingBox.minX; i <= this.boundingBox.maxX; ++i) {
+            	
+                for (int j = this.boundingBox.minZ; j <= this.boundingBox.maxZ; ++j) {
+                	
+                    BlockPos blockpos = new BlockPos(i, 64, j);
+
+                    if (structureBoundingBoxIn.isVecInside(blockpos)) {
+                    	
+                        blockpos = worldIn.getTopSolidOrLiquidBlock(blockpos).down();
+
+                        if (blockpos.getY() < worldIn.getSeaLevel()) {
+                        	
+                            blockpos = new BlockPos(blockpos.getX(), worldIn.getSeaLevel() - 1, blockpos.getZ());
+                        }
+
+                        while (blockpos.getY() >= worldIn.getSeaLevel() - 1) {
+                        	
+                            IBlockState iblockstate4 = worldIn.getBlockState(blockpos);
+
+                            if (iblockstate4.getBlock() == BlockInit.WITCHS_GRASS && worldIn.isAirBlock(blockpos.up())) {
+                            	
+                                worldIn.setBlockState(blockpos, iblockstate, 2);
+                                break;
+                            }
+
+                            if (iblockstate4.getMaterial().isLiquid()) {
+                            	
+                                worldIn.setBlockState(blockpos, iblockstate1, 2);
+                                break;
+                            }
+
+                            if (iblockstate4.getBlock() == Blocks.SAND || iblockstate4.getBlock() == Blocks.SANDSTONE || iblockstate4.getBlock() == Blocks.RED_SANDSTONE) {
+                            	
+                                worldIn.setBlockState(blockpos, iblockstate2, 2);
+                                worldIn.setBlockState(blockpos.down(), iblockstate3, 2);
+                                break;
+                            }
+
+                            blockpos = blockpos.down();
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+	}
+	
 	public static class Start extends StructureVillagePieces.Start {
         public Start(BiomeProvider biomeProviderIn, int i, Random rand, int p_i2104_4_, int p_i2104_5_, List<StructureVillagePieces.PieceWeight> p_i2104_6_, int p_i2104_7_) {
             super(biomeProviderIn, i, rand, p_i2104_4_, p_i2104_5_, p_i2104_6_, p_i2104_7_);
             this.isZombieInfested = false;
         } 
+        
+        @Override
+        public void buildComponent(StructureComponent componentIn, List<StructureComponent> listIn, Random rand) {
+        	
+        	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.minX - 1, this.boundingBox.maxY - 4, this.boundingBox.minZ + 1, EnumFacing.WEST, this.getComponentType());
+        	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.maxX + 1, this.boundingBox.maxY - 4, this.boundingBox.minZ + 1, EnumFacing.EAST, this.getComponentType());
+        	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.minX + 1, this.boundingBox.maxY - 4, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
+        	StructureWitchsVillagePieces.generateAndAddRoadPiece((StructureVillagePieces.Start)componentIn, listIn, rand, this.boundingBox.minX + 1, this.boundingBox.maxY - 4, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
+        }
     }
 }

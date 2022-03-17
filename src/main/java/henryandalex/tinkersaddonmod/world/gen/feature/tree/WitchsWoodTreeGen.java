@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.world.feature.tree;
+package henryandalex.tinkersaddonmod.world.gen.feature.tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,21 +22,20 @@ public class WitchsWoodTreeGen  implements IWorldGenerator {
 	private final WorldGenerator WITCHS_WOOD = new WorldGenWitchsWoodTree();
 	
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) 
-	{
-		switch(world.provider.getDimension())
-		{
-		case 1:
-			
-			break;
-			
-		case 0:
-	
-			runGenerator(WITCHS_WOOD, world, random, chunkX, chunkZ, 1, Blocks.GRASS, BiomeWitchsSwamp.class, BiomeForest.class);
-			
-			break;
-			
-		case -1:
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+		
+		switch(world.provider.getDimension()) {
+			case 1:
+				
+				break;
+				
+			case 0:
+		
+				runGenerator(WITCHS_WOOD, world, random, chunkX, chunkZ, 1, Blocks.GRASS, BiomeWitchsSwamp.class, BiomeForest.class);
+				
+				break;
+				
+			case -1:
 			
 		}
 	}

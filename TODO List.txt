@@ -14,30 +14,25 @@ auto armor, breadcrumbs {Creates a trail behind you}, click tp {Teleport to the 
 HeatlhReveal {Shows how much health the other player has}, antiKnockback, Pot {automatically throws potions from your inventory}, 
 aimbot for bows, spider {can climb walls}, Step {allows you to step up a full block}, and weather controller {only turn rain off, not on}
 
-***Some of the traits in 10) are overpowered and may need to be nerfed some how.
+***Some of the traits in 9) are overpowered and may need to be nerfed some how.
 
 10) Make Recipes for each of the new items in the game!!! (0_0)
 11) Add Our files to Java Maven for other coders.
-12) Make leaves see through
+12) Improve see through leaves
 13) Add Armor texture for Totem Bag
 14) Make witchs wood fence, stairs, and slab model appear in the inventory
 
 15) Fix "TC Addon loaded a new chunk [54, -72] in dimension 0 (overworld) while populating chunk [55, -72], causing cascading worldgen lag." issue
 	!worldIn.isAreaLoaded(pos, 3)
+	May be better to just leave this problem because i can not find a solution i like :/
 
-16) Fix witchs wood water color.
+
 17) Reduce the frequency of Witch's Swamp after done experiementing with it.
-18) PopulateChunkEvent can get rid of foliage?
 19) Make it so slabs can double up on the same block
 20) Make Entryway blocks into stairs
-21) add a config file so users can balance how they please
 22) fix witchs swamp world type
-23) clean up file organization
-24) make MapGenVillageExtension more dynamic
-25) Change bounding box for custom village structures 
-	WitchsVillageHouseCreationHandler#buildComponent -> structBB
 
-26) Fix Witchs village spawning bug. They only like to spawn in one direction?
+
 27) Add custom path and well for witchs village 
 	Maybe use culdrens of potions instead of water for the well.
 

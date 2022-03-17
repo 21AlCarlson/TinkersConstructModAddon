@@ -11,6 +11,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import slimeknights.tconstruct.TConstruct;
 import software.bernie.geckolib3.GeckoLib;
 
+import java.io.File;
+
 import org.apache.logging.log4j.Logger;
 
 import henryandalex.tinkersaddonmod.Network.NetworkHandler;
@@ -21,6 +23,7 @@ import henryandalex.tinkersaddonmod.materials.TCAddonMaterials;
 import henryandalex.tinkersaddonmod.proxy.ClientProxy;
 import henryandalex.tinkersaddonmod.proxy.CommonProxy;
 import henryandalex.tinkersaddonmod.utils.Reference;
+import henryandalex.tinkersaddonmod.utils.handlers.ConfigHandler;
 import henryandalex.tinkersaddonmod.utils.handlers.RegistryHandler;
 import henryandalex.tinkersaddonmod.utils.handlers.RenderHandler;
 
@@ -28,6 +31,8 @@ import henryandalex.tinkersaddonmod.utils.handlers.RenderHandler;
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, dependencies = "required-after:tconstruct")
 public class TCAddonMod {
 
+	public static File config;
+	
 	@Instance
 	public static TCAddonMod instance;
 	
@@ -50,6 +55,7 @@ public class TCAddonMod {
     	ClientProxy.registerKeyBinds();
     	EntityInit.registerLivingEntities();
     	RenderHandler.registerEntityRenders();
+    	ConfigHandler.registerConfig(event);
     }
 
     @EventHandler

@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.objects.blocks;
+package henryandalex.tinkersaddonmod.blocks;
 
 import java.util.List;
 import java.util.Random;

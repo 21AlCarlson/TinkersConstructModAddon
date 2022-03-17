@@ -1,4 +1,4 @@
-package henryandalex.tinkersaddonmod.objects.blocks;
+package henryandalex.tinkersaddonmod.blocks;
 
 import java.util.Random;
 
@@ -15,8 +15,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 
 public class BlockWitchsGrass extends Block implements IHasModel, IGrowable {
 
@@ -92,5 +95,19 @@ public class BlockWitchsGrass extends Block implements IHasModel, IGrowable {
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 		return;
+	}
+	
+	@SuppressWarnings("unlikely-arg-type")
+	@Override
+	public boolean canSustainPlant(IBlockState state, IBlockAccess access, BlockPos pos, EnumFacing facing, IPlantable plant) {
+		if (plant.equals(Blocks.TALLGRASS) || plant.equals(Blocks.YELLOW_FLOWER) || plant.equals(Blocks.RED_FLOWER) || plant.equals(Blocks.REEDS) || plant.equals(Blocks.DOUBLE_PLANT)) {
+			return false;
+		}
+		else if (plant.equals(Blocks.SAPLING) || plant.equals(BlockInit.WITCHS_WOOD_SAPLING)) {
+			return true;
+		}
+		else {
+			return true;
+		}
 	}
 }
